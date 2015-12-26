@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package>
+    <name>SiteClue_Delete_Orders</name>
+    <version>1.0.1</version>
+    <stability>stable</stability>
+    <license>Academic Free License (AFL)</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Simple tool for deleting Magento order extension. Single order delete and mass order delete features.</summary>
+    <description>Magento default does not allow to delete order and related documents like invoices, credit memos, shipments.You can only mark it to cancelled but you can't delete it. Delete Order by SiteClue help you to do that simply just simple clicks. Let's try&#xD;
+&#xD;
+Features:&#xD;
+&#xD;
+1. Delete order with any status&#xD;
+2. Mass order delete&#xD;
+3. Delete all related documents like: invoice, credit memo, shipment&#xD;
+4. Easy Installation&#xD;
+5. Compatibility With Magento Community Editions.&#xD;
+</description>
+    <notes>Simple tool for deleting Magento order extension. Single order delete and mass order delete features.</notes>
+    <authors><author><name>SiteClue</name><user>SiteClue</user><email>siteclue@gmail.com</email></author></authors>
+    <date>2015-02-04</date>
+    <time>16:45:34</time>
+    <contents><target name="magecommunity"><dir name="SiteClue"><dir name="Deleteorder"><dir name="Block"><dir name="Adminhtml"><dir name="Sales"><dir name="Order"><file name="Grid.php" hash="d435cfff61997d878d4855aaf8441ead"/><dir name="Render"><file name="Delete.php" hash="7935cbc2029959d0670481a5f8ff417d"/></dir><file name="View.php" hash="6422429fdac2465d68f94414f7340a2d"/></dir></dir></dir></dir><dir name="Helper"><file name="Data.php" hash="823fe4079664ed1854b8fd246aa8e9fb"/></dir><dir name="controllers"><dir name="Adminhtml"><file name="DeleteorderController.php" hash="d122052f7bd65086ced94573b7565fba"/></dir></dir><dir name="etc"><file name="config.xml" hash="c7a8812a678b4a0f0f43525f8b99e4d4"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="SiteClue_Deleteorder.xml" hash="d0f97a4678aa8420ff52cb49d178e47c"/></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.1.0</min><max>6.0.0</max></php></required></dependencies>
+</package>

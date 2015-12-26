@@ -1,0 +1,330 @@
+ID,ID
+Name,Nombre
+"Attrib. Set Name","Attrib. registrar nombre"
+Status,Status
+SKU,SKU
+Image,Imagen
+Price,Precio
+"Qty Before Adjusting","Cant. Antes de Ajustar"
+"Qty After Adjusting","Qty Despues de Ajustar"
+CSV,CSV
+XML,XML
+"Adjusted Qty","Cant. Ajustada"
+"Stock Adjustment Information","Informacion del Ajuste de Stock"
+"Adjust Stock","Ajustar Stock"
+Save,Guardar
+Cancel,Cancelar
+Confirm,Confirmar
+"Save & Edit","Guardar y Editar"
+"Adjust Qty. does not accept negative values or blank. Please enter a valid value.","Adjust Qty. does not accept negative values or blank. Please enter a valid value."
+"Are you sure you want to save this stock adjustment?","Are you sure you want to save this stock adjustment?"
+"Are you sure you want to confirm this stock adjustment?","Are you sure you want to confirm this stock adjustment?"
+"Are you sure you want to confirm this stock receiving? Qty. of products in the system will be increased by the Qty. received instantly.","Are you sure you want to confirm this stock receiving? Qty. of products in the system will be increased by the Qty. received instantly."
+"Are you sure you want to cancel this stock adjustment?","Are you sure you want to cancel this stock adjustment?"
+"View Stock Adjustment No. '%s","View Stock Adjustment No. '%s"
+"Add Stock Adjustment","Agregar ajuste de Stock"
+"Adjustment Date","Fecha de Ajuste"
+"Adjusted Warehouse","Bodega Ajustada"
+Action,Accion
+Edit,Editar
+"Created on","Creado el"
+"Created by","Creado por"
+"Warehouse\'s Contact","Warehouse\'s Contact"
+"Warehouse\'s Email","Warehouse\'s Email"
+"Warehouse\'s Phone","Warehouse\'s Phone"
+"Warehouse\'s Country","Warehouse\'s Country"
+View,Ver
+"Create New Adjust Stock","Crear un Nuevo Ajuste de Stock"
+"Quick simple product creation","Quick simple product creation"
+Autogenerate,Autogenerar
+Qty,Cant
+"Stock Availability","Disponibilidad de Stock"
+"In Stock","En Stock"
+"Out of Stock","Sin Stock"
+"Select Warehouse for Product","Seleccionar Bodega para el Producto"
+"Select Supplier for Product","Seleccionar Proveedor para el Producto"
+"Quick Create","Creado Rapido"
+"Name in %s","Nombre en %s"
+Type,Tipo
+"Avail. Qty","Cant. Disp."
+Visibility,Visibilidad
+Websites,Sitios
+"Notify Low Stock RSS","Notify Low Stock RSS"
+Delete,Borrar
+"Are you sure?","Esta seguro?"
+"Change status","Cambiar status"
+"Update Attributes","Modificar Atributos"
+"Import Settings","Important Configuracion"
+"Entity Type","Tipo de Entidad"
+"Import Behavior","Importar Comportamiento"
+Warehouses,Bodegas
+"Select File to Import","Seleccione archivo a importar"
+"Item information","Informacion del Articulo"
+Title,Titulo
+File,Archivo
+Content,Contenido
+"Item Information","Informacion del Articulo"
+"Save Item","Guardar Articulo"
+"Delete Item","Borrar Articulo"
+"Save And Continue Edit","Guardar y Continuar Editando"
+"Edit Item '%s","Editar Articulo '%s"
+"Add Item","Agregar Articulo"
+"Item Content","Contenido del Articulo"
+"Item Manager","Adiministrador del Articulo"
+"Manage Stock Adjustments","Administrar Ajustes de Stock"
+"Please tick first column on the box to edit","Please tick first column on the box to edit"
+"Phys. Qty","# Física"
+"Total Phys. Qty","Cant. Física Total"
+"Total Avail. Qty","Cant. Total Disponible"
+Warehouse,Warehouse
+"(Phys. / Avail. Qty)","(Cant. Fisica / Cant. Disponible)"
+Supplier,Supplier
+"Manage Stock","Manage Stock"
+Products,Products
+"Update Stock","Modificar Stock"
+"Are you sure you want to update Qty of products?","Are you sure you want to update Qty of products?"
+"Warehouse Information","Warehouse Information"
+"Is Root","Is Root"
+"Set Root Warehouse","Set Root Warehouse"
+"Warehouse Name","Warehouse Name"
+Manager,Manager
+Telephone,Telephone
+Street,Street
+City,City
+Country,Country
+State/Province,State/Province
+"Zip/Postal Code","Zip/Postal Code"
+Latitude,Latitude
+Longitude,Longitude
+"Action Owner","Action Owner"
+"Changed field(s)","Changed field(s)"
+"Time Stamp","Time Stamp"
+"Admin ID","Admin ID"
+"User Name","User Name"
+"Edit Warehouse","Edit Warehouse"
+"Physical Qty","Physical Qty"
+"On Hold Qty","On Hold Qty"
+"Sales Staffs","Sales Staffs"
+Information,Information
+"Stocks On-Hand","Stocks On-Hand"
+Permission,Permission
+"Change History","Change History"
+"Save Warehouse","Save Warehouse"
+"Reset Information","Reset Information"
+"Delete Warehouse","Delete Warehouse"
+"View Warehouse '%s","View Warehouse '%s"
+"Add Warehouse","Add Warehouse"
+"Created By","Created By"
+"Manager\'s Email","Manager\'s Email"
+"Primary Warehouse","Primary Warehouse"
+yes,yes
+no,no
+"Manage Warehouses","Manage Warehouses"
+"Adjust stock Manager","Adjust stock Manager"
+Inventory,Inventory
+"Manage Adjust Stocks","Manage Adjust Stocks"
+"Add New Adjust Stock","Add New Adjust Stock"
+"Edit New Adjust Stock","Edit New Adjust Stock"
+"Adjust Stock does not exist","Adjust Stock does not exist"
+"You have not permission to adjust stock!","You have not permission to adjust stock!"
+"Unable to find item to save","Unable to find item to save"
+"The stock adjustment has been successfully canceled.","The stock adjustment has been successfully canceled."
+"Cannot save stock adjustment with no product","Cannot save stock adjustment with no product"
+"The stock adjustment has been successfully confirmed.","The stock adjustment has been successfully confirmed."
+"The stock adjustment has been successfully saved.","The stock adjustment has been successfully saved."
+"Unable to find adjust stock to create","Unable to find adjust stock to create"
+"Items Manager","Items Manager"
+"Dashboard Inventory","Dashboard Inventory"
+"Item News","Item News"
+"Item does not exist","Item does not exist"
+"Item was successfully saved","Item was successfully saved"
+"Item was successfully deleted","Item was successfully deleted"
+"Please select item(s)","Please select item(s)"
+"Total of %d record(s) were successfully deleted","Total of %d record(s) were successfully deleted"
+"Total of %d record(s) were successfully updated","Total of %d record(s) were successfully updated"
+"Stock does not exist!","Stock does not exist!"
+"Unable to find warehouse to save stock!","Unable to find warehouse to save stock!"
+"%s changed quantity of product(s) with the following SKU(s): %s.","%s changed quantity of product(s) with the following SKU(s): %s."
+"%s removed product(s) from this warehouse.","%s removed product(s) from this warehouse."
+"%s removed product(s) with the following SKU(s): %s","%s removed product(s) with the following SKU(s): %s"
+"Stock of \'%s\' warehouse has been successfully updated.","Stock of \'%s\' warehouse has been successfully updated."
+"Unable to find warehouse to save!","Unable to find warehouse to save!"
+"Warehouse does not exist!","Warehouse does not exist!"
+"Cannot edit Warehouse","Cannot edit Warehouse"
+"Can edit Warehouse","Can edit Warehouse"
+"Cannot adjust Warehouse","Cannot adjust Warehouse"
+"Can adjust Warehouse","Can adjust Warehouse"
+"%s created this warehouse.","%s created this warehouse."
+"Set %s to be this warehouse manager","Set %s to be this warehouse manager"
+"Changed permission of %s for this warehouse.","Changed permission of %s for this warehouse."
+"The warehouse is empty. You can add products by adjusting stock or requesting stock for sending stock to this warehouse.","The warehouse is empty. You can add products by adjusting stock or requesting stock for sending stock to this warehouse."
+"The warehouse has been created.","The warehouse has been created."
+"The warehouse has been saved.","The warehouse has been saved."
+"Warehouse was successfully deleted","Warehouse was successfully deleted"
+"Can\'t delete warehouse because it still contains some products.","Can\'t delete warehouse because it still contains some products."
+"Manager\'s Name","Manager\'s Name"
+"%s changed quantity of product(s) with the following SKU(s) %s in stock adjustment number %s.","%s changed quantity of product(s) with the following SKU(s) %s in stock adjustment number %s."
+Pending,Pending
+Completed,Completed
+Dashboard,Dashboard
+Settings,Settings
+view,view
+"Skipping import row, required field ""%s"" is not defined.","Skipping import row, required field ""%s"" is not defined."
+"Skipping import row, store ""%s"" field does not exist.","Skipping import row, store ""%s"" field does not exist."
+"Skip import row, is not valid value ""%s"" for field ""%s","Skip import row, is not valid value ""%s"" for field ""%s"
+"Skip import row, the value ""%s"" is invalid for field ""%s","Skip import row, the value ""%s"" is invalid for field ""%s"
+"Skipping import row, required field ""%s"" for new products is not defined.","Skipping import row, required field ""%s"" for new products is not defined."
+"Can\'t create shipment , there are no warehouse enough stock","Can\'t create shipment , there are no warehouse enough stock"
+"Shipment for order #%s","Shipment for order #%s"
+Enabled,Enabled
+Disabled,Disabled
+Yes,Yes
+No,No
+"Automatically created","Automatically created"
+"Stock Adjustment Information","Stock Adjustment Information"
+Warehouse,Warehouse
+"View warehouse","View warehouse"
+"Status: ","Status: "
+"Created by: ","Created by: "
+"Created on: ","Created on: "
+"Reason(s) for adjusting stock","Reason(s) for adjusting stock"
+"Import Products to Adjust Stock","Import Products to Adjust Stock"
+"Please choose a CSV file to import","Please choose a CSV file to import"
+Import,Import
+"If you want to adjust stock of a warehouse by importing loads of products, the structure of CSV file is as follows:","If you want to adjust stock of a warehouse by importing loads of products, the structure of CSV file is as follows:"
+"Example file","Example file"
+Download,Download
+"Products of Stock Adjustment","Products of Stock Adjustment"
+"Choose Products for Stock Adjustment","Choose Products for Stock Adjustment"
+SKU,SKU
+"Excl. Tax","Excl. Tax"
+Total,Total
+"Incl. Tax","Incl. Tax"
+Ordered,Ordered
+Invoiced,Invoiced
+Shipped,Shipped
+Refunded,Refunded
+Canceled,Canceled
+Supplier,Supplier
+N/A,N/A
+Inventory,Inventory
+"Manage Stock","Manage Stock"
+Yes,Yes
+No,No
+"Use Config Settings","Use Config Settings"
+[GLOBAL],[GLOBAL]
+"Physical Qty","Physical Qty"
+"Avail. Qty","Avail. Qty"
+"On Hold Qty","On Hold Qty"
+"Qty for Item\'s Status to become Out of Stock","Qty for Item\'s Status to become Out of Stock"
+"Minimum Qty Allowed in Shopping Cart","Minimum Qty Allowed in Shopping Cart"
+"Maximum Qty Allowed in Shopping Cart","Maximum Qty Allowed in Shopping Cart"
+"Qty Uses Decimals","Qty Uses Decimals"
+Backorders,Backorders
+"Notify for Quantity Below","Notify for Quantity Below"
+"Enable Qty Increments","Enable Qty Increments"
+"Qty Increments","Qty Increments"
+"Stock Availability","Stock Availability"
+"Select Warehouse for Product","Select Warehouse for Product"
+Qty,Qty
+Action,Action
+"Add Warehouse","Add Warehouse"
+"Choose Warehouse","Choose Warehouse"
+"Delete Warehouse Select","Delete Warehouse Select"
+Delete,Delete
+"This attibute was selected.","This attibute was selected."
+"Select Supplier for Product","Select Supplier for Product"
+"Select supplier for Product","Select supplier for Product"
+Cost,Cost
+"Tax (%)","Tax (%)"
+"Discount (%)","Discount (%)"
+"Supplier SKU","Supplier SKU"
+"Add supplier","Add supplier"
+"Choose supplier","Choose supplier"
+"Delete supplier Select","Delete supplier Select"
+ID,ID
+"Warehouse Name","Warehouse Name"
+Status,Status
+"View Warehouse","View Warehouse"
+Enable,Enable
+Disable,Disable
+View,View
+"No warehouse found!","No warehouse found!"
+"Supplier Name","Supplier Name"
+"Last Purchase Order","Last Purchase Order"
+Tax(%),Tax(%)
+Discount(%),Discount(%)
+"View Supplier","View Supplier"
+"No supplier found!","No supplier found!"
+Product,Product
+Price,Price
+"Return to Stock","Return to Stock"
+"Return type","Return type"
+"Return to","Return to"
+"Qty to Refund","Qty to Refund"
+Subtotal,Subtotal
+"Tax Amount","Tax Amount"
+"Discount Amount","Discount Amount"
+"Row Total","Row Total"
+"No Items To Refund","No Items To Refund"
+"Credit Memo Comments","Credit Memo Comments"
+"Refund Totals","Refund Totals"
+"Append Comments","Append Comments"
+"Email Copy of Credit Memo","Email Copy of Credit Memo"
+"Last 10 Adjust Stock","Last 10 Adjust Stock"
+"Recent Adjust Stock","Recent Adjust Stock"
+Date,Date
+Warehouses,Warehouses
+"Created By","Created By"
+"Confirm By","Confirm By"
+"Confirm At","Confirm At"
+Dashboard,Dashboard
+"Last 10 Orders With Warehouse Shipment","Last 10 Orders With Warehouse Shipment"
+"Recent Orders With Warehouse Shipment","Recent Orders With Warehouse Shipment"
+"Order ID","Order ID"
+Items,Items
+"Grand Total","Grand Total"
+From,From
+To,To
+Information,Information
+"Qty Sent","Qty Sent"
+"Qty Requested","Qty Requested"
+"<span>Inventory</span> Management","<span>Inventory</span> Management"
+"Show Main Menu","Show Main Menu"
+"Hide Main Menu","Hide Main Menu"
+"Notice was successfully sent!","Notice was successfully sent!"
+Image,Image
+"Qty to Ship","Qty to Ship"
+Barcode,Barcode
+Checked,Checked
+Ship,Ship
+"Shipment Comments","Shipment Comments"
+"Email Copy of Shipment","Email Copy of Shipment"
+"Qty Shipped","Qty Shipped"
+"Warehouse shipment","Warehouse shipment"
+"Select Warehouse","Select Warehouse"
+"Please select a warehouse to view stock","Please select a warehouse to view stock"
+"All Warehouse","All Warehouse"
+"You do not have permission to view stock","You do not have permission to view stock"
+"PRODUCT PENDING HISTORY","PRODUCT PENDING HISTORY"
+"Product Name: ","Product Name: "
+"Created Time","Created Time"
+#Order,#Order
+Customer,Customer
+"This product has no on-hold items at the moment.","This product has no on-hold items at the moment."
+"How to delete products in a warehouse","How to delete products in a warehouse"
+"Inventory Management extension only allows you to delete products in a warehouse when their Qty is 0. For example, if you want to remove a product in this warehouse, you need to adjust its Qty to 0 first (enter 0 in Total Qty and click Save or Save and Continue Edit), then uncheck the product in the grid below and save again.","Inventory Management extension only allows you to delete products in a warehouse when their Qty is 0. For example, if you want to remove a product in this warehouse, you need to adjust its Qty to 0 first (enter 0 in Total Qty and click Save or Save and Continue Edit), then uncheck the product in the grid below and save again."
+"About quantity types","About quantity types"
+"<b>Physical Qty</b> : The real quantity of each product in your physical warehouse. <br>","<b>Physical Qty</b> : The real quantity of each product in your physical warehouse. <br>"
+State/Province,State/Province
+"Please select region, state or province","Please select region, state or province"
+"CHANGE HISTORY","CHANGE HISTORY"
+"Action Owner: ","Action Owner: "
+"Time Stamp: ","Time Stamp: "
+"Field Name","Field Name"
+"Old Value","Old Value"
+"New Value","New Value"
+"Not found any warehouse history!","Not found any warehouse history!"
+"Update Stock In-grid","Actualizar Stock en la Tabla"
+"Stock Issuing","Salida de Stock"
+"Stock Receiving","Ingreso de Stock"

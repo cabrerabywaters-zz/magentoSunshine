@@ -1,0 +1,61 @@
+"Your system is running out of stock on some products. ","Your system is running out of stock on some products. "
+"(Click here)","(Click here)"
+" to view details."," to view details."
+"Warehouse <strong>","Warehouse <strong>"
+"  to view details.","  to view details."
+"Warehouse $warehousename is running out of stock on some products! ","Warehouse $warehousename is running out of stock on some products! "
+ID,ID
+Name,Name
+SKU,SKU
+Image,Image
+"Qty Notified","Qty Notified"
+"Time Notified","Time Notified"
+"Notification Log Information","Notification Log Information"
+"Notification Log","Notification Log"
+"View Notification Log No. '%s","View Notification Log No. '%s"
+"Sent at","Sent at"
+Type,Type
+"Email Received","Email Received"
+Recipients,Recipients
+Action,Action
+View,View
+CSV,CSV
+XML,XML
+"Notification Logs","Notification Logs"
+"Items Manager","Items Manager"
+"Item Manager","Item Manager"
+Inventory,Inventory
+"Manage Notification","Manage Notification"
+"Notification log does not exist","Notification log does not exist"
+"Warehouse products are low","Warehouse products are low"
+Warehouse,Warehouse
+Managers,Managers
+"Products of system are low","Products of system are low"
+System,System
+Yes,Yes
+No,No
+"ONLY WAREHOUSE","ONLY WAREHOUSE"
+"ONLY SYSTEM","ONLY SYSTEM"
+"BOTH WAREHOUSE AND SYSTEM","BOTH WAREHOUSE AND SYSTEM"
+January,January
+February,February
+March,March
+April,April
+May,May
+June,June
+July,July
+August,August
+September,September
+October,October
+November,November
+December,December
+"Unable to save the cron expression.","Unable to save the cron expression."
+"Low Stock Notifications","Low Stock Notifications"
+Settings,Settings
+"Low Stock Notification","Low Stock Notification"
+Type,Type
+Warehouse,Warehouse
+"Email Received","Email Received"
+Recipients,Recipients
+"Low Stock Products","Low Stock Products"
+"Low Stock Notification(s):","Low Stock Notification(s):"

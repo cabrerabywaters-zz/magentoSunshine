@@ -1,0 +1,145 @@
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+?>
+<?php $config1 = Mage::getStoreConfig('web/default/cms_home_page'); ?>
+
+  <?php if(($config1=='fabia_home_four')||($config1=='fabia_home_seven')) { ?>  <!-- For version 4 7 -->
+
+   <div class="product-img-list">
+<?php if (count($this->getGalleryImages()) > 0): ?>
+<div class="more-views-verticle">
+    <a class="more-views-prev more-views-nav" href="javascript:void(0)" id="carousel-up" style="display: block;"> <i class="icon-angle-up"></i> </a>
+       <div class="media-list">      
+        <div style="top: 0px;" id="more-slides" class="verticl-carousel product-image-thumbs">
+  
+    <?php $i=0; foreach ($this->getGalleryImages() as $_image): ?>
+        <?php if ($this->isGalleryImageVisible($_image)): ?>
+       
+            <a class="thumb-link" href="#" title="<?php echo $this->escapeHtml($_image->getLabel()) ?>" data-image-index="<?php echo $i; ?>">
+                <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(75); ?>"
+                     width="75" height="75" alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>" />
+            </a>
+       
+        <?php endif; ?>
+    <?php $i++; endforeach; ?>
+          </div>          
+        </div>
+        <a class="more-views-next more-views-nav" href="javascript:void(0)" id="carousel-down" style="display: block;"> <i class="icon-angle-down"></i> 
+          </a>
+    
+</div> <!--more-views-verticle-->
+<?php endif; ?>
+
+<div class="product-image product-image-zoom">
+<div class="largeImg_wrap">
+    <div class="product-image-gallery">
+        <img id="image-main"
+             class="gallery-image visible"
+             src="<?php echo $this->helper('catalog/image')->init($_product, 'image') ?>"
+             alt="<?php echo $this->escapeHtml($this->getImageLabel()) ?>"
+             title="<?php echo $this->escapeHtml($this->getImageLabel()); ?>" />
+
+        <?php $i=0; foreach ($this->getGalleryImages() as $_image): ?>
+            <?php if ($this->isGalleryImageVisible($_image)): ?>
+            <img id="image-<?php echo $i; ?>"
+                 class="gallery-image"
+                 src="<?php echo $this->getGalleryImageUrl($_image); ?>"
+                 data-zoom-image="<?php echo  $this->getGalleryImageUrl($_image); ?>" />
+            <?php endif; ?>
+        <?php $i++; endforeach; ?>
+    </div>
+</div>
+</div>
+</div>
+
+
+<?php echo $this->getChildHtml('after'); ?>
+
+  <?php } elseif(($config1=='fabia_home_one')||($config1=='fabia_home_two')||($config1=='fabia_home_three')||($config1=='fabia_home_five')||($config1=='fabia_home_six') or ($config1=='brasil_home') or ($config1=='peru_home') or ($config1=='espana_home') ) { ?> <!-- For version 1,2,3,6 -->
+
+<div class="product-image product-image-zoom">
+    <div class="product-image-gallery">
+        <img id="image-main"
+             class="gallery-image visible"
+             src="<?php echo $this->helper('catalog/image')->init($_product, 'image') ?>"
+             alt="<?php echo $this->escapeHtml($this->getImageLabel()) ?>"
+             title="<?php echo $this->escapeHtml($this->getImageLabel()); ?>" />
+
+        <?php $i=0; foreach ($this->getGalleryImages() as $_image): ?>
+            <?php if ($this->isGalleryImageVisible($_image)): ?>
+            <img id="image-<?php echo $i; ?>"
+                 class="gallery-image"
+                 src="<?php echo $this->getGalleryImageUrl($_image); ?>"
+                 data-zoom-image="<?php echo  $this->getGalleryImageUrl($_image); ?>" />
+            <?php endif; ?>
+        <?php $i++; endforeach; ?>
+    </div>
+</div>
+
+<?php if (count($this->getGalleryImages()) > 0): ?>
+<div class="flexslider flexslider-thumb">
+
+    <ul class="product-image-thumbs previews-list slides">
+    <?php $i=0; foreach ($this->getGalleryImages() as $_image): ?>
+        <?php if ($this->isGalleryImageVisible($_image)): ?>
+        <li>
+            <a class="thumb-link" href="#" title="<?php echo $this->escapeHtml($_image->getLabel()) ?>" data-image-index="<?php echo $i; ?>">
+                <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(75); ?>"
+                     width="75" height="75" alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>" />
+            </a>
+        </li>
+        <?php endif; ?>
+    <?php $i++; endforeach; ?>
+    </ul>
+</div> <!--flexslider flexslider-thumb-->
+<?php endif; ?>
+
+<?php echo $this->getChildHtml('after'); ?>
+
+<?php }else{?> <!-- End version 1,2,3,5,6 -->
+
+<div class="product-image">
+    <div class="product-image-gallery">
+        <img id="image-main"
+             class="gallery-image visible"
+             src="<?php echo $this->helper('catalog/image')->init($_product, 'image') ?>"
+             alt="<?php echo $this->escapeHtml($this->getImageLabel()) ?>"
+             title="<?php echo $this->escapeHtml($this->getImageLabel()); ?>" />
+
+        <?php $i=0; foreach ($this->getGalleryImages() as $_image): ?>
+            <?php if ($this->isGalleryImageVisible($_image)): ?>
+            <img id="image-<?php echo $i; ?>"
+                 class="gallery-image"
+                 src="<?php echo $this->getGalleryImageUrl($_image); ?>"
+                 data-zoom-image="<?php echo  $this->getGalleryImageUrl($_image); ?>" />
+            <?php endif; ?>
+        <?php $i++; endforeach; ?>
+    </div>
+</div>
+
+<?php  if (count($this->getGalleryImages()) > 0): ?>
+<div class="more-views">
+ <div class="slider-items-products">
+   <div id="more-views-slider" class="product-flexslider hidden-buttons">
+     <div class="slider-items slider-width-col3 product-image-thumbs">
+     <?php $i=0; foreach ($this->getGalleryImages() as $_image): ?>
+       <?php if ($this->isGalleryImageVisible($_image)): ?>
+        <div class="item">
+          <a class="thumb-link" href="#" title="<?php echo $this->escapeHtml($_image->getLabel()) ?>" data-image-index="<?php echo $i; ?>">
+            <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile()); ?>"
+                     alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>" />
+          </a>
+        </div>
+      <?php endif; ?>
+    <?php $i++; endforeach; ?>
+   </div> <!--slider-items slider-width-col3-->
+  </div> <!--product-flexslider hidden-buttons-->
+ </div> <!--slider-items-products-->
+</div> <!--more-views-->
+<?php endif; ?>
+
+<?php echo $this->getChildHtml('after'); ?>
+
+<?php }?> 
+

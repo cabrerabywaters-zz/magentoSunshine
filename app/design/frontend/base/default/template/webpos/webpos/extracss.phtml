@@ -1,0 +1,97 @@
+<style type='text/css'>
+.product_list .product .product_options{
+    max-height: 72vh;
+    overflow: hidden;
+}
+.product_list .product .product_options .col-value ul{
+	overflow: auto;
+    max-height: 57vh;
+}
+#popup-customer ul{
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+}
+#pending_orders_popup .panel-heading,
+#order-success button.new-order,
+#orders_area #orderlist-search-form,
+#create-customer .modal-content .top-create, #shipping-address .modal-content .top-create,
+#popup-customer button,
+.product_list .product .product_options ul .product-name h2,
+.btn-warning,
+#order_info .checkout_buttons_area button.btn-warning,
+#shipping_area #edit_shipping_address,
+#settings_area .top-content,
+#orders_area .order-detail .send-email .top-form, #orders_area .order-detail .refund .top-form,
+#orders_area .form-search,
+#orders_area .order-detail .top-order .head-view-order,
+.top_bar.left,
+#pos_container #main_container .col_right .top_bar,
+#bt_checkout
+{
+   
+}
+
+#after-loading-success-message,
+#dp_swf_engine,
+#after-loading-success-message,
+#loading-mask
+{
+	display: none;
+}
+</style>
+<style type='text/css' id='css_from_js'>
+
+</style>
+<script type='text/javascript'>
+var check = false;
+$D(document).ready(function(){
+	var styles = $$('link');
+	if(styles.length > 0){
+	   styles.each(function(el){
+		   var href = el.getAttribute('href');
+		   if(href != '' && href != null){
+			  if(href.indexOf('webpos') < 0) el.remove();
+		   }
+	   })
+	} 
+	var main_containers = $$('.wrapper .page .main-container .container');
+	if(main_containers.length > 0){
+		main_containers.each(function(el){
+			el.removeClassName('container');
+		});
+	}
+	var containers = $$('.wrapper .page .main-container');
+	if(containers.length > 0){
+		containers.each(function(el){
+			el.removeClassName('main-container');
+		});
+	}
+/*
+	var intval = setInterval(function(){
+		removeUnnecessary();
+		if(check == true) clearInterval(intval);
+	},1000);
+*/
+});
+
+function removeUnnecessary(){
+	var testimonials = $$('.testimonials');
+	if(testimonials.length > 0){
+		check = false;
+		testimonials.each(function(el){
+			el.remove();
+		});
+	}else{
+		check = true;
+	}
+	var zopim = $$('.zopim');
+	if(zopim.length > 0){
+		check = false;
+		zopim.each(function(el){
+			el.remove();
+		});
+	}else{
+		check = true;
+	}
+}
+</script>

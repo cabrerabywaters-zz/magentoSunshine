@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SiteClue_Deleteorder>
+            <active>true</active>
+            <codePool>community</codePool>
+        </SiteClue_Deleteorder>
+    </modules>
+</config> 

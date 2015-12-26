@@ -1,0 +1,53 @@
+<?php 
+/* Footer */
+?>
+<div class="footer">
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row">
+      	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('fabia_home5_footer_links')->toHtml() ?>
+      	<div class="col-lg-3 col-xs-12 col-sm-6 payment">
+      		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('fabia_footer_payment_links')->toHtml() ?>
+      	</div>
+
+      	<?php if (Mage::getStoreConfig('fabiasettings/fabiasettings_social/social_link')) { ?>
+	    <div class="col-lg-4 col-xs-12 col-sm-6 social">
+	      
+	      <ul class="link">
+		<?php if (Mage::getStoreConfig('fabiasettings/fabiasettings_social/facebook_social_link')) { ?>
+		  <li class="fb"><a target="_blank" rel="nofollow" href="<?php echo Mage::getStoreConfig('fabiasettings/fabiasettings_social/facebook_social_link_path') ?>" title="<?php echo $this->__('Facebook');?>"></a></li>
+		<?php } 
+		      if (Mage::getStoreConfig('fabiasettings/fabiasettings_social/twitter_social_link')) {
+		?>
+		  <li class="tw"><a target="_blank" rel="nofollow" href="<?php echo Mage::getStoreConfig('fabiasettings/fabiasettings_social/twitter_social_link_path') ?>" title="<?php echo $this->__('Twitter');?>"></a></li>
+		<?php } 
+		      if (Mage::getStoreConfig('fabiasettings/fabiasettings_social/googleplus_social_link')) {
+		?>
+		  <li class="googleplus"><a target="_blank" rel="nofollow" href="<?php echo Mage::getStoreConfig('fabiasettings/fabiasettings_social/googleplus_social_link_path') ?>" title="<?php echo $this->__('GooglePlus');?>"></a></li>
+		<?php } 
+		      if (Mage::getStoreConfig('fabiasettings/fabiasettings_social/rss_social_link')) {
+		?>
+		  <li class="rss"><a target="_blank" rel="nofollow" href="<?php echo Mage::getStoreConfig('fabiasettings/fabiasettings_social/rss_social_link_path') ?>" title="<?php echo $this->__('RSS');?>"></a></li>
+		<?php } 
+		      if (Mage::getStoreConfig('fabiasettings/fabiasettings_social/pinterest_social_link')) {
+		?>
+		  <li class="pintrest"><a target="_blank" rel="nofollow" href="<?php echo Mage::getStoreConfig('fabiasettings/fabiasettings_social/pinterest_social_link_path') ?>" title="<?php echo $this->__('PInterest');?>"></a></li>
+		<?php } 
+		      if (Mage::getStoreConfig('fabiasettings/fabiasettings_social/linkedin_social_link')) {
+		?>
+		  <li class="linkedin"><a target="_blank" rel="nofollow" href="<?php echo Mage::getStoreConfig('fabiasettings/fabiasettings_social/linkedin_social_link_path') ?>" title="<?php echo $this->__('Linkedin');?>"></a></li>
+		<?php } 
+		      if (Mage::getStoreConfig('fabiasettings/fabiasettings_social/youtube_social_link')) {
+		?>
+		  <li class="youtube"><a target="_blank" rel="nofollow" href="<?php echo Mage::getStoreConfig('fabiasettings/fabiasettings_social/youtube_social_link_path') ?>" title="<?php echo $this->__('Youtube');?>"></a></li>
+		<?php } ?>
+	      </ul>
+	    </div><!--end social -->
+	  <?php } ?>
+	</div>
+</div>
+</div>
+</div>
+<?php if (Mage::getStoreConfig('fabiasettings/fabiasettings_footer/footer_google_analytics')): ?>
+<?php echo Mage::getStoreConfig('fabiasettings/fabiasettings_footer/footer_google_analytics_path') ?>       
+<?php endif; ?>

@@ -1,0 +1,31 @@
+<?php $config1 = Mage::getStoreConfig('web/default/cms_home_page'); ?>
+
+
+<?php if(($config1=='fabia_home_five') || ($config1=='fabia_home_eight') || ($config1=='fabia_home_seven')) { ?> <!-- For version 5,8 -->
+
+<?php if($this->getCurrencyCount() > 1): ?>
+<div class="dropdown block-currency-wrapper">
+<a href="#" class="block-currency dropdown-toggle" data-target="#" data-toggle="dropdown" role="button"> <?php echo Mage::app()->getStore()->getCurrentCurrencyCode(); ?> <span class="caret"></span></a>  
+    <ul role="menu" class="dropdown-menu">
+        <?php foreach ($this->getCurrencies() as $_code => $_name): ?> 
+
+            <li role="presentation"><a href="<?php echo $this->getSwitchCurrencyUrl($_code) . '?___store='.$_code;?>" tabindex="-1" role="menuitem" title="<?php echo $this->htmlEscape($_code) ?>"> <?php echo Mage::app()->getLocale()->currency($_code)->getSymbol(); ?> - <?php echo $_code; ?></a></li>
+
+        <?php endforeach; ?>
+    </ul> 
+</div> <!--dropdown block-currency-wrapper-->
+<?php endif; ?> 
+
+<?php } else { ?>  <!-- For version 1,2,3,4,6 -->
+
+<?php if($this->getCurrencyCount() > 1): ?>
+<div class="form-currency">  
+    <ul class="currencies_list">
+        <?php foreach ($this->getCurrencies() as $_code => $_name): ?> 
+            <li><a href="<?php echo $this->getSwitchCurrencyUrl($_code) . '?___store='.$_code;?>" title="<?php echo $this->htmlEscape($_code) ?>"> <?php echo Mage::app()->getLocale()->currency($_code)->getSymbol(); ?></a></li>
+        <?php endforeach; ?>
+    </ul>
+</div> <!--form-currency-->
+<?php endif; ?> 
+
+<?php } ?> <!-- END For version 1,2,3,4,6 -->

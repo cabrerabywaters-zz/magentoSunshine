@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Magoch.com
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this module to newer
+ * versions in the future.
+ *
+ * @category   Administration
+ * @package    Magoch_Externlinks
+ * @copyright  Copyright (c) 2010-2011  Magoch (http://www.magoch.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @author    Igor Ocheretnyi <support@magoch.com>
+*/
+-->
+<config>
+	<tabs>
+		<externlinks translate="label" module="externlinks">
+			<label>Magoch.com</label>
+			<sort_order>210</sort_order>
+		</externlinks>
+	</tabs>
+	
+	<sections>
+		<externlinks translate="label" module="externlinks">
+			<tab>catalog</tab>
+			<label>External links</label>
+			<tab>externlinks</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>300</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>0</show_in_website>
+			<show_in_store>0</show_in_store>
+			<groups>
+				<default translate="label comment" module="externlinks">
+					<label>Defaults</label>
+					<comment><![CDATA[
+<ul class="messages">
+    <li class="notice-msg">
+    <ul>
+<li>'External Links' Module Provided by <a href="http://www.magoch.com">Magoch.com</a></li>
+<li>If you are having any problems with 'External Links' Module then contact <a href="mailto:support@magoch.com">us</a>, please.
+</li>
+    </ul>
+    </li>
+</ul>
+]]>
+					</comment>
+					<frontend_type>text</frontend_type>
+					<sort_order>1</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<enabled translate="label">
+							<label>Enabled</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment><![CDATA[Enable / disable extension]]>
+							</comment>
+						</enabled>
+						<menu_title1 translate="label">
+							<label>Dashboard: menu item1</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment><![CDATA[Menu item title]]></comment>
+						</menu_title1>
+						<menu_link1 translate="label">
+							<label></label>
+							<frontend_type>text</frontend_type>
+							<sort_order>30</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment><![CDATA[Link url]]></comment>
+						</menu_link1>
+						<menu_title2 translate="label">
+							<label>Dashboard: menu item2</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment><![CDATA[Menu item title]]></comment>
+						</menu_title2>
+						<menu_link2 translate="label">
+							<label></label>
+							<frontend_type>text</frontend_type>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment><![CDATA[Link url]]></comment>
+						</menu_link2>
+						<menu_title3 translate="label">
+							<label>Dashboard: menu item3</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>60</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment><![CDATA[Menu item title]]></comment>
+						</menu_title3>
+						<menu_link3 translate="label">
+							<label></label>
+							<frontend_type>text</frontend_type>
+							<sort_order>70</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment><![CDATA[Link url]]></comment>
+						</menu_link3>
+						<menu_title4 translate="label">
+							<label>Dashboard: menu item4</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>80</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment><![CDATA[Menu item title]]></comment>
+						</menu_title4>
+						<menu_link4 translate="label">
+							<label></label>
+							<frontend_type>text</frontend_type>
+							<sort_order>90</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment><![CDATA[Link url]]></comment>
+						</menu_link4>
+						<menu_title5 translate="label">
+							<label>Dashboard: menu item5</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>100</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment><![CDATA[Menu item title]]></comment>
+						</menu_title5>
+						<menu_link5 translate="label">
+							<label></label>
+							<frontend_type>text</frontend_type>
+							<sort_order>110</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment><![CDATA[Link url]]></comment>
+						</menu_link5>
+						<menu_title6 translate="label">
+							<label>Dashboard: menu item6</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>120</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment><![CDATA[Menu item title]]></comment>
+						</menu_title6>
+						<menu_link6 translate="label">
+							<label></label>
+							<frontend_type>text</frontend_type>
+							<sort_order>130</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment><![CDATA[Link url]]></comment>
+						</menu_link6>
+					</fields>
+				</default>
+			</groups>
+		</externlinks>
+	</sections>
+</config>

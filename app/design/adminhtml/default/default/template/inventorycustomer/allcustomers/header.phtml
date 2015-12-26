@@ -1,0 +1,24 @@
+<div class="content-header">
+<table cellspacing="0">
+    <tr>
+        <td style="width:50%;" colspan="3"><h3 class="icon-head head-customer"><?php echo Mage::helper('catalog')->__('Manage Customers') ?></h3></td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>
+            <h3 class="icon-head head-customer">Total: <?php echo $this->getTotalCustomers() ?> Customers</h3>
+        </td>
+        <td>
+            <input type="text" id="inventorycustomer_search_customer_grid" class="form-search" name="inventorycustomer_search_customer_grid" placeholder="Nhập email, số điện thoại" style="width: 300px;"/>
+            <span><input type="submit" value="Search" onclick="searchCustomer();"/></span>
+        </td>
+        <td class="form-buttons">
+            <button type="button" title="Add Customer" class="scalable add" onclick="location.href='<?php echo Mage::helper("adminhtml")->getUrl("adminhtml/customer/new"); ?>'">
+                <span>Add Customer</span>
+            </button>
+        </td>
+    </tr>
+</table>
+</div>

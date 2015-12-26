@@ -1,0 +1,99 @@
+<div id="inventory_customer_returningcustomers_header" class="inventory_customer_returningcustomers_header">
+    <div class="content-header">
+        <h3 class="icon-head head-customer inventory_customer_returningcustomers_header"><?php echo Mage::helper('inventorycustomer')->__('Returning Customers') ?></h3>
+    </div>
+    <!-- Header content -->
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-edit-form fieldset-legend">
+                <?php echo $this->__("Filtering by") ?>
+            </h4>
+            <a id="show_filtering_by" href="#" onclick="showFilteringByForm();
+                    return false;" </a>
+            <a id="hide_filtering_by" href="#" onclick="hideFilteringByForm();
+                    return false;" style="<?php echo ($this->isDisplayFilteringBy() ? "" : "display:none;") ?>"></a>
+            <input type="hidden" value="<?php echo $this->getRequestData('is_show_filtering_by') ?>" name="is_show_filtering_by" id="is_show_filtering_by" />
+        </div>
+        <div id="filtering_by_content">
+            <div id="date_picker_form" class="fieldset ">
+                <table class="form-list">
+                    <?php echo $this->getChildHtml('inventorycustomer_returningcustomers_header_timerange'); ?>
+                    <tr>
+                        <td class="label"></td>
+                        <td class="value">
+                            <button onclick="filterForm();
+                                    return false;" ><?php echo $this->__('Filter'); ?></button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- End of header content -->
+</div>
+<?php
+$controller = Mage::app()->getRequest()->getControllerName(); // return controller name
+$action = Mage::app()->getRequest()->getActionName(); // return action name
+$route = Mage::app()->getRequest()->getRouteName(); // return routes name
+$currentPath = $route . '/' . $controller . '/' . $action;
+?>
+
+<script type="text/javascript">
+
+    function filterForm()
+    {
+        var filters = new Array();
+        filters[0] = $('date_from');
+        filters[1] = $('date_to');
+        if ($('is_show_filtering_by')) {
+            filters[2] = $('is_show_filtering_by');
+        }
+        var elements = [];
+        for (var i in filters) {
+            if (filters[i] && filters[i].value && filters[i].value.length && !filters[i].disabled) {
+                elements.push(filters[i]);
+            }
+        }
+
+        window.location.href = '<?php echo $url = $this->getUrl($currentPath, array('key' => $this->getRequest()->getParam('key'))); ?>top_filter/' + encode_base64(Form.serializeElements(elements)) + '/';
+
+        return;
+    }
+
+    function showFilteringByForm() {
+        $('filtering_by_content').show();
+        $('show_filtering_by').hide();
+        $('hide_filtering_by').show();
+        $('is_show_filtering_by').value = '1';
+    }
+
+    function hideFilteringByForm() {
+        $('filtering_by_content').hide();
+        $('show_filtering_by').show();
+        $('hide_filtering_by').hide();
+        $('is_show_filtering_by').value = '';
+    }
+</script>
+
+<?php
+$upArrow = $this->getSkinUrl('css/magestore/inventoryplus/images/double-arrow-up.png');
+$downArrow = $this->getSkinUrl('css/magestore/inventoryplus/images/double-arrow-down.png');
+?>
+
+<style>
+    #inventory_customer_returningcustomers_header .entry-edit {margin:0 0 20px 0;}
+    #inventory_customer_returningcustomers_header .entry-edit-head a{
+        width:20px;
+        height:20px;
+        display: block;
+        float:left;
+        margin: 0 0 0 20px;
+    }
+    #show_filtering_by { 
+        background: url("<?php echo $downArrow ?>")  no-repeat scroll center center / 15px 15px;
+    }
+
+    #hide_filtering_by { 
+        background: url("<?php echo $upArrow ?>")  no-repeat scroll center center / 15px 15px;
+    }    
+</style>

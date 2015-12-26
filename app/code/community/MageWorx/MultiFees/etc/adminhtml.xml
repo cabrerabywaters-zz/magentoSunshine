@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * MageWorx
+ * Multi Fees Extension
+ *
+ * @category   MageWorx
+ * @package    MageWorx_MultiFees
+ * @copyright  Copyright (c) 2015 MageWorx (http://www.mageworx.com/)
+ */
+-->
+<config>
+    <menu>
+        <sales>
+            <children>
+                <mageworx_multifees translate="title" module="mageworx_multifees">
+                    <title>Multi Fees</title>
+                    <sort_order>100</sort_order>
+                    <action>adminhtml/mageworx_multifees_fee</action>
+                </mageworx_multifees>
+            </children>
+        </sales>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <sales>
+                        <children>
+                            <mageworx_multifees translate="title" module="mageworx_multifees">
+                                <title>Multi Fees</title>
+                            </mageworx_multifees>
+                        </children>
+                    </sales>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <mageworx_multifees translate="title" module="mageworx_multifees">
+                                        <title>MageWorx &gt; Multi Fees</title>
+                                        <sort_order>1</sort_order>
+                                        <children>
+                                            <main translate="title">
+                                                <title>Main Settings</title>
+                                                <sort_order>1</sort_order>
+                                            </main>
+                                        </children>
+                                    </mageworx_multifees>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,260 @@
+<?php $config1 = Mage::getStoreConfig('web/default/cms_home_page'); ?>
+
+
+<?php if (Mage::getStoreConfig('fabiasettings/fabiasettings_products/upsell_product')): ?>
+
+
+<?php if(($config1=='fabia_home_five')) { ?>   
+  <?php if(count($this->getItemCollection()->getItems())): ?>
+
+  <div class="upsell-pro wow bounceInUp animated">
+    
+    <div class="slider-items-products">
+      <div class="new_title center">
+        <h2><?php echo $this->__('Upsell Products') ?></h2>
+      </div> <!--new_title center-->
+      <div id="upsell-products-slider" class="product-flexslider hidden-buttons">
+          <div class="slider-items slider-width-col4"> 
+          <?php foreach($this->getItems() as $_link): ?> 
+    <div class="item">
+   <div class="item-inner">
+    <div class="item-img">
+      <div class="product-block">
+        <div class="product-image">
+          <a href="<?php echo $_link->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_link->getName()) ?>">
+            <figure class="product-display">
+
+              <img class="lazyOwl product-mainpic" alt="<?php echo $this->htmlEscape($_link->getName()) ?>" src="<?php echo $this->helper('catalog/image')->init($_link, 'small_image') ?>" style="display: block;">
+              <img class="product-secondpic" alt="<?php echo $this->htmlEscape($_link->getName()) ?>" src="<?php echo $this->helper('catalog/image')->init($_link, 'small_image') ?>">
+            </figure>
+          </a>
+        </div>
+        
+        <div class="product-meta">
+          <div class="product-action">
+            <a class="addcart" href="<?php echo $this->getAddToCartUrl($_link) ?>">
+              <i class="icon-shopping-cart">&nbsp;</i>
+            </a>
+            
+<?php  if(Mage::app()->getStore()->getConfig('fabiasettings/fabiasettings_quickview/enable')==1){?>
+      
+                <a rel="nofollow" href="<?php echo Mage::getBaseUrl().'quickview/index/view?prodid='.$_link->getId(); ?>" data-fancybox-type="iframe" class="magik-btn-quickview quickview" id="magik-btn-quickview_<?php echo $_link->getId()?>"><i class="icon-zoom">&nbsp;</i></a>
+
+              <?php }  ?>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="item-info">
+       <div class="info-inner">
+         <div class="item-title">
+            <a href="<?php echo $_link->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_link->getName()) ?>">
+                  <?php $prod_name = $this->htmlEscape($_link->getName()) ; 
+                  if(strlen($prod_name) > 17) {echo substr($prod_name,0,17)."...";}else {echo $prod_name;}?>
+             </a>
+         </div> <!--item-title-->
+         <div class="item-content">
+          <div class="item-price"><?php echo $this->getPriceHtml($_link, true, '-related') ?></div>
+            <?php
+                        $summaryData = Mage::getModel('review/review_summary')
+                                ->setStoreId($storeId)
+                                ->load($_link->getId());
+                        if($summaryData->getRatingSummary()){ ?>
+                            <div class="ratings">
+                                <div class="rating-box">
+                                        <div class="rating" style="width: <?php echo $summaryData->getRatingSummary().'%'; ?>"></div>
+                                </div> <!--rating-box-->
+                            </div> <!--ratings-->
+            <?php } else { ?>  
+                            <div class="ratings"><div class="rating-box"><div style="width:0%" class="rating"></div></div></div>
+            <?php } ?>
+            
+         </div><!--item-content-->
+       </div><!--info-inner-->
+     </div> <!--item-info-->
+   </div>
+ </div>              
+       <?php endforeach ?>
+     </div>
+   </div>
+ </div>
+
+  </div>
+
+<?php endif; ?>  <!-- end related product -->
+
+
+
+
+
+
+
+
+
+
+<?php }elseif(($config1=='fabia_home_eight')){?>
+<?php if(count($this->getItemCollection()->getItems())): ?>
+<div class="upsell-pro wow bounceInUp animated">
+  <div class="slider-items-products">
+    <div class="new_title center">
+        <h2><?php echo $this->__('Upsell Products') ?></h2>
+      </div> <!--new_title center-->
+      <div id="upsell-products-slider" class="product-flexslider hidden-buttons">
+        <div class="slider-items slider-width-col4"> 
+          <?php foreach($this->getItems() as $_link): ?> 
+
+          <div class="item">
+            <div class="col-item">
+              <div class="product-wrapper">
+                <div class="thumb-wrapper">
+        
+       <?php if(Mage::app()->getStore()->getConfig('fabiasettings/fabiasettings_quickview/enable')==1){?>
+        
+<a rel="nofollow" href="<?php echo Mage::getBaseUrl().'quickview/index/view?prodid='.$_link->getId(); ?>" data-fancybox-type="iframe" class="product-image thumb flip magik-btn-quickview" id="magik-btn-quickview_<?php echo $_link->getId()?>" ><span class="face"><img alt="<?php echo $this->htmlEscape($_link->getName()) ?>" src="<?php echo $this->helper('catalog/image')->init($_link, 'small_image') ?>"></span><span class="face back"><img title="<?php echo $this->htmlEscape($_link->getName()) ?>" src="<?php echo $this->helper('catalog/image')->init($_link, 'thumbnail') ?>">
+           <span class="quick-view"><span><i>&nbsp;</i><?php echo $this->__('Quick View') ?></span></span></span>
+         </a>
+       <?php } else { ?> 
+          <a class="thumb flip" href="<?php echo $_link->getProductUrl() ?>"><span class="face"><img alt="<?php echo $this->htmlEscape($_link->getName()) ?>" src="<?php echo $this->helper('catalog/image')->init($_link, 'small_image') ?>"></span><span class="face back"><img title="<?php echo $this->htmlEscape($_link->getName()) ?>" src="<?php echo $this->helper('catalog/image')->init($_link, 'thumbnail') ?>"></span></a>
+       <?php } ?>
+
+      </div> <!--thumb-wrapper-->
+                   <div class="actions">
+                    <span class="add-to-links">
+                      <a href="<?php echo $this->helper('wishlist')->getAddUrl($_link) ?>" class="link-wishlist" title="<?php echo $this->__('Add to Wishlist');?>"><span><?php echo $this->__('Add to Wishlist');?></span></a>
+
+                      <?php if($_compareUrl=$this->getAddToCompareUrl($_link)): ?>
+                        <a href="<?php echo $_compareUrl ?>" class="link-compare add_to_compare" title="<?php echo $this->__('Add to Compare');?>"><span><?php echo $this->__('Add to Compare');?></span></a>
+                     <?php endif; ?>
+                   </span>
+                 </div>
+               </div>
+               <div class="item-info">
+                <div class="info-inner">
+                  <div class="item-title">
+                    <a href="<?php echo $_link->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_link->getName()) ?>">
+                        <?php $prod_name = $this->htmlEscape($_link->getName()) ; 
+                        if(strlen($prod_name) > 17) {echo substr($prod_name,0,17)."...";}else {echo $prod_name;}?>
+                   </a>
+                 </div>
+                 <div class="item-content">
+            <?php
+                        $summaryData = Mage::getModel('review/review_summary')
+                                ->setStoreId($storeId)
+                                ->load($_link->getId());
+                        if($summaryData->getRatingSummary()){ ?>
+                        <div class="rating">
+                            <div class="ratings">
+                                <div class="rating-box">
+                                        <div class="rating" style="width: <?php echo $summaryData->getRatingSummary().'%'; ?>"></div>
+                                </div> <!--rating-box-->
+                            </div> <!--ratings-->
+                          </div>
+            <?php } else { ?>  
+                            <div class="rating"><div class="ratings"><div class="rating-box"><div style="width:0%" class="rating"></div></div></div></div>
+            <?php } ?>
+            <div class="item-price"><?php echo $this->getPriceHtml($_link, true, '-related') ?></div>
+          </div>
+        </div>
+            <div class="actions1">
+      
+                     
+              <?php if($_link->isSaleable()): ?>
+                <button type="button"  title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_link) ?>')"><span><?php echo $this->__('Add to Cart') ?></span></button>
+              <?php else: ?>
+                <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+              <?php endif; ?>          
+             
+            
+          </div> <!--actions1-->
+         </div>
+       </div>
+     </div>
+<?php endforeach ?>
+     </div>
+   </div>
+
+</div><!--slider-items-products-->
+</div><!--upsell-pro wow bounceInUp animated-->
+   
+<?php endif; ?>  <!-- end related product -->
+
+
+
+<?php }else { ?>
+
+<?php if(count($this->getItemCollection()->getItems())): ?>
+
+  <div class="upsell-pro wow bounceInUp animated">
+    <div class="container">
+    <div class="slider-items-products">
+      <div class="new_title center">
+        <h2><?php echo $this->__('Upsell Products') ?></h2>
+      </div> <!--new_title center-->
+      <div id="upsell-products-slider" class="product-flexslider hidden-buttons">
+          <div class="slider-items slider-width-col4 products-grid">
+          <?php foreach($this->getItems() as $_link): ?> 
+    <div class="item">
+   <div class="item-inner">
+     <div class="item-img">
+       <div class="item-img-info">
+         <a class="product-image" href="<?php echo $_link->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_link->getName()) ?>"><img alt="<?php echo $this->htmlEscape($_link->getName()) ?>" src="<?php echo $this->helper('catalog/image')->init($_link, 'small_image') ?>"></a> 
+         <?php echo $this->helper('fabiasettings')->getLabel($_link);  ?>
+         <?php  if(Mage::app()->getStore()->getConfig('fabiasettings/fabiasettings_quickview/enable')==1){?> 
+              
+<a rel="nofollow" href="<?php echo Mage::getBaseUrl().'quickview/index/view?prodid='.$_link->getId(); ?>" data-fancybox-type="iframe" class="magik-btn-quickview quickview-btn" id="magik-btn-quickview_<?php echo $_link->getId()?>"><span><?php echo $this->__('Quick View') ?></span></a>
+         <?php }  ?> 
+       </div> <!--item-img-info-->
+     </div> <!--item-img-->
+     <div class="item-info">
+       <div class="info-inner">
+         <div class="item-title">
+            <a href="<?php echo $_link->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_link->getName()) ?>">
+                  <?php $prod_name = $this->htmlEscape($_link->getName()) ; 
+                  if(strlen($prod_name) > 17) {echo substr($prod_name,0,17)."...";}else {echo $prod_name;}?>
+             </a>
+         </div> <!--item-title-->
+         <div class="item-content">
+            <?php
+                        $summaryData = Mage::getModel('review/review_summary')
+                                ->setStoreId($storeId)
+                                ->load($_link->getId());
+                        if($summaryData->getRatingSummary()){ ?>
+                            <div class="ratings">
+                                <div class="rating-box">
+                                        <div class="rating" style="width: <?php echo $summaryData->getRatingSummary().'%'; ?>"></div>
+                                </div> <!--rating-box-->
+                            </div> <!--ratings-->
+            <?php } else { ?>  
+                            <div class="ratings"><div class="rating-box"><div style="width:0%" class="rating"></div></div></div>
+            <?php } ?>
+            <div class="item-price"><?php echo $this->getPriceHtml($_link, true, '-related') ?></div>
+            <div class="actions">
+              <a href="<?php echo $this->helper('wishlist')->getAddUrl($_link) ?>" class="link-wishlist" title="<?php echo $this->__('Add to Wishlist');?>"></a>
+             <div class="add_cart">         
+              <?php if($_link->isSaleable()): ?>
+                <button type="button"  title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_link) ?>')"><span><?php echo $this->__('Add to Cart') ?></span></button>
+              <?php else: ?>
+                <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+              <?php endif; ?>          
+             </div> <!--add_cart-->
+             <?php if($_compareUrl=$this->getAddToCompareUrl($_link)): ?>
+                <a href="<?php echo $_compareUrl ?>" class="link-compare" title="<?php echo $this->__('Add to Compare');?>"></a>
+             <?php endif; ?>
+          </div> <!--actions-->
+         </div><!--item-content-->
+       </div><!--info-inner-->
+     </div> <!--item-info-->                   
+   </div> <!--item-inner-->
+</div> <!--item-->         
+       <?php endforeach ?>
+     </div>
+   </div>
+ </div>
+</div>
+  </div>
+
+<?php endif; ?>  <!-- end related product -->
+<?php } ?>
+
+<?php endif; ?>

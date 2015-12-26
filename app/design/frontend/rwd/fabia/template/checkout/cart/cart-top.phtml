@@ -1,0 +1,125 @@
+<?php 
+/* Top shopping Cart  */ 
+?>
+
+<?php $config1 = Mage::getStoreConfig('web/default/cms_home_page'); ?>
+
+<?php if(($config1=='fabia_home_five') || ($config1=='fabia_home_eight')) { ?> <!-- For version 5, 8 -->
+
+<div class="top-cart-contain">
+  <div class="mini-cart">
+  <div class="basket"> 
+      <a href="<?php echo $this->getUrl('checkout/cart') ?>">
+        <i class="icon-cart"></i>
+
+                    <div class="cart-box">
+
+
+        <span id="cart-total"> <?php if(Mage::helper('checkout/cart')->getSummaryCount() > 1) { echo Mage::helper('checkout/cart')->getSummaryCount(); } elseif(Mage::helper('checkout/cart')->getSummaryCount() == 1) { echo '1'; }  else { echo '0'; } ?> </span>
+      </div>
+      </a>
+
+
+  </div>
+      <div>
+        <div style="display: none;" class="top-cart-content arrow_box">
+      
+         <?php $_items = $this->getRecentItems() ?>
+         <?php if(count($_items)): ?> 
+          <div class="block-subtitle"><?php echo $this->__('Recently added item(s).') ?></div>
+          <ul id="cart-sidebar" class="mini-products-list">
+               <?php foreach($_items as $_item): ?>
+                   <?php echo $this->getItemHtml($_item) ?>
+               <?php endforeach; ?>               
+            </ul>  
+            <div class="top-subtotal"><?php echo $this->__('Subtotal :') ?>
+              <?php /* 
+                 <?php if(Mage::helper('checkout/cart')->getSummaryCount() > 1) { echo Mage::helper('checkout/cart')->getSummaryCount() . 'items,'; } elseif(Mage::helper('checkout/cart')->getSummaryCount() == 1) { echo '1 item,'; }  else { echo '0 item,'; } ?>         */?>         
+                 <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?> 
+
+            </div> <!--top-subtotal-->
+            <div class="actions">
+                              
+<?php if(Mage::getStoreConfig('mgkonestepcheckout_section/mgkopcgeneral_group/mgkextenable')==1){?>
+        <button type="button" title="<?php echo $this->__('Checkout') ?>" class="btn-checkout" onclick="window.location='<?php echo $this->getUrl('')?>onestepcheckout/';"><span><?php echo $this->__('Checkout') ?></span></button>                         
+        <?php }else{ ?>
+        <button type="button" title="<?php echo $this->__('Checkout') ?>" class="btn-checkout" onclick="window.location='<?php echo $this->getUrl('')?>checkout/onepage/';"><span><?php echo $this->__('Checkout') ?></span></button>                         
+        <?php }?>
+
+       
+        <a class="view-cart" href="<?php echo $this->getUrl('checkout/cart') ?>" title="<?php echo $this->__('View Cart') ?>"><span><?php echo $this->__('View Cart') ?></span></a>
+            </div>  <!--actions-->
+           <?php else: ?>               
+                <p class="a-center noitem"><?php echo $this->__('You have no items in your shopping cart.') ?></p>               
+            <?php endif ?>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+<?php }else{?>  <!-- END For version 5, 8 -->
+
+<div class="top-cart-contain pull-right">
+  <div class="mini-cart">
+  <div class="basket"> 
+      <?php if(($config1=='fabia_home_seven')||($config1=='fabia_home_four')){?>
+
+      <a href="<?php echo $this->getUrl('checkout/cart') ?>"><span class="cart-title"><?php echo $this->__('My Cart') ?></span><span class="cart-total"><?php if(Mage::helper('checkout/cart')->getSummaryCount() > 1) { echo Mage::helper('checkout/cart')->getSummaryCount(); } elseif(Mage::helper('checkout/cart')->getSummaryCount() == 1) { echo '1'; }  else { echo '0'; } ?> </span></a>
+
+      <?php } else {?>
+      <a href="<?php echo $this->getUrl('checkout/cart') ?>"><?php echo $this->__('My Cart') ?> <span> <?php if(Mage::helper('checkout/cart')->getSummaryCount() > 1) { echo Mage::helper('checkout/cart')->getSummaryCount(); } elseif(Mage::helper('checkout/cart')->getSummaryCount() == 1) { echo '1'; }  else { echo '0'; } ?> </span></a>
+      <?php } ?>
+  </div>
+      <div>
+      <div class="top-cart-content">
+         <?php $_items = $this->getRecentItems() ?>
+         <?php if(count($_items)): ?>   
+           <div class="block-subtitle">
+
+            <div class="top-subtotal">
+                 <?php if(Mage::helper('checkout/cart')->getSummaryCount() > 1) { echo Mage::helper('checkout/cart')->getSummaryCount() . ' items,'; } elseif(Mage::helper('checkout/cart')->getSummaryCount() == 1) { echo '1 item,'; }  else { echo '0 item,'; } ?>                
+                 <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?>            
+            </div> <!--top-subtotal-->
+
+        <?php if(($config1!='fabia_home_three')&&($config1!='fabia_home_four')&&($config1!='fabia_home_six')&&($config1!='peru_home')&&($config1!='brasil_home')&&($config1!='espana_home') ){?>
+            <div class="pull-right">
+              <div class="basket dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"> 
+                  <a href="<?php echo $this->getUrl('checkout/cart') ?>"><?php echo $this->__('My Cart') ?> <span> <?php if(Mage::helper('checkout/cart')->getSummaryCount() > 1) { echo Mage::helper('checkout/cart')->getSummaryCount(); } elseif(Mage::helper('checkout/cart')->getSummaryCount() == 1) { echo '1'; }  else { echo '0'; } ?> </span></a>
+              </div>
+            </div><!--pull-right-->
+        <?php } ?>
+
+            <?php //echo $this->__('Recently added item(s)') ?>
+          </div> 
+            <ul id="cart-sidebar" class="mini-products-list">
+               <?php foreach($_items as $_item): ?>
+                   <?php echo $this->getItemHtml($_item) ?>
+               <?php endforeach; ?>               
+            </ul>                              
+            
+            <div class="actions">
+                              
+<?php if(Mage::getStoreConfig('mgkonestepcheckout_section/mgkopcgeneral_group/mgkextenable')==1){?>
+		    <button type="button" title="<?php echo $this->__('Checkout') ?>" class="btn-checkout" onclick="window.location='<?php echo $this->getUrl('')?>onestepcheckout/';"><span><?php echo $this->__('Checkout') ?></span></button>                         
+	      <?php }else{ ?>
+		    <button type="button" title="<?php echo $this->__('Checkout') ?>" class="btn-checkout" onclick="window.location='<?php echo $this->getUrl('')?>checkout/onepage/';"><span><?php echo $this->__('Checkout') ?></span></button>                         
+	      <?php }?>
+
+       
+        <a class="view-cart" href="<?php echo $this->getUrl('checkout/cart') ?>" title="<?php echo $this->__('View Cart') ?>"><span><?php echo $this->__('View Cart') ?></span></a>
+            </div>  <!--actions-->
+           <?php else: ?>               
+                <p class="a-center noitem"><?php echo $this->__('You have no items in your shopping cart.') ?></p>               
+            <?php endif ?>
+      </div> <!--top-cart-content-->
+  </div>
+  </div> <!--mini-cart-->
+</div> <!--top-cart-contain pull-right-->
+
+<?php } ?>

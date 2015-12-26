@@ -1,0 +1,145 @@
+
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+  */
+?>
+<!DOCTYPE html>
+<html lang="<?php echo $this->getLang() ?>">
+<head>
+<?php echo $this->getChildHtml('head') ?>
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl(); ?>css/bootstrap7.min.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl(); ?>css/style7.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl(); ?>css/revslider7.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl(); ?>css/owl.theme7.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl(); ?>css/jquery.mobile-menu.css" type="text/css" />
+
+<script src="<?php echo $this->getSkinUrl(); ?>js/bootstrap.min.js" type="text/javascript"></script>
+<script src="<?php echo $this->getSkinUrl(); ?>js/common7.js" type="text/javascript"></script>
+
+</head>
+
+<body class="<?php echo $this->getBodyClass()?' '.$this->getBodyClass().'':'' ?> rtl" itemscope itemtype="http://schema.org/WebPage">
+  <div id="page">
+    
+    <?php echo $this->getChildHtml('after_body_start') ?>
+    <?php echo $this->getChildHtml('global_notices') ?>      
+    <?php echo $this->getChildHtml('header') ?> 
+
+      <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('fabia_home4_header_block')->toHtml() ?>
+
+    <div id="magik-slideshow" class="magik-slideshow">
+      <div class="container">
+        
+          <!-- Home slider -->
+          <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('fabia_home7_slider_banner_block')->toHtml() ?>   
+        
+        
+      </div> <!--container-->
+    </div><!-- magik-slideshow -->  
+       
+      <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('fabia_home4_offer_banner_block')->toHtml() ?>
+                                           
+              <?php echo $this->getChildHtml('breadcrumbs') ?>               
+              <?php echo $this->getChildHtml('global_messages') ?>
+              <?php echo $this->getChildHtml('content') ?>
+
+      <!-- Home Lastest Blog Block -->
+      <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('fabia_home_latest_blog_block')->toHtml() ?>
+
+      <!-- Logo Brand Block -->
+      <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('fabia_home7_logo_brand_block')->toHtml() ?>
+
+      <?php echo $this->getChildHtml('footer') ?> 
+      <?php echo $this->getChildHtml('before_body_end') ?>
+      <?php echo $this->getAbsoluteFooter() ?>     
+
+      </div> <!--page-->
+
+      <!-- Mobile Menu-->
+<div id="mobile-menu">
+    <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('catalogsearch/form.mini-mob.phtml')->toHtml() ; ?>
+  <ul class="mobile-menu">
+    <?php echo $this->getLayout()->createBlock('catalog/navigation')->setTemplate('catalog/navigation/top_nav_mob.phtml')->toHtml() ; ?>
+  </ul> <!--mobile-menu-->
+</div>
+      
+      <?php  if(Mage::app()->getStore()->getConfig('fabiasettings/fabiasettings_newsletterpopup/newsletterpopup_enable')==1){?>
+          <?php echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('newsletter/subscribe_home_popup.phtml')->toHtml() ; ?>
+      <?php }  ?>
+
+      <script type='text/javascript'>
+        jQuery(document).ready(function(){
+            jQuery('#rev_slider_4').show().revolution({
+                dottedOverlay: 'none',
+                delay: 5000,
+                startwidth: 1170,
+                startheight: 520,
+
+                hideThumbs: 200,
+                thumbWidth: 200,
+                thumbHeight: 50,
+                thumbAmount: 2,
+
+                navigationType: 'thumb',
+                navigationArrows: 'solo',
+                navigationStyle: 'round',
+
+                touchenabled: 'on',
+                onHoverStop: 'on',
+                
+                swipe_velocity: 0.7,
+                swipe_min_touches: 1,
+                swipe_max_touches: 1,
+                drag_block_vertical: false,
+            
+                spinner: 'spinner0',
+                keyboardNavigation: 'off',
+
+                navigationHAlign: 'center',
+                navigationVAlign: 'bottom',
+                navigationHOffset: 0,
+                navigationVOffset: 20,
+
+                soloArrowLeftHalign: 'left',
+                soloArrowLeftValign: 'center',
+                soloArrowLeftHOffset: 20,
+                soloArrowLeftVOffset: 0,
+
+                soloArrowRightHalign: 'right',
+                soloArrowRightValign: 'center',
+                soloArrowRightHOffset: 20,
+                soloArrowRightVOffset: 0,
+
+                shadow: 0,
+                fullWidth: 'on',
+                fullScreen: 'off',
+
+                stopLoop: 'off',
+                stopAfterLoops: -1,
+                stopAtSlide: -1,
+
+                shuffle: 'off',
+
+                autoHeight: 'off',
+                forceFullWidth: 'on',
+                fullScreenAlignForce: 'off',
+                minFullScreenHeight: 0,
+                hideNavDelayOnMobile: 1500,
+            
+                hideThumbsOnMobile: 'off',
+                hideBulletsOnMobile: 'off',
+                hideArrowsOnMobile: 'off',
+                hideThumbsUnderResolution: 0,
+
+                hideSliderAtLimit: 0,
+                hideCaptionAtLimit: 0,
+                hideAllCaptionAtLilmit: 0,
+                startWithSlide: 0,
+                fullScreenOffsetContainer: ''
+            });
+        });
+        </script>
+
+</body>
+</html>

@@ -1,0 +1,146 @@
+<?php
+/**
+ * Template for block Magestore_Inventorycustomer_Block_Adminhtml_Allcustomers_Edit_Tab_CustomerDetails
+ */
+?>
+
+<?php
+$customer = $this->getCustomer();
+
+// Style customer type
+$customerType = $customer->getData('customer_satisfaction_type');
+$customerTypeHtml = '';
+if (!is_null($customerType)) {
+    switch ($customerType) {
+        case 1:
+            $customerTypeHtml .= '<div style="text-transform: uppercase;font:bold 10px/16px Arial, Helvetica, sans-serif;background-color:#3CB861;color:#fff;width:50%;height:100%;padding-left:10px;"> ' . $this->__('VIP') . ' </div>';
+            break;
+        case 2:
+            $customerTypeHtml .= '<div style="text-transform: uppercase;font:bold 10px/16px Arial, Helvetica, sans-serif;background-color:#589AFF;color:#fff;width:50%;height:100%;padding-left:10px;"> ' . $this->__('Normal') . ' </div>';
+            break;
+        case 3:
+            $customerTypeHtml .= '<div style="text-transform: uppercase;font:bold 10px/16px Arial, Helvetica, sans-serif;background-color:#E41101;color:#fff;width:50%;height:100%;padding-left:10px;"> ' . $this->__('Not Satisfied') . ' </div>';
+            break;
+    }
+} else {
+    $customerTypeHtml .= '<div style="text-transform: uppercase;font:bold 10px/16px Arial, Helvetica, sans-serif;background-color:#589AFF;color:#fff;width:50%;height:100%;padding-left:10px;"> ' . $this->__('Normal') . ' </div>';
+}
+?>
+
+
+<div class="entry-edit">
+    <div class="entry-edit-head"><h4 class="icon-head head-customer-view"><?php echo Mage::helper('customer')->__('Personal Information') ?></h4></div>
+    <fieldset>
+        <table cellspacing="2" class="box-left">
+            <tr>
+                <td><strong><?php echo $this->__('Email:') ?></strong></td>
+                <td><?php echo is_null($customer->getData('email')) ? 'N/A' : $customer->getData('email') ?></td>
+            </tr>
+            <tr>
+                <td><strong><?php echo $this->__('Phone:') ?></strong></td>
+                <td><?php echo is_null($customer->getData('telephone')) ? 'N/A' : $customer->getData('telephone') ?></td>
+            </tr>
+            <tr>
+                <td><strong><?php echo $this->__('Address:') ?></strong></td>
+                <td><?php echo is_null($this->getCustomerBillingAddress()) ? 'N/A' : $this->getCustomerBillingAddress() ?></td>
+            </tr>
+            <tr>
+                <td><strong><?php echo $this->__('Most recent order at:') ?></strong></td>
+                <td>
+                    <?php
+                        if (is_null($customer->getData('last_order_date'))) {
+                            echo 'N/A';
+                        } else {
+                            $lastOrderDate = new DateTime($customer->getData('last_order_date'));
+                            echo $lastOrderDate->format('H:i:s d/m/Y');
+                        }
+                    ?>
+                </td>
+            </tr>
+            <tr>
+                <td><strong><?php echo $this->__('Total order times:') ?></strong></td>
+                <td><?php echo is_null($customer->getData('number_orders')) ? 'N/A' : $customer->getData('number_orders') ?></td>
+            </tr>
+            <tr>
+                <td><strong><?php echo $this->__('Total value:') ?></strong></td>
+                <td><?php echo is_null($customer->getData('total_value')) ? 'N/A' : Mage::helper('core')->currency($customer->getData('total_value')) ?></td>
+            </tr><tr>
+                <td><strong><?php echo $this->__('Customer type:') ?></strong></td>
+                <td><?php echo $customerTypeHtml ?></td>
+            </tr>
+
+        </table>
+        <table cellspacing="2" class="box-right">
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td><strong><?php echo $this->__('Staff:') ?></strong></td>
+                <td><?php echo $this->getServedStaff() ?></td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <div class="entry-edit-head"><h4 class="icon-head head-customer-view"><?php echo Mage::helper('inventorycustomer')->__('Recent Orders') ?></h4></div>
+    <fieldset>
+        <?php echo $this->getRecentOrdersBlock(); ?>
+    </fieldset>
+
+    <div class="entry-edit-head"><h4 class="icon-head head-customer-view"><?php echo Mage::helper('inventorycustomer')->__('Interaction History') ?></h4></div>
+    <fieldset>
+        <?php echo $this->getInteractionHistoryBlock(); ?>
+        <button type="button" title="Add" class="scalable add" onclick="showPopup()">
+            <span>Add</span>
+        </button>
+    </fieldset>
+</div>
+
+<!--Open pop up window-->
+<script type="text/javascript">
+    
+    function showPopup() {
+ 
+        var url = '<?php echo Mage::helper("adminhtml")->getUrl("inventorycustomeradmin/adminhtml_allcustomers/newinteraction"); ?>?';
+ 
+        if ($('new_customer_interaction_window') && typeof(Windows) != 'undefined') {
+            Windows.focus('new_customer_interaction_window');
+            return;
+        }
+        var dialogWindow = Dialog.info(null, {
+            destroyOnClose: true,
+            closable:true,
+            resizable:false,
+            draggable:false,
+            className:'magento',
+            windowClassName:'popup-window',
+            title:'New Customer Interaction',
+            top:50,
+            width:800,
+            height:450,
+            zIndex:1000,
+            recenterAuto:true,
+            hideEffect:Element.hide,
+            showEffect:Element.show,
+            id:'new_customer_interaction_window',
+            url:url,
+            onClose:function (param, el) {
+                // Reload interactionhistoryGrid after popup is closed
+                interactionhistoryGridJsObject.reload();
+            }
+        });
+    }
+ 
+    function closePopup() {
+        Windows.close('new_customer_interaction_window');
+    }
+
+</script>

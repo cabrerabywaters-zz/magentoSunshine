@@ -1,0 +1,175 @@
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+?>
+<?php $config1 = Mage::getStoreConfig('web/default/cms_home_page'); ?>
+
+<?php if (Mage::getStoreConfig('fabiasettings/fabiasettings_cloudzoom/cloudzoom_view')): ?>
+
+  <?php if(($config1=='fabia_home_four')||($config1=='fabia_home_seven')) { ?>  <!-- For version 4 -->
+
+  <div class="product-img-list">
+    <?php  if (count($this->getGalleryImages()) > 0): ?>
+    <div class="more-views-verticle">
+       <a class="more-views-prev more-views-nav" href="javascript:void(0)" id="carousel-up" style="display: block;"> <i class="icon-angle-up"></i> </a>
+       <div class="media-list">      
+        <div style="top: 0px;" id="more-slides" class="verticl-carousel product-image-thumbs">
+          <?php foreach ($this->getGalleryImages() as $_image): ?>
+          <a href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile()); ?>" class="thumb-link cloud-zoom-gallery" rel="useZoom: 'zoom2', smallImage: '<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile()); ?>' " title="<?php echo $_product->getName();?>">
+            <img class="img-responsive zoom-tiny-image" itemprop="image" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile()); ?>"  />
+          </a>
+          <?php endforeach; ?> 
+          </div>          
+        </div>
+        <a class="more-views-next more-views-nav" href="javascript:void(0)" id="carousel-down" style="display: block;"> <i class="icon-angle-down"></i> 
+          </a>
+          </div>
+        <?php endif; ?>
+        <div class="product-image">
+          <div class="largeImg_wrap">
+            <div id="wrap" style="top:0px;z-index:700;position:relative;">
+              <a href="<?php echo $this->helper('catalog/image')->init($_product, 'image') ?>" class ="cloud-zoom" id="zoom2" rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4" style="position: relative; display: block;">
+                <?php
+                    $_img = '<img itemprop="image" id="image" src="'.$this->helper('catalog/image')->init($_product, 'image').'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+                    echo $_helper->productAttribute($_product, $_img, 'image'); 
+                ?>
+              </a> 
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <?php } elseif(($config1=='fabia_home_one')||($config1=='fabia_home_two')||($config1=='fabia_home_three')||($config1=='fabia_home_five')||($config1=='fabia_home_six') or ($config1=='brasil_home') or ($config1=='peru_home') or ($config1=='espana_home') ) { ?> <!-- For version 1,2,3,6 -->
+
+<div class="product-image">
+  <div class="large-image">
+<a href="<?php echo $this->helper('catalog/image')->init($_product, 'image') ?>" class ="cloud-zoom" id="zoom1" rel="useWrapper: false, adjustY:0, adjustX:20">
+    <?php
+        $_img = '<img itemprop="image" id="image" src="'.$this->helper('catalog/image')->init($_product, 'image').'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+        echo $_helper->productAttribute($_product, $_img, 'image'); 
+    ?>
+</a> 
+</div>
+<?php  if (count($this->getGalleryImages()) > 0): ?>
+  <div class="flexslider flexslider-thumb">
+    <ul class="previews-list slides">
+      <?php foreach ($this->getGalleryImages() as $_image): ?>
+      <li>
+        <a href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile()); ?>" class="cloud-zoom-gallery" rel="useZoom: 'zoom1', smallImage: '<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile()); ?>' " title="<?php echo $_product->getName();?>">
+            <img class="zoom-tiny-image" itemprop="image" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile()); ?>"  />
+        </a>
+      </li>
+      <?php endforeach; ?>
+    </ul>
+  </div>
+
+<?php endif; ?>
+</div> <!--product-image-->
+
+<?php }else{?> <!-- End version 1,2,3 -->
+
+<div class="product-image">
+<a href="<?php echo $this->helper('catalog/image')->init($_product, 'image') ?>" class ="cloud-zoom" id="zoom1" rel="useWrapper: false, adjustY:0, adjustX:20">
+    <?php
+        $_img = '<img itemprop="image" id="image" src="'.$this->helper('catalog/image')->init($_product, 'image').'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+        echo $_helper->productAttribute($_product, $_img, 'image'); 
+    ?>
+</a>  
+</div> <!--product-image-->
+
+<?php  if (count($this->getGalleryImages()) > 0): ?>
+<div class="more-views">
+ <div class="slider-items-products">
+   <div id="more-views-slider" class="product-flexslider hidden-buttons">
+     <div class="slider-items slider-width-col3">
+     <?php foreach ($this->getGalleryImages() as $_image): ?>
+        <div class="item">
+          <a href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile()); ?>" class="cloud-zoom-gallery" rel="useZoom: 'zoom1', smallImage: '<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile()); ?>' " title="<?php echo $_product->getName();?>">
+            <img class="zoom-tiny-image" itemprop="image" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile()); ?>"  />
+          </a>
+        </div>
+     <?php endforeach; ?>   
+   </div> <!--slider-items slider-width-col3-->
+  </div> <!--product-flexslider hidden-buttons-->
+ </div> <!--slider-items-products-->
+</div> <!--more-views-->
+<?php endif; ?>
+
+<?php }?>
+<?php else: ?>  <!-- Light Box -->
+
+<?php if(($config1=='fabia_home_eight')) {?>
+
+
+<script src="<?php echo $this->getSkinUrl(); ?>js/lightbox/lightbox.js" type="text/javascript"></script>
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl(); ?>css/lightbox.css" type="text/css" />
+
+<div class="zoom-section">
+<div class="zoom-small-image">
+
+<div class="product-image">
+
+    <?php
+        $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(490,595).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+        echo $_helper->productAttribute($_product, $_img, 'image'); 
+    ?>
+
+</div>
+
+</div>  <!--zoom-small-image-->
+</div>  <!--zoom-section-->
+
+
+<?php  if (count($this->getGalleryImages()) > 0): ?>
+<div class="more-views">
+ <div class="slider-items-products">
+   <div id="more-views-slider" class="product-flexslider hidden-buttons">
+     <div class="slider-items slider-width-col3">
+     <?php foreach ($this->getGalleryImages() as $_image): ?>
+        <div class="item">
+          <a href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile()); ?>" rel="lightbox[rotation]" title="<?php echo $_product->getName();?>"><img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile()); ?>"  /></a> 
+        </div>
+     <?php endforeach; ?>
+   </div> <!--slider-items slider-width-col3-->
+  </div> <!--product-flexslider hidden-buttons-->
+ </div> <!--slider-items-products-->
+</div> <!--more-views-->
+<?php endif;  ?>
+
+<?php }else{ ?>
+<script src="<?php echo $this->getSkinUrl(); ?>js/lightbox/lightbox.js" type="text/javascript"></script>
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl(); ?>css/lightbox.css" type="text/css" />
+
+<div class="zoom-section">
+<div class="zoom-small-image">
+
+<div class="product-image">
+
+    <?php
+        $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(490,595).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+        echo $_helper->productAttribute($_product, $_img, 'image'); 
+    ?>
+
+</div>
+
+</div>  <!--zoom-small-image-->
+</div>  <!--zoom-section-->
+
+
+<?php  if (count($this->getGalleryImages()) > 0): ?>
+  <div class="flexslider flexslider-thumb">
+    <ul class="previews-list slides">
+      <?php foreach ($this->getGalleryImages() as $_image): ?>
+      <li>
+        <a href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile()); ?>" rel="lightbox[rotation]" title="<?php echo $_product->getName();?>">
+            <img class="zoom-tiny-image" itemprop="image" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile()); ?>"  />
+        </a>
+      </li>
+      <?php endforeach; ?>
+    </ul>
+  </div>
+
+<?php endif; ?>
+
+<?php }?>
+<?php endif; ?>  <!-- End light box -->

@@ -1,0 +1,63 @@
+/**
+ * MageWorx
+ * Multi Fees Extension
+ *
+ * @category   MageWorx
+ * @package    MageWorx_MultiFees
+ * @copyright  Copyright (c) 2015 MageWorx (http://www.mageworx.com/)
+ */
+ 
+.head-multifees  {
+    background-image: url("../../../images/mageworx/multifees/icon.gif") !important;
+} 
+.multifees-option-file {
+    margin-top: 4px;
+}
+.multifees-option-container {
+    padding-left:10px;
+}
+.fee-items {
+    padding-top: 3px;
+    height: auto;
+}
+.fee-items .note {
+    margin-bottom: 0 !important;
+}
+.fee-items .options {
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+.fee-items .options td {
+    vertical-align: middle;
+    padding: 2px;
+}
+.fee-items .options td select {
+    padding: 1px;
+}
+.fee-title {
+    color: #666666;
+    font-weight: bold;
+    padding-top: 3px;
+}
+input.multifees-input-del-img {
+    width: 15px !important;
+    margin-left: 5px;
+}
+.multifees-file-row td {
+    width: 220px !important;
+    vertical-align: middle;
+}
+.multifees-file-row input.input-file {
+    padding: 2px;
+    width: 100% !important;
+}
+.multifees-file-row td.td-button {
+    padding-top: 3px !important;
+    padding-left: 5px;
+}
+.small-image-preview {
+    padding: 1px 3px 1px 1px;
+}
+.multifees-details-view td, .multifees-details-inc-tax-view td {
+    font-size: 11px;
+}

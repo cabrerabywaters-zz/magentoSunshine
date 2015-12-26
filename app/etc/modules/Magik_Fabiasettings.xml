@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Magik_Fabiasettings>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Magik_Fabiasettings>
+    </modules>
+</config>

@@ -1,0 +1,107 @@
+<?php
+$userId = Mage::helper('webpos/permission')->getCurrentUser();
+$isCreateOrder = Mage::helper('webpos/permission')->isCreateOrder($userId);
+Mage::getModel('core/session')->setData('pos_cpage', 1);
+$firstCategories = array();
+$categories = Mage::getModel('catalog/category')
+        ->getCollection()
+        ->addAttributeToSelect('*')
+        ->addIsActiveFilter();
+foreach ($categories as $category) {
+    if ($category->getParentId() == Mage::app()->getStore()->getRootCategoryId())
+        $firstCategories[$category->getParentId()] = $category->getParentId();
+}
+?>
+
+<div class="dropdown show" id='category_dropdown'>
+    <button onclick="showDropdownCategory()" class="btn btn-warning dropdown-toggle" type="button" id="selectcategory" data-toggle="dropdown"><span id='label_category'><?php echo $this->__('All Categories'); ?></span>
+        <span class="caret"></span></button>
+    <ul class="dropdown-menu multi-level hide" role="menu" aria-labelledby="dropdownMenu" id='categories_list' >
+        <li role="presentation" class="parentMenu catitem" onclick="reloadListProduct('category', '0', '<?php echo $this->__('All Categories'); ?>')" catid='0'><a><?php echo $this->__('All Categories'); ?></a></li>
+        <li role="presentation" class="parentMenu specialCate" onclick="reloadListProduct('recent', '0', '<?php echo $this->__('Recently Added Products'); ?>')"><a><?php echo $this->__('Recently Added Products'); ?></a></li>
+        <li role="presentation" class="parentMenu specialCate" onclick="reloadListProduct('popular', '0', '<?php echo $this->__('Frequently Added Products'); ?>')"><a><?php echo $this->__('Frequently Added Products'); ?></a></li>
+        <?php
+        foreach ($categories as $category):
+            if (!isset($firstCategories[$category->getParentId()]))
+                continue;
+            $cCategory = $category->getEntityId();
+			$hasChildren = ($category->getChildrenCount() > 1)?true:false;
+            ?>
+            <li class='menuContaine <?php if($hasChildren):?>dropdown-submenu<?php endif;?> parentMenu ' id='categories_lists'>
+                 <a role="presentation" class="catitem" catid='<?php echo $category->getEntityId(); ?>' onclick="reloadListProduct('category', '<?php echo $category->getEntityId(); ?>', '<?php echo $category->getName(); ?>')"><?php echo $category->getName(); ?></a>
+				<?php if($hasChildren):?>
+                <ul class="dropdown-menu">
+                <?php
+                foreach ($categories as $scategory):
+                    if ($scategory->getParentId() == $cCategory):
+						$subCategory = array();
+						$subCategory[$scategory->getEntityId()] = $scategory->getName();
+						foreach ($categories as $scategory2){
+							if ($scategory2->getParentId() == $scategory->getEntityId()){
+								$subCategory[$scategory2->getEntityId()] = $scategory2->getName();
+							}
+						}
+               ?>
+                        <li role="presentation" class='subMenu'>
+							<?php 
+							if(count($subCategory) == 1):?>
+								<a role="menuitem" class="catitem" catid='<?php echo $scategory->getEntityId(); ?>' tabindex="-1" href="#" onclick="reloadListProduct('category', '<?php echo $scategory->getEntityId(); ?>', '<?php echo $scategory->getName(); ?>')"><?php echo $scategory->getName(); ?></a>
+							<?php elseif(count($subCategory) > 1):?>
+							<select onchange="filterProductByCategory(this.value)" class='subcategory_dropdown'>
+								<option value=''><?php echo '--'.$scategory->getName().'--'; ?></option>
+								<?php
+								foreach ($subCategory as $catId => $catName):
+								?>
+								<option id='category_<?php echo $catId?>' value='<?php echo $catId; ?>'><?php echo $catName; ?></option>
+								<?php endforeach; ?>
+							</select>
+							<?php endif; ?>
+                        </li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+                </ul>
+				<?php endif;?>
+            </li>
+            <?php
+        endforeach;
+        ?>
+    </ul>
+</div>
+<script type='text/javascript'>
+    var ccategoryId = localGet('ccategoryId');
+    if ($('label_category') && ccategoryId != null) {
+        var cats = $$('.catitem');
+        if (cats.length > 0) {
+            cats.each(function (el) {
+                if (el.getAttribute('catid') == ccategoryId)
+                    $('label_category').innerHTML = el.innerHTML;
+            });
+        }
+    }
+
+    function showDropdownCategory() {
+        if ($('categories_list')) {
+            var hide = $('categories_list').hasClassName('hide');
+            if (hide == true) {
+                $('categories_list').addClassName('show');
+                $('categories_list').removeClassName('hide');
+                $('webpos_overlay').show();
+            } else {
+                $('categories_list').addClassName('hide');
+                $('categories_list').removeClassName('show');
+                $('webpos_overlay').hide();
+            }
+        }
+    }
+	function filterProductByCategory(categoryId){
+		if(categoryId == '') return;
+		var subcategory_dropdowns = $$('.subcategory_dropdown');
+		if(subcategory_dropdowns.length > 0){
+			subcategory_dropdowns.each(function(el){
+				el.value = '';
+			});
+		}
+		var catName = $('category_'+categoryId).innerHTML;
+		reloadListProduct('category', categoryId,catName);
+	}
+</script>

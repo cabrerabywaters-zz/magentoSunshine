@@ -1,0 +1,56 @@
+/** all devices and responsive browser windows **/
+@media screen and (max-width: 800px) {
+    .le-register-window, .le-login-window { width: 80%; }
+    .le-login-window .input-fly input{ float: none; display: block; }
+    #le-ajaxlogin-forgotpass-form input{ float: none; display: block; }
+    .le-login-window .input-fly label{ float: none; display: block;}
+    .le-ajaxlogin-loader{left: 55%; }
+}
+
+
+/* smaller screen dropoff *******/
+@media only screen and (max-width: 550px) {
+    .le-register-window, .le-login-window { width: 70%; }
+    .le-login-window .input-fly input{ float: none; display: block; }
+    .le-register-window .input-fly input{ float: none; display: block; }
+    .le-register-window .litmore select{ float: none; }
+    .le-register-window .litmore textarea{ float: none; }
+    .le-register-window {position: absolute;}
+    .le-register-window .input-box{ float: none; display: block; }
+    .le-register-window label{ float: none; }
+    .le-register-window .litcaptcha #captcha-image-box-form-validate-captcha{ float: left; width: 240px;}
+    .le-login-window .input-fly label{ float: none; display: block;}
+    #le-ajaxlogin-forgotpass-form input{ float: none; display: block; }
+    .simple-register-close{margin: 8px 0 4px 300px}
+    .le-ajaxlogin-loader{left: 47%; }
+}
+
+/* iPhone Landscape ********/
+@media only screen and (max-width: 480px) {
+    .le-login-window { left: 260px; }
+    .le-register-window, .le-login-window { width: 65%; }
+    .le-register-window .input-fly input{ float: none; display: block; }
+    .le-register-window .litmore select{ float: none; }
+    .le-register-window .litmore textarea{ float: none; }
+    .le-login-window .input-fly input{ float: none; display: block; width: 180px; }
+    .le-login-window .input-fly label{ float: none; display: block;}
+    #le-ajaxlogin-forgotpass-form input{ float: none; display: block; width: 180px; }
+    #le-ajaxlogin-forgotpass-form .captcha-image{ width: 184px; }
+    .le-register-window .litcaptcha #captcha-image-box-form-validate-captcha{ float: left; width: 160px;}
+    .le-ajaxlogin-loader{left: 60%; }
+}
+
+/* iPhone portrait *******/
+@media only screen and (max-width: 320px) {
+    .le-login-window { position: absolute; }
+    .le-register-window, .le-login-window { width: 60%; }
+    .le-register-window .input-fly input{ float: none; display: block; width: 110px; }
+    .le-register-window .litmore select{ float: none; width: 110px;}
+    .le-register-window .litmore textarea{ float: none; width: 110px;}
+    .le-login-window .input-fly input{ float: none; display: block;  width: 140px; }
+    .le-login-window .input-fly label{ float: none; display: block;}
+    #le-ajaxlogin-forgotpass-form input{ float: none; display: block; width: 130px; }
+    #le-ajaxlogin-forgotpass-form .captcha-image{ width: 134px; }
+    .le-register-window .litcaptcha #captcha-image-box-form-validate-captcha{ float: left; width: 135px;}
+    .le-ajaxlogin-loader{left: 54%; width: 120px;}
+}

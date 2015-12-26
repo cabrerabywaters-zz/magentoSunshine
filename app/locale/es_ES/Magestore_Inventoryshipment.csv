@@ -1,0 +1,51 @@
+"Item information","Item information"
+Title,Title
+File,File
+Status,Status
+Content,Content
+"Item Information","Item Information"
+"Save Item","Save Item"
+"Delete Item","Delete Item"
+"Save And Continue Edit","Save And Continue Edit"
+"Edit Item '%s","Edit Item '%s"
+"Add Item","Add Item"
+"Order #","Order #"
+"Purchased From (Store)","Purchased From (Store)"
+"Purchased On","Purchased On"
+"Bill to Name","Bill to Name"
+"Ship to Name","Ship to Name"
+"G.T. (Base)","G.T. (Base)"
+"G.T. (Purchased)","G.T. (Purchased)"
+"Order Status","Order Status"
+"Shipping Progress","Shipping Progress"
+"Not shipped","Not shipped"
+"Partially shipped","Partially shipped"
+Complete,Complete
+Canceled,Canceled
+Closed,Closed
+"Warehouses Shipped","Warehouses Shipped"
+Action,Action
+CSV,CSV
+XML,XML
+"View drop shipment of this order","View drop shipment of this order"
+"View Dropshipment","View Dropshipment"
+"View shipment of this order","View shipment of this order"
+"View Shipment","View Shipment"
+"Create shipment of this order","Create shipment of this order"
+Ship,Ship
+"Manage Orders Shipment","Manage Orders Shipment"
+Inventory,Inventory
+"Manage Order Shipment","Manage Order Shipment"
+"Item Manager","Item Manager"
+"Item News","Item News"
+"Item does not exist","Item does not exist"
+"Item was successfully saved","Item was successfully saved"
+"Unable to find item to save","Unable to find item to save"
+"Item was successfully deleted","Item was successfully deleted"
+"Please select item(s)","Please select item(s)"
+"Total of %d record(s) were successfully deleted","Total of %d record(s) were successfully deleted"
+"Total of %d record(s) were successfully updated","Total of %d record(s) were successfully updated"
+"Delivering / Send stock","Delivering / Send stock"
+Delivering,Delivering
+"Send stock","Send stock"
+"View Order Info","View Order Info"

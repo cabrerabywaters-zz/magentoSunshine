@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<affiliatepluspayperleadadmin_adminhtml_affiliatepluspayperlead_index>
+		<reference name="content">
+			<block type="affiliatepluspayperlead/adminhtml_affiliatepluspayperlead" name="affiliatepluspayperlead" />
+		</reference>
+	</affiliatepluspayperleadadmin_adminhtml_affiliatepluspayperlead_index>
+	<affiliatepluspayperleadadmin_adminhtml_affiliatepluspayperlead_leadgrid>
+	    <block type="core/text_list" name="root">
+	        <block type="affiliatepluspayperlead/adminhtml_account_edit_tab_lead" name="account.edit.tab.lead"/>
+	    </block>
+	</affiliatepluspayperleadadmin_adminhtml_affiliatepluspayperlead_leadgrid>
+</layout>

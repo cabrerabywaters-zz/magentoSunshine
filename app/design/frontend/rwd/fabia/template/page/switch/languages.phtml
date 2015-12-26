@@ -1,0 +1,61 @@
+
+<?php
+/**
+ * Language switcher template
+ *
+ * @see Mage_Page_Block_Switch
+ */
+?>
+<?php $config1 = Mage::getStoreConfig('web/default/cms_home_page'); ?>
+
+<?php if(($config1=='fabia_home_five') || ($config1=='fabia_home_eight')) { ?> <!-- For version 5,8 -->
+
+<?php if(count($this->getStores())>1): ?>
+<div class="dropdown block-language-wrapper">
+  <?php $storecode = Mage::app()->getStore()->getCode(); ?>
+  <a href="#" class="block-language dropdown-toggle" data-target="#" data-toggle="dropdown" role="button"> <img src="<?php echo $this->getSkinUrl('images/flags/'.$storecode.'.png') ?>" alt="<?php echo $storecode; ?>"/> <?php echo strtoupper((substr(Mage::app()->getStore()->getName(),0,2))); ?> <span class="caret"></span> </a>
+  
+   <ul role="menu" class="dropdown-menu" id="hideShow">        
+        <?php foreach ($this->getStores() as $_lang): ?>       
+            <li role="presentation"><a href="<?php echo $_lang->getCurrentUrl();?>" tabindex="-1" role="menuitem">
+               <img src="<?php echo $this->getSkinUrl('images/flags/'.$this->htmlEscape($_lang->getCode()).'.png') ?>" alt="<?php echo $this->htmlEscape($_lang->getName()) ?>" />
+               <?php echo $this->htmlEscape($_lang->getName()) ?>
+            </a></li>         
+        <?php endforeach;?>
+   </ul>
+</div> <!--dropdown block-language-wrapper-->
+<?php endif;?>
+
+<?php } elseif(($config1=='fabia_home_seven')) { ?> <!-- For version 1,2,3,4,6 -->
+<?php if(count($this->getStores())>1): ?>
+<div class="dropdown block-language-wrapper">
+  <?php $storecode = Mage::app()->getStore()->getCode(); ?>
+  <a href="#" class="block-language dropdown-toggle" data-target="#" data-toggle="dropdown" role="button"> <img src="<?php echo $this->getSkinUrl('images/flags/'.$storecode.'.png') ?>" alt="<?php echo $storecode; ?>"/> <?php echo Mage::app()->getStore()->getName(); ?> <span class="caret"></span> </a>
+  
+   <ul role="menu" class="dropdown-menu" id="hideShow">        
+        <?php foreach ($this->getStores() as $_lang): ?>       
+            <li role="presentation"><a href="<?php echo $_lang->getCurrentUrl();?>" tabindex="-1" role="menuitem">
+               <img src="<?php echo $this->getSkinUrl('images/flags/'.$this->htmlEscape($_lang->getCode()).'.png') ?>" alt="<?php echo $this->htmlEscape($_lang->getName()) ?>" />
+               <?php echo $this->htmlEscape($_lang->getName()) ?>
+            </a></li>         
+        <?php endforeach;?>
+   </ul>
+</div> <!--dropdown block-language-wrapper-->
+<?php endif;?>
+
+<?php }else{?>
+
+<?php if(count($this->getStores())>1): ?>
+<div class="form-language">  
+   <ul class="lang">        
+        <?php foreach ($this->getStores() as $_lang): ?>       
+            <li><a href="<?php echo $_lang->getCurrentUrl();?>">
+               <img src="<?php echo $this->getSkinUrl('images/flags/'.$this->htmlEscape($_lang->getCode()).'.png') ?>" alt="<?php echo $this->htmlEscape($_lang->getName()) ?>" />
+               <span><?php echo $this->htmlEscape($_lang->getName()) ?></span>
+            </a></li>         
+        <?php endforeach;?>
+   </ul>
+</div> <!--form-language-->
+<?php endif;?>
+
+<?php } ?> <!-- END For version 1,2,3,4,6 -->

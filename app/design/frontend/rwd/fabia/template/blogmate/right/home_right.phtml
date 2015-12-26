@@ -1,0 +1,135 @@
+<?php /* Latest Blog */ ?>
+<?php $config1 = Mage::getStoreConfig('web/default/cms_home_page'); ?>
+<?php if(($config1!='fabia_home_six')or($config1!='home_peru')or($config1!='home_brasil')or($config1!='home_espana')) { ?>  <!--exclude For version 6 -->
+<div class="container">
+<?php } ?>
+     <div class="new_title center">
+       <h2><?php echo $this->__('Latest Blog') ?></h2>
+     </div> <!--blog-title-->
+
+<?php if(($config1=='fabia_home_seven')) { ?> <!--For version 7 -->
+
+     <div class="row">
+			
+				<?php
+				$recent_posts = $this->getRecentPost(); //print_r ($recent_posts); exit;
+                                //echo $rec_pos = count($recent_posts); 
+				$home_url = Mage::helper('core/url')->getHomeUrl();
+                                $i=0;
+				foreach ($recent_posts as $recent_post_key => $recent_post_value) {
+                                    if($i < 4) {
+					//$blog_url = $home_url.'blog/view/post/p/'.$recent_post_value['title_slug'].'/';
+
+					$urlKey = $recent_post_value['title_slug'];
+					$curl = Mage::getUrl('blog/view/post/p/'.$urlKey, array('_direct' => $urlKey)); 
+					$cnt=Mage::getModel('blogmate/blog')->chkIfExists('index/'.$urlKey,$urlKey);
+					$store_id=Mage::app()->getStore()->getId();
+					if($cnt==0 && ($urlKey != ''))
+					{	
+						$curl1=$recent_post_value['title_slug'];
+						$rewrite = Mage::getModel('core/url_rewrite');
+						$rewrite->setStoreId($store_id)
+						->setIdPath('index/'.$urlKey)
+						->setRequestPath($urlKey)
+						->setTargetPath('blog/view/post/p/'.$urlKey)
+						->setIsSystem(true)
+						->save();
+
+					}
+					$blog_url =$curl; 
+					?>
+					<?php if(($config1=='fabia_home_seven')) { ?>
+					<div class="col-lg-3 col-md-3 col-xs-12 col-sm-3">
+					<?php }else{?>
+					<div class="col-lg-4 col-md-4 col-xs-12 col-sm-4">
+					<?php }?>
+                       <div class="blog_inner">
+                                        <?php 
+                                             $texthtml2 = $recent_post_value['blog_content'];
+                                             preg_match('/<img[^>]+src="{{media url="([^">]+)"/', $texthtml2, $image);
+                                        ?>
+                                        <?php if($image[1]) { ?>
+                                              <div class="blog-img">
+                                                 <a href="<?php echo $blog_url;?>"> <img src="<?php echo Mage::getBaseUrl('media') . $image[1];?>" alt="<?php echo $this->__('blog image') ?>" /> </a>
+                                                 
+                                              </div> <!--blog-img-->                                                                                         
+                                        <?php } ?>
+						<h3><a href="<?php echo $blog_url;?>"><?php echo ucfirst($recent_post_value['title']);?></a></h3>	
+						<div class="post-date"><i class="icon-calendar"></i><time class="entry-date" datetime="<?php echo date('c', strtotime($recent_post_value['created_at']));?>"><?php echo date('M d, Y', strtotime($recent_post_value['created_at']));?></time>.</div>
+						<p><?php echo ucfirst($recent_post_value['short_description']);?></p>
+						<a class="readmore" href="<?php echo $blog_url;?>"><?php echo $this->__('Read More') ?></a> 
+                        </div><!--blog_inner-->                                                                                           
+					</div> <!--col-lg-4 col-md-4 col-xs-12 col-sm-4-->
+					<?php
+                                     $i++;
+                                   }
+				}
+				?>
+	</div> <!--row-->	
+
+	<?php } else { ?> <!--For version 1,2,3,4,5,6,8 -->
+
+
+	<div class="row">
+			
+				<?php
+				$recent_posts = $this->getRecentPost(); //print_r ($recent_posts); exit;
+                                //echo $rec_pos = count($recent_posts); 
+				$home_url = Mage::helper('core/url')->getHomeUrl();
+                                $i=0;
+				foreach ($recent_posts as $recent_post_key => $recent_post_value) {
+                                    if($i < 3) {
+					//$blog_url = $home_url.'blog/view/post/p/'.$recent_post_value['title_slug'].'/';
+
+					$urlKey = $recent_post_value['title_slug'];
+					$curl = Mage::getUrl('blog/view/post/p/'.$urlKey, array('_direct' => $urlKey)); 
+					$cnt=Mage::getModel('blogmate/blog')->chkIfExists('index/'.$urlKey,$urlKey);
+					$store_id=Mage::app()->getStore()->getId();
+					if($cnt==0 && ($urlKey != ''))
+					{	
+						$curl1=$recent_post_value['title_slug'];
+						$rewrite = Mage::getModel('core/url_rewrite');
+						$rewrite->setStoreId($store_id)
+						->setIdPath('index/'.$urlKey)
+						->setRequestPath($urlKey)
+						->setTargetPath('blog/view/post/p/'.$urlKey)
+						->setIsSystem(true)
+						->save();
+
+					}
+					$blog_url =$curl; 
+					?>
+					<?php if(($config1=='fabia_home_seven')) { ?>
+					<div class="col-lg-3 col-md-3 col-xs-12 col-sm-3">
+					<?php }else{?>
+					<div class="col-lg-4 col-md-4 col-xs-12 col-sm-4">
+					<?php }?>
+                       <div class="blog_inner">
+                                        <?php 
+                                             $texthtml2 = $recent_post_value['blog_content'];
+                                             preg_match('/<img[^>]+src="{{media url="([^">]+)"/', $texthtml2, $image);
+                                        ?>
+                                        <?php if($image[1]) { ?>
+                                              <div class="blog-img">
+                                                 <a href="<?php echo $blog_url;?>"> <img src="<?php echo Mage::getBaseUrl('media') . $image[1];?>" alt="<?php echo $this->__('blog image') ?>" /> </a>
+                                                 <div class="mask"> <a class="info" href="<?php echo $blog_url;?>"><?php echo $this->__('Read More') ?></a> </div>
+                                              </div> <!--blog-img-->                                                                                         
+                                        <?php } ?>
+						<h3><a href="<?php echo $blog_url;?>"><?php echo ucfirst($recent_post_value['title']);?></a></h3>	
+						<div class="post-date"><i class="icon-calendar"></i><time class="entry-date" datetime="<?php echo date('c', strtotime($recent_post_value['created_at']));?>"><?php echo date('M d, Y', strtotime($recent_post_value['created_at']));?></time>.</div>
+						<p><?php echo ucfirst($recent_post_value['short_description']);?></p>
+						<a class="readmore" href="<?php echo $blog_url;?>"><?php echo $this->__('Read More') ?></a> 
+                        </div><!--blog_inner-->                                                                                           
+					</div> <!--col-lg-4 col-md-4 col-xs-12 col-sm-4-->
+					<?php
+                                     $i++;
+                                   }
+				}
+				?>
+	</div> <!--row-->	
+
+	<?php } ?> <!--END For version 1,2,3,4,5,6,8 -->
+
+<?php if(($config1!='fabia_home_six')or($config1!='home_peru')or($config1!='home_brasil')or($config1!='home_espana')) { ?>  <!--exclude For version 6 -->
+</div> <!--container-->
+<?php } ?>

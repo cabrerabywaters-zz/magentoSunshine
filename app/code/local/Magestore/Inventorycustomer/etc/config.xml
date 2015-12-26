@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magestore
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    Magestore
+ * @package     Magestore_Inventorycustomer
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<config>
+    <modules>
+        <Magestore_Inventorycustomer>
+            <version>0.1.7</version>
+        </Magestore_Inventorycustomer>
+    </modules>
+    <frontend>
+        <routers>
+            <inventorycustomer>
+                <use>standard</use>
+                <args>
+                    <module>Magestore_Inventorycustomer</module>
+                    <frontName>inventorycustomer</frontName>
+                </args>
+            </inventorycustomer>
+        </routers>
+        <layout>
+            <updates>
+                <inventorycustomer>
+                    <file>inventorycustomer.xml</file>
+                </inventorycustomer>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Magestore_Inventorycustomer>
+                    <files>
+                        <default>Magestore_Inventorycustomer.csv</default>
+                    </files>
+                </Magestore_Inventorycustomer>
+            </modules>
+        </translate>
+    </frontend>
+    <admin>
+        <routers>
+            <inventorycustomeradmin>
+                <use>admin</use>
+                <args>
+                    <module>Magestore_Inventorycustomer</module>
+                    <frontName>inventorycustomeradmin</frontName>
+                </args>
+            </inventorycustomeradmin>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <inventorycustomer>
+                    <file>inventorycustomer.xml</file>
+                </inventorycustomer>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Magestore_Inventorycustomer>
+                    <files>
+                        <default>Magestore_Inventorycustomer.csv</default>
+                    </files>
+                </Magestore_Inventorycustomer>
+            </modules>
+        </translate>
+    </adminhtml>   
+    <global>
+        <models>
+            <inventorycustomer>
+                <class>Magestore_Inventorycustomer_Model</class>
+                <resourceModel>inventorycustomer_mysql4</resourceModel>
+            </inventorycustomer>
+            <inventorycustomer_mysql4>
+                <class>Magestore_Inventorycustomer_Model_Mysql4</class>
+                <entities>
+                    <customerinteraction>
+                        <table>erp_inventory_customer_interaction</table>
+                    </customerinteraction>
+                </entities>
+            </inventorycustomer_mysql4>
+        </models>
+        <resources>
+            <inventorycustomer_setup>
+                <setup>
+                    <module>Magestore_Inventorycustomer</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </inventorycustomer_setup>
+            <inventorycustomer_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </inventorycustomer_write>
+            <inventorycustomer_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </inventorycustomer_read>
+        </resources>
+        <blocks>
+            <inventorycustomer>
+                <class>Magestore_Inventorycustomer_Block</class>
+            </inventorycustomer>
+        </blocks>
+        <helpers>
+            <inventorycustomer>
+                <class>Magestore_Inventorycustomer_Helper</class>
+            </inventorycustomer>
+        </helpers>
+        <events>
+            <sales_order_place_after>
+                <observers>
+                    <inventorycustomer_observers>
+                        <class>inventorycustomer/observer</class>
+                        <method>salesOrderPlaceAfter</method>
+                    </inventorycustomer_observers>
+                </observers>
+            </sales_order_place_after>
+        </events>
+    </global>
+    <default>
+        <inventoryplus>
+            <customer>
+                <minimum_orders_to_be_vip>5</minimum_orders_to_be_vip>
+                <predefined_action>Gọi điện chăm sóc,Gửi email,Khác</predefined_action>
+                <predefined_result>Khách không nghe máy, Khách khen,Khác</predefined_result>
+            </customer>
+        </inventoryplus>
+    </default>
+</config>

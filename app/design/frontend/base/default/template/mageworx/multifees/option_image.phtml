@@ -1,0 +1,15 @@
+<?php
+/**
+ * MageWorx
+ * Multi Fees Extension
+ *
+ * @category   MageWorx
+ * @package    MageWorx_MultiFees
+ * @copyright  Copyright (c) 2015 MageWorx (http://www.mageworx.com/)
+ */
+
+$img = $this->getImg();
+if ($img) { ?>
+    <a href="<?php echo $img->getBigImgUrl() ?>" rel="<?php if ($img->getBigImgUrl()) echo 'mageworxLightbox[]'; ?>"><img src="<?php echo $img->getUrl() ?>" title="" class="small-image-preview v-middle" /></a>
+<?php } ?>
+

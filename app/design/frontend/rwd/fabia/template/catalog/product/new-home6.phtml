@@ -1,0 +1,87 @@
+<?php 
+/* New Products */
+?>
+<?php  $_helper = $this->helper('catalog/output'); ?>
+<?php if (($_products = $this->getProductCollection()) && $_products->getSize()): ?>
+
+  <div class="featured-pro wow bounceInUp animated">
+    <div class="slider-items-products">
+
+        <div class="new_title center">
+           <h2><?php echo $this->__('New Products') ?></h2>
+        </div>
+
+  <div id="new-products-slider" class="product-flexslider hidden-buttons">
+    <div class="slider-items slider-width-col4 products-grid">
+
+<?php $_columnCount = $this->getColumnCount(); ?> 
+    <?php $i=0; $v1=1; foreach ($_products->getItems() as $_product): ?>
+        <?php if ($i++%$_columnCount==0): ?>      
+        <?php endif ?> 
+
+<div class="item">
+   <div class="item-inner">
+     <div class="item-img">
+       <div class="item-img-info">
+         <a class="product-image" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><img alt="<?php echo $this->htmlEscape($_product->getName()) ?>" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image') ?>"></a> 
+         <?php echo $this->helper('fabiasettings')->getLabel($_product);  ?>
+         <?php  if(Mage::app()->getStore()->getConfig('fabiasettings/fabiasettings_quickview/enable')==1){?> 
+              <a rel="nofollow" href="<?php echo Mage::getBaseUrl().'quickview/index/view?prodid='.$_product->getId(); ?>" data-fancybox-type="iframe" class="magik-btn-quickview quickview-btn" id="magik-btn-quickview_<?php echo $_product->getId()?>"><span><?php echo $this->__('Quick View') ?></span></a>
+         <?php }  ?> 
+       </div> <!--item-img-info-->
+     </div> <!--item-img-->
+     <div class="item-info">
+       <div class="info-inner">
+         <div class="item-title">
+            <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>">
+                  <?php $prod_name = $this->htmlEscape($_product->getName()) ; 
+                  if(strlen($prod_name) > 17) {echo substr($prod_name,0,17)."...";}else {echo $prod_name;}?>
+             </a>
+         </div> <!--item-title-->
+         <div class="item-content">
+            <?php
+                        $summaryData = Mage::getModel('review/review_summary')
+                                ->setStoreId($storeId)
+                                ->load($_product->getId());
+                        if($summaryData->getRatingSummary()){ ?>
+                            <div class="ratings">
+                                <div class="rating-box">
+                                        <div class="rating" style="width: <?php echo $summaryData->getRatingSummary().'%'; ?>"></div>
+                                </div> <!--rating-box-->
+                            </div> <!--ratings-->
+            <?php } else { ?>  
+                            <div class="ratings"><div class="rating-box"><div style="width:0%" class="rating"></div></div></div>
+            <?php } ?>
+            <div class="item-price"><?php echo $this->getPriceHtml($_product, true, '-new') ?></div>
+            <div class="actions">
+              <a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist" title="<?php echo $this->__('Add to Wishlist');?>"></a>
+             <div class="add_cart">         
+              <?php if($_product->isSaleable()): ?>
+                <button type="button"  title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><?php echo $this->__('Add to Cart') ?></span></button>
+              <?php else: ?>
+                <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+              <?php endif; ?>          
+             </div> <!--add_cart-->
+             <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                <a href="<?php echo $_compareUrl ?>" class="link-compare" title="<?php echo $this->__('Add to Compare');?>"></a>
+             <?php endif; ?>
+          </div> <!--actions-->
+         </div><!--item-content-->
+       </div><!--info-inner-->
+     </div> <!--item-info-->                   
+   </div> <!--item-inner-->
+</div> <!--item-->      
+
+                   
+        <?php if ($i%$_columnCount==0 || $i==count($_products)): ?>
+        <?php endif ?>       
+    <?php endforeach; ?>
+
+      </div> <!--slider-items slider-width-col4 owl-carousel owl-theme-->
+    </div> <!--product-flexslider hidden-buttons-->
+
+     </div> <!--slider-items-products-->
+  </div> <!--featured-pro container wow bounceInUp animated-->
+
+<?php endif; ?> <!-- Endif collection -->
+

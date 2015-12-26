@@ -1,0 +1,229 @@
+Auto,Auto
+"Just [A-Z][a-z][0-9] are allowed","Just [A-Z][a-z][0-9] are allowed"
+Continue,Continue
+"Barcode Information","Barcode Information"
+Barcode,Barcode
+Qty,Qty
+"Barcode Status","Barcode Status"
+"Created Date","Created Date"
+ID,ID
+"Action Owner","Action Owner"
+Action,Action
+"Time Stamp","Time Stamp"
+Name,Name
+SKU,SKU
+Image,Image
+Warehouse,Warehouse
+Supplier,Supplier
+"Purchase Order","Purchase Order"
+Status,Status
+"Change History","Change History"
+"Save Item","Save Item"
+"Print Barcodes","Print Barcodes"
+Disable,Disable
+Enable,Enable
+"Save Barcode","Save Barcode"
+"View Barcode '%s","View Barcode '%s"
+"Create Barcodes","Create Barcodes"
+View,View
+CSV,CSV
+XML,XML
+"Change status","Change status"
+"Print barcodes","Print barcodes"
+"Manage Barcodes","Manage Barcodes"
+"Create Barcode","Create Barcode"
+"Create Barcode from Purchase Order","Create Barcode from Purchase Order"
+"Item information","Item information"
+"Attribute Name","Attribute Name"
+"Attribute Type","Attribute Type"
+"Attribute Code","Attribute Code"
+"If yes, the attribute and its value will be shown in a new column on the ""Manage Barcodes"" grid.","If yes, the attribute and its value will be shown in a new column on the ""Manage Barcodes"" grid."
+"Show On Barcode List","Show On Barcode List"
+"Attribute Unique","Attribute Unique"
+"Attribute Require","Attribute Require"
+"Barcode Attribute","Barcode Attribute"
+"Delete Item","Delete Item"
+"Save And Continue Edit","Save And Continue Edit"
+"Edit Barcode Attribute '%s","Edit Barcode Attribute '%s"
+"Add Barcode Attribute","Add Barcode Attribute"
+"Display On Barcode List","Display On Barcode List"
+Yes,Yes
+No,No
+Require,Require
+Unique,Unique
+Enabled,Enabled
+Disabled,Disabled
+Edit,Edit
+Delete,Delete
+"Are you sure?","Are you sure?"
+"Display on Barcode list","Display on Barcode list"
+Show,Show
+"Manage Barcode Attributes","Manage Barcode Attributes"
+PO#,PO#
+"Edit Barcode '%s","Edit Barcode '%s"
+"Create Barcodes from Purchase Order","Create Barcodes from Purchase Order"
+"Search Barcodes","Search Barcodes"
+Inventory,Inventory
+"Add New Barcode Attribute","Add New Barcode Attribute"
+"Edit Barcode Attribute","Edit Barcode Attribute"
+"Item Manager","Item Manager"
+"Item News","Item News"
+"Item does not exist","Item does not exist"
+"An attribute with the same code has been already existed.","An attribute with the same code has been already existed."
+"The barcode attribute has been successfully created.","The barcode attribute has been successfully created."
+"Unable to find Barcode attribute to save","Unable to find Barcode attribute to save"
+"Item was successfully deleted","Item was successfully deleted"
+"Please select item(s)","Please select item(s)"
+"Total of %d record(s) were successfully deleted","Total of %d record(s) were successfully deleted"
+"Total of %d record(s) were successfully updated","Total of %d record(s) were successfully updated"
+"Add New Barcode","Add New Barcode"
+"View Barcode","View Barcode"
+"Add New Custom Barcode","Add New Custom Barcode"
+"Barcode does not exist","Barcode does not exist"
+"Account ""%s"" enabled barcode ""%s","Account ""%s"" enabled barcode ""%s"
+"Account ""%s"" disabled barcode ""%s","Account ""%s"" disabled barcode ""%s"
+"The barcode(s) have been created successfully.","The barcode(s) have been created successfully."
+"The barcode(s) have been saved successfully.","The barcode(s) have been saved successfully."
+"The Qty. of product ""%s"" using this barcode must be equal or less than its Total Qty. in your system: %s item(s).","The Qty. of product ""%s"" using this barcode must be equal or less than its Total Qty. in your system: %s item(s)."
+"The Qty. of product ""%s"" using this barcode must be equal or less than its Total Qty. in warehouse %s","The Qty. of product ""%s"" using this barcode must be equal or less than its Total Qty. in warehouse %s"
+"The barcode ""%s"" was already exist!","The barcode ""%s"" was already exist!"
+"The barcode ""%s"" was already duplicate!","The barcode ""%s"" was already duplicate!"
+"Account ""%s"" created barcode ""%s","Account ""%s"" created barcode ""%s"
+"Unable to find barcode to save!","Unable to find barcode to save!"
+"Purchase Order does not exist","Purchase Order does not exist"
+"Choose Warehouse","Choose Warehouse"
+"Choose Supplier","Choose Supplier"
+"Choose Purchase Order","Choose Purchase Order"
+"PO #,%s","PO #,%s"
+"Select Barcode","Select Barcode"
+"No barcode of this item found!","No barcode of this item found!"
+view,view
+Product,Product
+Custom,Custom
+Code-128,Code-128
+Code-25,Code-25
+"Interleaved 2 of 5","Interleaved 2 of 5"
+Code-39,Code-39
+Ean-13,Ean-13
+Ean-2,Ean-2
+Ean-5,Ean-5
+Ean-8,Ean-8
+Identcode,Identcode
+Itf14,Itf14
+Leitcode,Leitcode
+Planet,Planet
+Postnet,Postnet
+Royalmail,Royalmail
+UPC-A,UPC-A
+UPC-E,UPC-E
+Barcodes,Barcodes
+"Scan Barcodes","Scan Barcodes"
+"Barcode ""%s"" was created automatically for Purchase order id #%s","Barcode ""%s"" was created automatically for Purchase order id #%s"
+Product,Product
+"Product Name","Product Name"
+Price,Price
+"Qty of product","Qty of product"
+"Qty of Barcode","Qty of Barcode"
+"Original Qty of Barcode","Original Qty of Barcode"
+"More details","More details"
+Delivery,Delivery
+"Purchase Order","Purchase Order"
+#%s,#%s
+Supplier,Supplier
+"Delivery Date","Delivery Date"
+"Total Qty","Total Qty"
+"Created By","Created By"
+Warehouse,Warehouse
+Qty,Qty
+Action,Action
+"Barcode Information","Barcode Information"
+Barcode,Barcode
+"Created Date","Created Date"
+Status,Status
+Enable,Enable
+Disable,Disable
+"Product Information","Product Information"
+Image,Image
+Name,Name
+SKU,SKU
+Cost,Cost
+"Group Price","Group Price"
+Website,Website
+"Customer Group","Customer Group"
+"All Websites","All Websites"
+"All Groups","All Groups"
+"Tier Price","Tier Price"
+"Special Price","Special Price"
+"From ""%s"" to ""%s","From ""%s"" to ""%s"
+Weight,Weight
+Manufacturer,Manufacturer
+Color,Color
+"Stock Availability","Stock Availability"
+"In Stock","In Stock"
+"Our Of Stock","Our Of Stock"
+"Warehouse Information","Warehouse Information"
+"Warehouse Name","Warehouse Name"
+"Manager\'s Name","Manager\'s Name"
+"Manager\'s Email","Manager\'s Email"
+Telephone,Telephone
+Address,Address
+City,City
+State/Province,State/Province
+"Zip/Postal Code","Zip/Postal Code"
+Country,Country
+"Supplier Information","Supplier Information"
+"Supplier Name","Supplier Name"
+"Contact Name","Contact Name"
+Email,Email
+Fax,Fax
+"No. of Orders ","No. of Orders "
+"Return Order","Return Order"
+"Last Purchase Order","Last Purchase Order"
+"Purchase Order Information","Purchase Order Information"
+ID,ID
+PO#,PO#
+"Order Created On","Order Created On"
+"Billing Name","Billing Name"
+"Start shipping date","Start shipping date"
+"Cancellation date","Cancellation date"
+"Expected delivery date","Expected delivery date"
+"Payment date","Payment date"
+"Shipping via","Shipping via"
+"Payment terms","Payment terms"
+Currency,Currency
+"Currency Exchange Rate","Currency Exchange Rate"
+"Tax Rate","Tax Rate"
+"Shipping Cost","Shipping Cost"
+"Import Products to Create Barcodes","Import Products to Create Barcodes"
+"Please choose CSV file to import","Please choose CSV file to import"
+Import,Import
+"If you want to import loads of products to Create Barcodes","If you want to import loads of products to Create Barcodes"
+"the structure for CSV file will be:","the structure for CSV file will be:"
+"Example file ","Example file "
+Download,Download
+"Barcode Generator","Barcode Generator"
+"Barcode type: ","Barcode type: "
+Symbology,Symbology
+"Barcode Qty","Barcode Qty"
+"Paper Size","Paper Size"
+A4,A4
+A5,A5
+A6,A6
+A7,A7
+A8,A8
+"Select Template","Select Template"
+"Select barcode template: ","Select barcode template: "
+Customize,Customize
+"Height of Barcode (pixel)","Height of Barcode (pixel)"
+Submit,Submit
+"Size: ","Size: "
+"Color: ","Color: "
+Print,Print
+Barcode:,Barcode:
+Font,Font
+"Show border","Show border"
+Generate,Generate
+Output,Output
+"Not found","Not found"
+"Print Barcode","Print Barcode"
+"Scan Barcode","Scan Barcode"

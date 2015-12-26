@@ -1,0 +1,187 @@
+<?php
+
+/* @var $this Mage_Core_Block_Template */
+/* @var $catalogSearchHelper Mage_Catalogsearch_Helper_Data */
+$catalogSearchHelper =  $this->helper('catalogsearch');
+?>
+<?php $config1 = Mage::getStoreConfig('web/default/cms_home_page'); ?>
+<?php if(($config1=='fabia_home_five')) { ?> <!-- For version 5 -->
+
+	
+
+
+<div class="search-bar" id="form-search">
+   <form id="search_mini_form" action="<?php echo $catalogSearchHelper->getResultUrl() ?>" method="get">      
+
+	<?php 
+	      $enabled=Mage::app()->getStore()->getConfig('mgkautocompletesection/general/enabled');
+	      $loderimage=Mage::app()->getStore()->getConfig('mgkautocompletesection/general/loaderimg');
+	      if($enabled==1){
+		  if($loderimage==''){  
+			  $selectedlodader=Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'magikautocomplete/default/autocomplete_loader.gif';        
+		  }else{ 
+			  $selectedlodader = Mage::getBaseUrl('media').'magikautocomplete'.DS.$loderimage;       
+		  }
+	?>
+	      <div style="display:none;" class="magikautosearchImg" id="processing-image">
+		<img src="<?php echo $selectedlodader;?>" alt="<?php echo $this->__("loader image")?>">
+	      </div>	
+	<?php } ?>
+	<!-- Autocomplete End code -->
+	                     
+        <input class="search-bar-input" id="search" type="text" name="<?php echo $catalogSearchHelper->getQueryParamName() ?>" value="<?php echo $catalogSearchHelper->getEscapedQueryText() ?>"  maxlength="<?php echo $catalogSearchHelper->getMaxQueryLength();?>" />
+        <button type="submit" title="<?php echo $this->__('Search') ?>" class="search-icon"><span></span></button>
+
+
+        <div id="search_autocomplete" class="search-autocomplete"></div>
+        <script type="text/javascript">
+	    var searchForm = new Varien.searchForm('search_mini_form', 'search', '<?php echo $this->__('Search entire store here...') ?>');
+	    $j('html').click(function(){
+	    $j('#search_autocomplete').hide();
+	    });
+	    $j("#search").keyup(function() {
+		var text = $j(this).val();
+		var chars = text.length;
+		if (chars > 2) {
+		    $j("#processing-image").show();
+		    var postData = $j('#search_mini_form').serializeArray();
+    
+		    $j.ajax({
+			      url : '<?php echo $catalogSearchHelper->getSuggestUrl() ?>',
+			      type: "POST",
+			      data : postData,
+			      success:function(data)
+			      { $j("#processing-image").hide();
+				    $j('#search_autocomplete').html(data).show();
+				}
+		    });
+		}
+    
+	    });
+	</script>    
+
+   </form>
+
+</div>
+  <script type="text/javascript">
+            new UISearch(document.getElementById('form-search'));
+        </script> 
+ 
+<?php }elseif(($config1=='fabia_home_eight')) { ?>
+
+<div class="search-section">
+   <a class="search-img" href="#"><i class="icon-search"></i></a>
+   <div class="search-box">
+   <form id="search_mini_form" action="<?php echo $catalogSearchHelper->getResultUrl() ?>" method="get">       
+
+	<?php 
+	      $enabled=Mage::app()->getStore()->getConfig('mgkautocompletesection/general/enabled');
+	      $loderimage=Mage::app()->getStore()->getConfig('mgkautocompletesection/general/loaderimg');
+	      if($enabled==1){
+		  if($loderimage==''){  
+			  $selectedlodader=Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'magikautocomplete/default/autocomplete_loader.gif';        
+		  }else{ 
+			  $selectedlodader = Mage::getBaseUrl('media').'magikautocomplete'.DS.$loderimage;       
+		  }
+	?>
+	      <div style="display:none;" class="magikautosearchImg" id="processing-image">
+		<img src="<?php echo $selectedlodader;?>" alt="<?php echo $this->__("loader image")?>">
+	      </div>	
+	<?php } ?>
+	<!-- Autocomplete End code -->
+        <input id="search" type="text" name="<?php echo $catalogSearchHelper->getQueryParamName() ?>" value="<?php echo $catalogSearchHelper->getEscapedQueryText() ?>" class="" maxlength="<?php echo $catalogSearchHelper->getMaxQueryLength();?>" />
+        <button type="submit" title="<?php echo $this->__('Search') ?>" class="search-btn-bg"><span><?php echo $this->__('Search') ?></span></button>
+        <div id="search_autocomplete" class="search-autocomplete"></div>
+        <script type="text/javascript">
+	    var searchForm = new Varien.searchForm('search_mini_form', 'search', '<?php echo $this->__('Search entire store here...') ?>');
+	    $j('html').click(function(){
+	    $j('#search_autocomplete').hide();
+	    });
+	    $j("#search").keyup(function() {
+		var text = $j(this).val();
+		var chars = text.length;
+		if (chars > 2) {
+		    $j("#processing-image").show();
+		    var postData = $j('#search_mini_form').serializeArray();
+    
+		    $j.ajax({
+			      url : '<?php echo $catalogSearchHelper->getSuggestUrl() ?>',
+			      type: "POST",
+			      data : postData,
+			      success:function(data)
+			      { $j("#processing-image").hide();
+				    $j('#search_autocomplete').html(data).show();
+				}
+		    });
+		}
+    
+	    });
+	</script>    
+   </form>
+ </div> <!--search-box-->
+</div><!--search-section-->
+
+<script language=javascript type='text/javascript'>
+
+jQuery('.search-img').click(function() {
+            jQuery(".search-box").show(); 
+        });
+
+</script>
+
+<?php } else { ?>
+
+
+<?php if(($config1=='fabia_home_seven')) { ?> 
+ <div class="search-box pull-left">
+<?php }else {?> 	
+<div class="search-box pull-right">
+	<?php }?>
+   <form id="search_mini_form" action="<?php echo $catalogSearchHelper->getResultUrl() ?>" method="get">       
+
+	<?php 
+	      $enabled=Mage::app()->getStore()->getConfig('mgkautocompletesection/general/enabled');
+	      $loderimage=Mage::app()->getStore()->getConfig('mgkautocompletesection/general/loaderimg');
+	      if($enabled==1){
+		  if($loderimage==''){  
+			  $selectedlodader=Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'magikautocomplete/default/autocomplete_loader.gif';        
+		  }else{ 
+			  $selectedlodader = Mage::getBaseUrl('media').'magikautocomplete'.DS.$loderimage;       
+		  }
+	?>
+	      <div style="display:none;" class="magikautosearchImg" id="processing-image">
+		<img src="<?php echo $selectedlodader;?>" alt="<?php echo $this->__("loader image")?>">
+	      </div>	
+	<?php } ?>
+	<!-- Autocomplete End code -->
+        <input id="search" type="text" name="<?php echo $catalogSearchHelper->getQueryParamName() ?>" value="<?php echo $catalogSearchHelper->getEscapedQueryText() ?>" class="" maxlength="<?php echo $catalogSearchHelper->getMaxQueryLength();?>" />
+        <button type="submit" title="<?php echo $this->__('Search') ?>" class="search-btn-bg"><span class="glyphicon glyphicon-search"></span>&nbsp;</button>
+        <div id="search_autocomplete" class="search-autocomplete"></div>
+        <script type="text/javascript">
+	    var searchForm = new Varien.searchForm('search_mini_form', 'search', '<?php echo $this->__('Search entire store here...') ?>');
+	    $j('html').click(function(){
+	    $j('#search_autocomplete').hide();
+	    });
+	    $j("#search").keyup(function() {
+		var text = $j(this).val();
+		var chars = text.length;
+		if (chars > 2) {
+		    $j("#processing-image").show();
+		    var postData = $j('#search_mini_form').serializeArray();
+    
+		    $j.ajax({
+			      url : '<?php echo $catalogSearchHelper->getSuggestUrl() ?>',
+			      type: "POST",
+			      data : postData,
+			      success:function(data)
+			      { $j("#processing-image").hide();
+				    $j('#search_autocomplete').html(data).show();
+				}
+		    });
+		}
+    
+	    });
+	</script>    
+   </form>
+ </div> <!--search-box-->
+<?php } ?>            

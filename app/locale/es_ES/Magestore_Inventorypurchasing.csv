@@ -1,0 +1,351 @@
+ID,ID
+Name,Name
+"Attrib. Set Name","Attrib. Set Name"
+SKU,SKU
+Image,Image
+Status,Status
+Price,Price
+Warehouse,Warehouse
+"(Phys. / Avail. Qty)","(Phys. / Avail. Qty)"
+"No Supply Products","No Supply Products"
+"Add Item","Add Item"
+General,General
+"Created By","Created By"
+"Payment Term Name","Payment Term Name"
+Description,Description
+"Payment Period","Payment Period"
+"day(s). Payment should be completed within this period.","day(s). Payment should be completed within this period."
+Active,Active
+Inactive,Inactive
+"Action Owner","Action Owner"
+"Changed field(s)","Changed field(s)"
+"Time Stamp","Time Stamp"
+Action,Action
+View,View
+"Payment Term Information","Payment Term Information"
+"Change History","Change History"
+Save,Save
+Delete,Delete
+"Save And Continue Edit","Save And Continue Edit"
+"Edit Payment Term '%s","Edit Payment Term '%s"
+"Add Payment Term","Add Payment Term"
+"Payment Period (day)","Payment Period (day)"
+Edit,Edit
+CSV,CSV
+XML,XML
+"Are you sure?","Are you sure?"
+"Change status","Change status"
+"Payment Term Manager","Payment Term Manager"
+"Create all deliveries","Create all deliveries"
+"Create a new delivery","Create a new delivery"
+"Delivery Date","Delivery Date"
+"Product Name","Product Name"
+"Product SKU","Product SKU"
+"Total Qty Received","Total Qty Received"
+"Created by","Created by"
+"General information","General information"
+"Create by","Create by"
+"Order Created On","Order Created On"
+"Supplier Id","Supplier Id"
+Supplier,Supplier
+"Billing Name","Billing Name"
+"Order placed via","Order placed via"
+"Start shipping date","Start shipping date"
+"Cancellation date","Cancellation date"
+"If an ""Awaiting delivery"" purchase order has no delivery created, you can cancel it before this date.","If an ""Awaiting delivery"" purchase order has no delivery created, you can cancel it before this date."
+"Expected delivery date","Expected delivery date"
+"Payment date","Payment date"
+"Shipping via","Shipping via"
+"Payment terms","Payment terms"
+Comment,Comment
+Currency,Currency
+"Currency Exchange Rate","Currency Exchange Rate"
+"Tax Rate","Tax Rate"
+"Shipping Cost","Shipping Cost"
+"Money Paid","Money Paid"
+"Last paid payment","Last paid payment"
+"Delivery Process","Delivery Process"
+"Send email to supplier","Send email to supplier"
+"Awaiting delivery","Awaiting delivery"
+Complete,Complete
+Canceled,Canceled
+Subtotal,Subtotal
+Tax,Tax
+"Grand Total (excl. Tax)","Grand Total (excl. Tax)"
+"Grand Total (incl. Tax)","Grand Total (incl. Tax)"
+"Subtotal: ","Subtotal: "
+"Shipping Cost: ","Shipping Cost: "
+"Tax: ","Tax: "
+"Total: ","Total: "
+"Total(incl Tax): ","Total(incl Tax): "
+"Cost Price <br />(","Cost Price <br />("
+Tax(%),Tax(%)
+Discount(%),Discount(%)
+"Supplier SKU","Supplier SKU"
+"Total Qty Ordered","Total Qty Ordered"
+"Total Qty Returned","Total Qty Returned"
+"Return Order","Return Order"
+"Return All Orders","Return All Orders"
+"Return Date","Return Date"
+"Qty Returned","Qty Returned"
+Reason(s),Reason(s)
+"Purchase Order Information","Purchase Order Information"
+"This purchase order still is pending. You must click on Confirm Purchase Order button to process it.","This purchase order still is pending. You must click on Confirm Purchase Order button to process it."
+"General Information","General Information"
+Products,Products
+Deliveries,Deliveries
+"Return Orders","Return Orders"
+Cancel,Cancel
+"Resend email to supplier","Resend email to supplier"
+"Confirm Purchase Order","Confirm Purchase Order"
+Print,Print
+"Edit Order No. '%s","Edit Order No. '%s"
+"Add New Purchase Order","Add New Purchase Order"
+"Received: ","Received: "
+Cost,Cost
+"Create new delivery","Create new delivery"
+"Create Delivery","Create Delivery"
+"Create New Delivery For Purchase Order No. '%s","Create New Delivery For Purchase Order No. '%s"
+"Order #","Order #"
+"Purchased On","Purchased On"
+"Bill to Name","Bill to Name"
+"Qty Requested","Qty Requested"
+"Qty Received","Qty Received"
+Continue,Continue
+"Select Supplier & Warehouses","Select Supplier & Warehouses"
+"You don't have permission to create purchase orders for any warehouses.","You don't have permission to create purchase orders for any warehouses."
+"Select Supplier","Select Supplier"
+Warehouse(s),Warehouse(s)
+"Returned: ","Returned: "
+"Qty Ordered","Qty Ordered"
+"Order Return","Order Return"
+"Order Return For Purchase Order No. '%s","Order Return For Purchase Order No. '%s"
+"Manage Purchase Orders","Manage Purchase Orders"
+"Create Purchase Order","Create Purchase Order"
+" and "," and "
+"Shipping Method Name","Shipping Method Name"
+"Shown as an option in ""Shipping via"" selector when creating purchase order.","Shown as an option in ""Shipping via"" selector when creating purchase order."
+"Shipping Method Information","Shipping Method Information"
+"Delete Shipping Method","Delete Shipping Method"
+"Edit Shipping Method '%s","Edit Shipping Method '%s"
+"Add Shipping Method","Add Shipping Method"
+"Shipping Method Manager","Shipping Method Manager"
+"Supplier Name ","Supplier Name "
+"Contact Person","Contact Person"
+Email,Email
+Telephone,Telephone
+Fax,Fax
+Street,Street
+City,City
+Country,Country
+State/Province,State/Province
+"Zip/Postal Code","Zip/Postal Code"
+Website,Website
+Purchasing,Purchasing
+"Order ID","Order ID"
+"Grand Total Excl .TAX","Grand Total Excl .TAX"
+"Grand Total Incl.TAX","Grand Total Incl.TAX"
+Paid,Paid
+"Returned On","Returned On"
+"Supplier Information","Supplier Information"
+"Purchase Orders","Purchase Orders"
+"Edit Supplier '%s","Edit Supplier '%s"
+"Add Supplier","Add Supplier"
+"Supplier Name","Supplier Name"
+"Purchase Order","Purchase Order"
+"Purchase Order Value","Purchase Order Value"
+"Return Order Value","Return Order Value"
+"Last Purchase Order On","Last Purchase Order On"
+"Manage Suppliers","Manage Suppliers"
+"Manage Payment Terms","Manage Payment Terms"
+Inventory,Inventory
+"Add New Payment Term","Add New Payment Term"
+"Edit Payment Term","Edit Payment Term"
+"Manage Payment Term","Manage Payment Term"
+"Payment Term News","Payment Term News"
+"Payment term does not exist","Payment term does not exist"
+"%s created this payment term.","%s created this payment term."
+"Payment Term was successfully saved!","Payment Term was successfully saved!"
+"Unable to find payment term to save!","Unable to find payment term to save!"
+"Payment term name","Payment term name"
+"Create By","Create By"
+"Payment Term was successfully deleted!","Payment Term was successfully deleted!"
+"Please select payment term(s)!","Please select payment term(s)!"
+"Total %d record(s) were successfully deleted","Total %d record(s) were successfully deleted"
+"Please select payment term(s)","Please select payment term(s)"
+"Total %d record(s) were successfully updated","Total %d record(s) were successfully updated"
+"Edit Purchase Order","Edit Purchase Order"
+"Purchase Order does not exist!","Purchase Order does not exist!"
+"Purchase Order News","Purchase Order News"
+"Purchase order has been confirmed.","Purchase order has been confirmed."
+"There is error while confirming purchase order.","There is error while confirming purchase order."
+"The shipping method ""%s"" has been created.","The shipping method ""%s"" has been created."
+"The payment term ""%s"" has been created with the default payment period of 7 days.","The payment term ""%s"" has been created with the default payment period of 7 days."
+"%s created this payment term on purchase order #%s.","%s created this payment term on purchase order #%s."
+"%s created this shipping method on purchase order #%s.","%s created this shipping method on purchase order #%s."
+"%s created this purchase order.","%s created this purchase order."
+"Please fill qty for product(s) to purchase order!","Please fill qty for product(s) to purchase order!"
+"The purchase order has been saved successfully.","The purchase order has been saved successfully."
+"Unable to find Purchase order to save!","Unable to find Purchase order to save!"
+"Please select purchase order(s)!","Please select purchase order(s)!"
+"The purchase order cannot be canceled because some items have been received through deliveries.","The purchase order cannot be canceled because some items have been received through deliveries."
+"The purchase order cannot be canceled because all deliveries have been completed.","The purchase order cannot be canceled because all deliveries have been completed."
+"Add New Delivery","Add New Delivery"
+"Item does not exist","Item does not exist"
+"Unable to find delivery to save!","Unable to find delivery to save!"
+"%s created delivery for this purchase order.","%s created delivery for this purchase order."
+"Delivery ID(s): %s","Delivery ID(s): %s"
+"Please select product and enter Qty greater than 0 to create delivery!","Please select product and enter Qty greater than 0 to create delivery!"
+"Please select product(s) to create delivery!","Please select product(s) to create delivery!"
+"Receive from purchase order #%s","Receive from purchase order #%s"
+"The delivery has been saved.","The delivery has been saved."
+"Please select product and enter qty delivery for product to create delivery","Please select product and enter qty delivery for product to create delivery"
+"All deliveries have been saved. The purchase order has been completed.","All deliveries have been saved. The purchase order has been completed."
+"Unable to find return order to save!","Unable to find return order to save!"
+"Please select product and enter Qty greater than 0 to create return order!","Please select product and enter Qty greater than 0 to create return order!"
+"%s returned product(s) from this purchase order.","%s returned product(s) from this purchase order."
+"Return ID(s): %s","Return ID(s): %s"
+"Please select product to create return order","Please select product to create return order"
+"Add New Return Order","Add New Return Order"
+"%s canceled this purchase order.","%s canceled this purchase order."
+"Purchase Order was successfully canceled.","Purchase Order was successfully canceled."
+"Unable to cancel order because it has been on delivery!","Unable to cancel order because it has been on delivery!"
+"Return products from purchase order #%s","Return products from purchase order #%s"
+"All returned products have been saved.","All returned products have been saved."
+Supplyneeds,Supplyneeds
+"Bill Name","Bill Name"
+"Start ship","Start ship"
+"Expected date","Expected date"
+"Purchase Order #%s","Purchase Order #%s"
+"%s sent to %s.","%s sent to %s."
+"The purchase order email has been sent to the supplier.","The purchase order email has been sent to the supplier."
+"Manage Shipping Methods","Manage Shipping Methods"
+"Add New Shipping Method","Add New Shipping Method"
+"Edit Shipping Method","Edit Shipping Method"
+"Manage Shipping Method","Manage Shipping Method"
+"Manage Shippineg Method","Manage Shippineg Method"
+"Shipping Method News","Shipping Method News"
+"%s created this shipping method.","%s created this shipping method."
+"Shipping Method was successfully saved!","Shipping Method was successfully saved!"
+"Unable to find shipping method to save!","Unable to find shipping method to save!"
+"Shipping Method was successfully deleted!","Shipping Method was successfully deleted!"
+"Please select shipping method(s)!","Please select shipping method(s)!"
+"Please select shipping method(s)","Please select shipping method(s)"
+"Items Manager","Items Manager"
+"Item Manager","Item Manager"
+"Add New Supplier","Add New Supplier"
+"Edit Supplier","Edit Supplier"
+"Item News","Item News"
+"%s created this supplier.","%s created this supplier."
+"Cost: %s","Cost: %s"
+"Discount: %s","Discount: %s"
+"Tax: %s","Tax: %s"
+"Supplier SKU: %s","Supplier SKU: %s"
+"Changed product(s) with the following SKU(s): %s","Changed product(s) with the following SKU(s): %s"
+"Add product sku : %s for this supplier","Add product sku : %s for this supplier"
+"%s removed product(s) from this supplier.","%s removed product(s) from this supplier."
+"Remove product sku(s): %s","Remove product sku(s): %s"
+"Supplier was successfully saved!","Supplier was successfully saved!"
+"Unable to find supplier to save!","Unable to find supplier to save!"
+"Item was successfully deleted","Item was successfully deleted"
+"Please select item(s)","Please select item(s)"
+"Total of %d record(s) were successfully deleted","Total of %d record(s) were successfully deleted"
+"Total of %d record(s) were successfully updated","Total of %d record(s) were successfully updated"
+"Manage No Supplier Products","Manage No Supplier Products"
+New,New
+Inquiry,Inquiry
+"Awaiting payment","Awaiting payment"
+"Awaiting supplier","Awaiting supplier"
+Completed,Completed
+Pending,Pending
+"Select shipping method","Select shipping method"
+"Create a new shipping method","Create a new shipping method"
+"Select payment term","Select payment term"
+"Create a new payment term","Create a new payment term"
+N/A,N/A
+Phone,Phone
+"Vender website","Vender website"
+"Telephone: ","Telephone: "
+"Email: ","Email: "
+"T: ","T: "
+"Address: ","Address: "
+Suppliers,Suppliers
+"No Supplier Products","No Supplier Products"
+"Manage Supplier","Manage Supplier"
+"Purchase / Receive Stock","Purchase / Receive Stock"
+"Request Stock","Request Stock"
+"Shipping Methods","Shipping Methods"
+"Payment Terms","Payment Terms"
+"Purchase Stock","Purchase Stock"
+"Cannot purchase products","Cannot purchase products"
+"Can purchase products","Can purchase products"
+Dashboard,Dashboard
+Enabled,Enabled
+Disabled,Disabled
+Purchases,Purchases
+Sales,Sales
+"Stock On-Hand","Stock On-Hand"
+"Purchase From","Purchase From"
+"Deliver To","Deliver To"
+"Purchase Order","Purchase Order"
+"P.O.No#: ","P.O.No#: "
+"Order created on: ","Order created on: "
+"Shipping via: ","Shipping via: "
+"Payment term: ","Payment term: "
+Product,Product
+SKU,SKU
+Qty,Qty
+Cost,Cost
+Tax(%),Tax(%)
+Discount(%),Discount(%)
+Amount,Amount
+Subtotal,Subtotal
+"Shipping Cost","Shipping Cost"
+Tax,Tax
+"Grand Total (excl. Tax)","Grand Total (excl. Tax)"
+"Grand Total (incl. Tax)","Grand Total (incl. Tax)"
+"Print this page","Print this page"
+"CHANGE HISTORY","CHANGE HISTORY"
+"Action Owner: ","Action Owner: "
+"Time Stamp: ","Time Stamp: "
+"Field Name","Field Name"
+"Old Value","Old Value"
+"New Value","New Value"
+"Not found any payment term history!","Not found any payment term history!"
+"Select time to create delivery","Select time to create delivery"
+"Delivery Information","Delivery Information"
+"Purchase products from supplier:","Purchase products from supplier:"
+"To Warehouse:","To Warehouse:"
+"Import Products to Create Purchase Order","Import Products to Create Purchase Order"
+"Please choose CSV file to import","Please choose CSV file to import"
+Import,Import
+"You can import loads of products to Create Purchase Order for warehouse(s): ","You can import loads of products to Create Purchase Order for warehouse(s): "
+"If you want to import products from a CSV file, then in that file, the Qty column(s) will be:","If you want to import products from a CSV file, then in that file, the Qty column(s) will be:"
+"Qty ordering for warehouse ","Qty ordering for warehouse "
+"So your CSV file will have following columns in total:","So your CSV file will have following columns in total:"
+"The structure of CSV file is as follows:","The structure of CSV file is as follows:"
+"Example file ","Example file "
+Download,Download
+"Import Products to Create Delivery","Import Products to Create Delivery"
+"If you want to import loads of products to Create Delivery for warehouse(s): ","If you want to import loads of products to Create Delivery for warehouse(s): "
+"(Qty delivered to warehouse ","(Qty delivered to warehouse "
+"Example file","Example file"
+"Import Products to Create Return Order","Import Products to Create Return Order"
+"You can import loads of products to Create Return Order for warehouse(s): ","You can import loads of products to Create Return Order for warehouse(s): "
+"Qty returned from warehouse ","Qty returned from warehouse "
+"There is a draft purchase order which has been created since %s by %s.","There is a draft purchase order which has been created since %s by %s."
+"You should convert it to purchase orders by","You should convert it to purchase orders by"
+"click here","click here"
+"Select Time to Create Return Order","Select Time to Create Return Order"
+"Reason(s) for returning order:","Reason(s) for returning order:"
+"Reason(s) to return order","Reason(s) to return order"
+"Supplier SKU","Supplier SKU"
+"Not found any purchase order history!","Not found any purchase order history!"
+"Not found any shipping method history!","Not found any shipping method history!"
+"Import Products from CSV file","Import Products from CSV file"
+"When you want to assign loads of products to a Supplier, the structure of CSV file is as follows:","When you want to assign loads of products to a Supplier, the structure of CSV file is as follows:"
+State/Province,State/Province
+"Please select region, state or province","Please select region, state or province"
+Enable,Enable
+Disable,Disable
+"Not found any supplier history!","Not found any supplier history!"

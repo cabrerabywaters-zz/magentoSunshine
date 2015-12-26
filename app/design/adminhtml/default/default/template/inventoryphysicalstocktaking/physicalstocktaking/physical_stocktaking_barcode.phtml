@@ -1,0 +1,190 @@
+<?php
+$warehouse_id = '';
+if ($adjustStockProducts = Mage::getModel('admin/session')->getData('physicalstocktaking_product_warehouse')) {
+    $warehouse_id = $adjustStockProducts['warehouse_id'];
+}
+if ($this->getRequest()->getParam('id')) {
+    $id = $this->getRequest()->getParam('id');
+    $physical = Mage::getModel('inventoryphysicalstocktaking/physicalstocktaking')->load($id);
+    $warehouse_id = $physical->getWarehouseId();
+}
+$warehouse = Mage::getModel('inventoryplus/warehouse')->load($warehouse_id);
+$permission = Mage::helper('inventoryplus')->getPermission($warehouse_id, 'can_physical');
+?>
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Physical Stocktaking Information') ?></h4>
+    </div>
+    <div id="reason_stocktaking_form" class="fieldset ">
+        <input name="warehouse_id" type="hidden" value="<?php echo $warehouse_id ?>" id="warehouse_id"/>
+        <div style='float:left; width:30%;'>
+            <div>
+                <label for="warehouse"><strong>
+                        <?php echo $this->__('Warehouse') ?>:&nbsp;&nbsp;
+                    </strong>
+                </label>
+                <a href="<?php echo $this->getUrl('inventoryplusadmin/adminhtml_warehouse/edit', array('id' => $warehouse_id)) ?>" title="<?php $this->__('View warehouse') ?>">
+                    <?php echo $warehouse->getWarehouseName() ?>
+                </a>
+            </div><br />
+            <div>
+                <?php echo $warehouse->getStreet() ?>
+                <?php if ($warehouse->getState()): ?>
+                    <?php echo ' - ' . $warehouse->getState() ?>
+                <?php endif ?>
+                <?php if ($warehouse->getCity()): ?>
+                    <?php echo ' - ' . $warehouse->getCity() ?><br />
+                <?php endif ?>
+                <?php echo Mage::getModel('directory/country')->load($warehouse->getCountryId())->getName() ?>
+            </div>
+        </div>
+        <div style="float:left;width: 60%;">
+            <?php if ($this->getRequest()->getParam('id')): ?>
+                <?php $id = $this->getRequest()->getParam('id') ?>
+                <?php $adjustStock = Mage::getModel('inventoryphysicalstocktaking/physicalstocktaking')->load($id) ?>
+                <?php $helper = Mage::helper('inventoryphysicalstocktaking'); ?>
+                <label for="warehouse"><?php echo '<strong>' . $this->__('Status: ') . '</strong>' . $helper->getStatusPhysicalLabel($adjustStock->getStatus()); ?></label>
+                <br />
+                <label for="warehouse"><?php echo '<strong>' . $this->__('Created by: ') . '</strong>' . $adjustStock->getCreateBy() ?></label>
+                <br />
+                <?php $date = new Zend_Date(); ?>
+                <?php $date->setLocale(Mage::app()->getLocale()->getLocaleCode()); ?>
+                <?php $date_adjust = $date->setDate($adjustStock->getCreatedAt(), 'yyyy/MM/dd'); ?>
+                <label for="warehouse"><?php echo '<strong>' . $this->__('Created on: ') . '</strong>' . Mage::helper('core')->formatDate($date_adjust, 'medium'); ?></label>
+                <br /><br />
+            <?php endif ?>
+
+            <label for="warehouse"><strong><?php echo $this->__('Reason(s) for stocktaking') ?><?php if ($this->getRequest()->getParam('id')) echo ':' ?><?php echo ' ' ?></strong>
+                <?php if (!$this->getRequest()->getParam('id')): ?>
+                    <span class="required">*</span>
+                <?php endif; ?>
+            </label>
+            <br />
+            <?php if ((!$permission && $this->getRequest()->getParam('id')) || ($this->getRequest()->getParam('id') && $adjustStock->getStatus() != 0)): ?>
+                <div style="width:700px;float:left">
+                    <?php echo nl2br($adjustStock->getReason()) ?>
+                </div>
+            <?php else: ?>
+                <textarea id="reason" name="reason" title="Reason(s) to adjust stock" style="width:350px; height:50px;" rows="2" cols="15" class="required-entry  textarea"> <?php
+                    if ($this->getRequest()->getParam('id')) {
+                        echo nl2br($adjustStock->getReason());
+                    }
+                    ?></textarea>
+
+            <?php endif ?>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<!--Barcode secion-->
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Scan Barcode') ?></h4>
+    </div>
+    <div id="barcode_form" class="fieldset">
+
+        <input tabindex="1" style="width: 99%; height: 30px; font-size: 13px; color: gray;" id="barcode_search"
+               name="barcode_query" type="text" class="input-text"
+               placeholder="Search by Barcode/ Product Name/ Product SKU" autocomplete="off"/>
+        <span id="barcode_search_indicator" class="autocomplete-indicator" style="display: none;">
+            <img src="<?php echo $this->getSkinUrl('images/ajax-loader.gif') ?>" alt="Loading..." class="v-middle">
+        </span>
+
+        <div class="clear"></div>
+        <div id="barcode_search_autocomplete" class="autocomplete" style="display: none; width:300px"></div>
+    </div>
+</div>
+<!--End Barcode section-->
+
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend">
+            <?php if ($this->getRequest()->getParam('id')): ?>
+                <?php echo $this->__('Products of Physical Stocktaking') ?>
+            <?php else: ?>
+                <?php echo $this->__('Product for Physical Stocktaking') ?>
+            <?php endif ?>
+        </h4>
+    </div>
+</div>
+
+<script type="text/javascript">
+    document.getElementById("barcode_search").focus();
+    Ajax.Barcodeautocompleter = Class.create(Autocompleter.Base, {
+        initialize: function (element, update, url, options) {
+            this.baseInitialize(element, update, options);
+            this.options.asynchronous = true;
+            this.options.onComplete = this.onComplete.bind(this);
+            this.options.defaultParams = this.options.parameters || null;
+            this.url = url;
+        },
+        getUpdatedChoices: function () {
+            this.startIndicator();
+
+            var entry = encodeURIComponent(this.options.paramName) + '=' +
+                encodeURIComponent(this.getToken());
+
+            this.options.parameters = this.options.callback ?
+                this.options.callback(this.element, entry) : entry;
+
+            if (this.options.defaultParams)
+                this.options.parameters += '&' + this.options.defaultParams;
+
+            new Ajax.Request(this.url, this.options);
+        },
+        onComplete: function (request) {
+
+            try {
+
+                var json = JSON.parse(request.responseText);
+                if (json.show) {
+                    updatePhysicalStocktaking(json.barcode_id);
+                    $('barcode_search_indicator').hide();
+                    $('barcode_search_autocomplete').hide();
+                }
+            }
+            catch (e) {
+                this.updateChoices(request.responseText);
+            }
+
+        }
+    });
+
+    new Ajax.Barcodeautocompleter(
+        'barcode_search',
+        'barcode_search_autocomplete',
+        '<?php echo $this->getUrl('inventorybarcodeadmin/adminhtml_searchbarcode/search'); ?>',
+        {
+            paramName: "barcode_query",
+            minChars: 2,
+            indicator: "barcode_search_indicator",
+            updateElement: getSelectionId,
+            evalJSON: 'force'
+        }
+    );
+
+    function updatePhysicalStocktaking(id) {
+        Element.show('loading-mask');
+        var parameters = {barcode_id: id};
+        var url = '<?php echo Mage::helper('adminhtml')->getUrl('inventoryphysicalstocktakingadmin/adminhtml_physicalstocktaking/searchproductfrombarcode') ?>';
+        var request = new Ajax.Request(url, {
+            method: 'post',
+            parameters: parameters,
+            onFailure: '',
+            onSuccess: function (transport) {
+                if (transport.status == 200) {
+                    $('barcode_search').value = '';
+                    
+                    // Reload the product grid
+                    productGridJsObject.reload();
+                    Element.hide('loading-mask');
+                }
+            }
+        });
+    }
+
+    function getSelectionId(li) {
+        return false;
+    }
+</script>

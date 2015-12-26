@@ -1,0 +1,489 @@
+<?php
+//$userId = Mage::helper('webpos/permission')->getCurrentUser();
+//$isCreateOrder =  Mage::helper('webpos/permission')->isCreateOrder($userId);
+//if ($isCreateOrder) {
+//?>
+
+<div class="cart">
+    <div class="manage-customer add-customer col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div id='webpos_customer_overlay' class='hide'>
+        </div>
+        <h2  class="col-lg-9 col-md-9 col-sm-9 col-xs-9" id="add-customer" onclick="showCustomers()">
+            <?php echo $this->__('Add Customer'); ?>
+        </h2>
+        <div class="button-delete col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <button class="btn btn-delete" id="remove-customer" style="display:none" onclick="removeCustomer();"><?php echo $this->__('Delete'); ?></button>
+        </div>
+    </div>
+    <div class="shopping-cart" id='webpos_cart_area'>
+        <div id='webpos_cart_overlay' class='hide'>
+        </div>
+        <!--div style="position: absolute;top: 0px;left: 0px;width: 100%;height: 100%;z-index: 10;background-color: rgba(255, 255, 255, .8);" id='webpos_cart_custom_sale' class='hide'><img id='cart_loader' style="position: absolute;top: 5px;left: 50%;z-index: 10" src='<?php //echo $this->getSkinUrl('images/icon/ajax_loader.gif'); ?>' /></div-->
+        <div id='webpos_cart'>
+            <?php echo $this->getChildHtml('pos_items'); ?>
+        </div>
+        <div class="discount-webpos" id="discount-webpos">
+            <div class="modal-content">
+                <div class="top-title col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button style = "<?php if(!Mage::helper('webpos')->isShowCancelButton()) echo 'display: none';?>" id="btn-cancel" class="btn btn-left col-lg-3 col-md-3 col-sm-3 col-xs-3" type="button" onclick="removeAllDiscount()" class="btn btn-default"><?php echo $this->__('Cancel') ?></button>
+                    <h2 class="title col-lg-6 col-md-6 col-sm-6 col-xs-6">Discount</h2>
+                    <button id="btn-apply" class="btn btn-right col-lg-3 col-md-3 col-sm-3 col-xs-3" type="button" onclick="" class="btn btn-default"><?php echo $this->__('Apply') ?></button>
+                </div>
+                <div class="choose-discount col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button type="button" class="btn btn1 col-lg-6 col-md-6 col-sm-6 col-xs-6" id="custome-discount" onclick="selectDiscount()"><?php echo $this->__('Custom Discount') ?></button>
+                    <button type="button" class="btn btn2 col-lg-6 col-md-6 col-sm-6 col-xs-6" id="coupon-discount" onclick="selectCoupon()"><?php echo $this->__('Coupon Code') ?></button>
+                </div>
+                <form class="form-coupon" style="display: none">
+                    <div class="form-group">
+                        <div class="amount col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+                        <div class=" col-lg-9 col-md-9 col-sm-9 col-xs-9"><input value="<?php echo Mage::getSingleton('checkout/cart')->getQuote()->getCouponCode(); ?>" id="apply_discount_coupon_code" type="text" placeholder="Coupon Code" class="form-control" /></div>
+                    </div>                                      
+                </form>
+                <form class="form forms-discount active col-lg-12 col-md-12">
+                    <div class="form-group">
+                        <div class="name col col-lg-4 col-md-4 col-sm-4 col-xs-4"><?php echo $this->__('Name') ?></div>
+                        <div class=" col-lg-8 col-md-8 col-sm-8 col-xs-8"><input id ="discount_name" type="text"value="<?php echo Mage::getSingleton('webpos/session')->getDiscountName(); ?>" placeholder="<?php echo $this->__('Custom Discount') ?>" class="input-text form-control"/></div>
+                    </div>
+                    <div class="form-group discount-type">
+                        <div class="shippble col col-lg-6 col-md-6 col-sm-6 col-xs-6"><?php echo $this->__('Discount Type') ?></div>
+                        <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <button type="button" class="btn <?php if(Mage::getSingleton('webpos/session')->getType() == 'true') echo 'btn2'; else echo 'btn1'; ?>" id="btn-percentx">%</button>
+                            <button type="button" class="btn <?php if(Mage::getSingleton('webpos/session')->getType() == 'true') echo 'btn1'; else echo 'btn2'; ?>" id="btn-dollorx"><?php echo Mage::helper('webpos')->getCurrencySymbol(); ?></button>
+                        </div>
+                    </div>
+                    <div class="form-group input-amount">
+                        <div class="amount col col-lg-3 col-md-3 col-sm-3 col-xs-3"><?php echo $this->__('Amount') ?></div>
+                        <div class=" col-lg-9 col-md-9 col-sm-9 col-xs-9"><input value="<?php if(Mage::getSingleton('webpos/session')->getType() == 'true') echo number_format (Mage::getSingleton('webpos/session')->getDiscountValue(),2).'%'; else echo Mage::helper('core')->currency(Mage::getSingleton('webpos/session')->getDiscountValue(),true,false); ?>" id="apply_discount_wp" onkeydown ="keyCheckCp(event);
+                                if (event.keyCode == 8 || event.keyCode == 46)
+                                    return false;" onkeypress="formatInputPriceCp(event);
+                                            return false" type="text" placeholder="<?php echo Mage::app()->getLocale()->currency(0) ?>" class="input-text form-control"/>
+                                <input type="hidden" value="<?php if(Mage::getSingleton('webpos/session')->getType() == 'true') echo number_format (Mage::getSingleton('webpos/session')->getDiscountValue(),2).'%'; else echo Mage::helper('core')->currency(Mage::getSingleton('webpos/session')->getDiscountValue(),true,false); ?>" id="current_discount">
+                        </div>
+                    </div>
+                    <div class="form-discount">
+                        <ul>
+                            <li class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <button type="button" class="btn btn-default" value="1">1</button>
+                            </li>
+                            <li class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <button type="button" class="btn btn-default" value="2">2</button>
+                            </li>
+                            <li class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <button type="button" class="btn btn-default" value="3">3</button>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <button type="button" class="btn btn-default" value="4">4</button>
+                            </li>
+                            <li class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <button type="button" class="btn btn-default" value="5">5</button>
+                            </li>
+                            <li class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <button type="button" class="btn btn-default" value="6">6</button>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <button type="button" class="btn btn-default" value="7">7</button>
+                            </li>
+                            <li class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <button type="button" class="btn btn-default" value="8">8</button>
+                            </li>
+                            <li class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <button type="button" class="btn btn-default" value="9">9</button>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <button type="button" class="btn btn-default clear-number" id ="delete_apply_discount_wp" ></button>
+                            </li>
+                            <li class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <button type="button" class="btn btn-default" value="0">0</button>
+                            </li>
+                            <li class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <button type="button" class="btn btn-default" value="00">00</button>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id='pos_totals'>
+            <?php echo $this->getChildHtml('totals'); ?>
+        </div>
+    </div>
+</div>
+<div id='cart_item_sample' class='hide'>
+    <div class="product" prdid='' product_price='' itemid='' custom_price=''>
+        <div class="img-product col-lg-1 col-md-1 col-sm-1 col-xs-1">
+            <img src=''/>
+            <span class="number"><?php echo '0' ?></span>
+        </div>
+        <div class="name-product col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class='product_name'></div>
+			<div class='product_options'></div>
+        </div>
+        <div class="price col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <span class='webpos_item_subtotal row_total'><?php echo '0' ?></span>
+            <div class="webpos_item_original"></div>
+        </div>
+        <div class="delete col-lg-1 col-md-1 col-sm-1 col-xs-1">
+            <div class='webpos_item_subtotal'>X</div>
+        </div>
+        <div class='clear'></div>
+    </div>
+</div>
+<div class="bg-fade" style="display: none"></div>
+<!-- <div class=fade-login></div>-->
+<script type="text/javascript">
+    function showCustomers() {
+		if(!$('userid') || $('userid').value == '') return;
+		if(isOffline() == true){
+			if($('btn-create')) $('btn-create').disabled = true;
+		}else{
+			if($('btn-create')) $('btn-create').disabled = false;
+		}
+        var position = $D('#add-customer').offset();
+        if (!$D('.add-customer').hasClass('active')) {
+            $D('#popup-customer').show();
+			if($('main_container').hasClassName('hideCategory')){
+				$D('#popup-customer').addClass('onCheckout');
+				$D('#popup-customer').animate({top: position.top + 'px', left: $D('#order_info').offset().left + 'px'}, 500);
+			}else{
+				$D('#popup-customer').removeClass('onCheckout');
+				$D('#popup-customer').animate({top: position.top + 'px', left: (position.left - 320) + 'px'}, 500);
+            }
+			$D('.add-customer').addClass('active');
+        } else {    
+			if($('main_container').hasClassName('hideCategory')){
+				$D('#popup-customer').animate({top:'-100vh',left:$D('#order_info').offset().left+'px'},500);
+			}else{
+				$D('#popup-customer').animate({top:'-100vh',left:$D('#popup-customer').offset().left+'px'},500);
+			}
+			
+			 $D('.add-customer').removeClass('active');
+        }
+    }
+    function searchCustomer() {
+		if(!$('userid') || $('userid').value == '') return;
+		if(isOffline() == true || useLocalSearch == true) return;
+        var keyword = $('search_customer').value;
+        $('customer_search_autocomplete_message').hide();
+            var url = '<?php echo $this->getUrl('webpos/index/customersearch',array('_forced_secure' => $this->getRequest()->isSecure())) ?>' + '?keyword=' + keyword;
+            var request = new Ajax.Request(url, {
+                onSuccess: function (transport) {
+                    if (transport.status == 200) {
+                        var response = getResponseText(transport);
+                        if ($('customer_search_autocomplete')) {
+                            $('customer_search_autocomplete').innerHTML = transport.responseText;
+                        }
+
+                    }
+                },
+            });
+
+    }
+    /*Mr Jack - apply discount*/
+    function hasClassName(ele, cls) {
+        return !!ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+    }
+    function addClassName(ele, cls) {
+        if (!hasClassName(ele, cls))
+            ele.className += " " + cls;
+    }
+
+    function removeClassName(ele, cls) {
+        if (hasClassName(ele, cls)) {
+            var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+            ele.className = ele.className.replace(reg, ' ');
+        }
+    }
+    var canReset = false;
+    function focusFunction(classElement) {
+        classElement.each(function (element) {
+            element.observe("click", function (event) {
+                removeClassName(element, 'btn1');
+                addClassName(element, 'btn2');
+                if (element.id == 'btn-dollorx') {
+                    canReset = true;
+                    $D('#btn-percentx').removeClass('btn2');
+                    $D('#btn-percentx').addClass('btn1');
+                    if(canReset)
+                        $('apply_discount_wp').value = '';
+                    if($('current_discount').value && $('current_discount').value.split('%').length == 1)
+                        $('apply_discount_wp').value = $('current_discount').value;
+                        
+                    hisCustomCart = [""];
+                    countCart = 0;
+                    document.getElementById("apply_discount_wp").placeholder = "<?php echo Mage::helper('core')->currency(0,true,false); ?>";
+                }
+                if (element.id == 'btn-percentx') {
+                    canReset = true;
+                    $D('#btn-dollorx').removeClass('btn2');
+                    $D('#btn-dollorx').addClass('btn1');
+                    if(canReset)
+                        $('apply_discount_wp').value = '';
+                    if($('current_discount').value && $('current_discount').value.split('%').length == 2)
+                        $('apply_discount_wp').value = $('current_discount').value;
+                    hisCustomCart = [""];
+                    countCart = 0;
+                    document.getElementById("apply_discount_wp").placeholder = "0.00%";
+                }
+                if (element.id == 'custome-discount') {
+                    $D('#coupon-discount').removeClass('btn2');
+                    $D('#coupon-discount').addClass('btn1');
+                    $D('#btn-cancel').text('Remove Discount');
+                    if($D('#total_wp').hasClass('customdiscount')){
+                         $D('#btn-cancel').show();
+                         $('discount-webpos').down('h2').removeClassName('discount_left');
+                     }
+                     else{
+                         $D('#btn-cancel').hide();
+                         $('discount-webpos').down('h2').addClassName('discount_left');
+                     }
+                }
+                if (element.id == 'coupon-discount') {
+                    $D('#custome-discount').removeClass('btn2');
+                    $D('#custome-discount').addClass('btn1');
+                    $D('#btn-cancel').text('Remove Coupon');
+                    if(!$D('#total_wp').hasClass('coupon')){
+                        $D('#btn-cancel').hide();
+                        $('discount-webpos').down('h2').addClassName('discount_left');
+                    }
+                    else{
+                        $D('#btn-cancel').show();
+                        $('discount-webpos').down('h2').removeClassName('discount_left');
+                    }
+                }
+            });
+        });
+    }
+    focusFunction($$('.btn1'));
+    focusFunction($$('.btn2'));
+    /*Mr.Jack calculate to apply discount*/
+    function keyCheckCp(event)
+    {
+        var KeyID = event.keyCode;
+        switch (KeyID)
+        {
+            case 8:
+                $('delete_apply_discount_wp').click();
+                break;
+            default:
+                break;
+        }
+    }
+    function numberWithCommas(price) {
+        price = price.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    var countCart = 0;
+    var hisCustomCart = [""];
+    function formatInputPriceCp(event) {
+        var keyValue = String.fromCharCode(event.which);
+        var keyCode = event.which || event.keyCode;
+        $$('.form-discount ul li button').each(function (element) {
+            if (element.value == keyValue)
+                element.click();
+        });
+    }
+    $$('.form-discount ul li button').each(function (element) {
+        element.observe("click", function (event) {
+            if (element.id != 'delete_apply_discount_wp') {
+                var elementValue = element.value;
+                /* can not apply discount > 100% */
+                if ($D('#btn-percentx').hasClass('btn2')) {
+                    if (parseInt(hisCustomCart[countCart]) / 100 > 10 || (parseInt(hisCustomCart[countCart]) / 100 == 10 && element.value > 0) || ((parseInt(hisCustomCart[countCart]) / 100 > 1 && element.value == '00'))) {
+                        elementValue = '';
+                    }
+                }
+                if (elementValue != '') {
+                    countCart++;
+                    hisCustomCart[countCart] = hisCustomCart[countCart - 1] + elementValue;
+                }
+                /**/
+            }
+            else {
+                if(hisCustomCart[hisCustomCart.length-1]/hisCustomCart[hisCustomCart.length-2] == '100'){
+                    hisCustomCart[countCart] = hisCustomCart[countCart]/10;
+                }
+                else{
+                    if(hisCustomCart.length > 1)
+                        hisCustomCart.pop();
+                    if(countCart >= 1)
+                        countCart--;
+                }
+            }
+            if (typeof hisCustomCart[countCart] != "undefined") {
+                if ($D('#btn-percentx').hasClass('btn2'))
+                    var symbol = '%';
+                else
+                    var symbol = "<?php echo Mage::helper('webpos')->getCurrencySymbol(); ?>";
+                if (!hisCustomCart[countCart])
+                    hisCustomCart[countCart] = 0;
+                if (hisCustomCart[countCart] != 0){
+                    if(symbol == '%')
+                        $('apply_discount_wp').value = numberWithCommas(parseInt(hisCustomCart[countCart]) / 100) + symbol;
+                    else{
+                        $('apply_discount_wp').value = getPriceFormatedNoHtml(parseInt(hisCustomCart[countCart])/100);
+                    }
+                }
+                else
+                    $('apply_discount_wp').value = '';
+            }
+        });
+    });
+    /*process when click Apply button*/
+    $('btn-apply').observe("click", function (event) {
+        $D('#discount-webpos').fadeOut();  
+        if($D('#add-discount').hasClass('active')){        
+            $D('#add-discount').removeClass('active');
+                    if($('webpos_overlay')) $('webpos_overlay').hide();
+        }
+        $('customer-sale-btn').addClassName('no-hide-category');
+        $D('#add-discount').addClass('no-hide-category');
+        var url = '<?php echo $this->getUrl('webpos/index/applyDiscount',array('_forced_secure' => $this->getRequest()->isSecure())) ?>';
+        var symbol = "<?php echo Mage::helper('webpos')->getCurrencySymbol(); ?>";
+        $('current_discount').value = $D('#btn-percentx').hasClass('btn2') ? $('apply_discount_wp').value : $('apply_discount_wp').value;
+        var parameters = {
+            customDiscount: $('custome-discount').hasClassName('btn2'),
+            type: $('btn-percentx').hasClassName('btn2'),
+            discountValue: $('btn-percentx').hasClassName('btn2')?parseFloat($('apply_discount_wp').value.replace('%','')):convertLongNumber(getStringPriceFromString($('apply_discount_wp').value)),
+            discountName: $('discount_name').value,
+            couponCode: $('apply_discount_coupon_code').value,
+        };
+		
+		// Changed By Adam (21/08/2015): using affiliate coupon in webpos
+		var productElements = $$('#webpos_cart .needupdate');
+		if(productElements.length > 0){
+			saveCartDiscount();
+		}
+		
+		showColrightAjaxloader();
+        var request = new Ajax.Request(url, {
+            method: 'get',
+            parameters: parameters,
+            onSuccess: function (transport) {
+                var response = JSON.parse(transport.responseText);
+                if (response.payment_method && $('payment_method'))
+                    $('payment_method').update(response.payment_method);
+                if (response.shipping_method && $('shipping_method'))
+                    $('shipping_method').update(response.shipping_method);
+                if (response.totals && $('pos_totals'))
+                    $('pos_totals').update(response.totals);
+                if (response.errorMessage && response.errorMessage != '') {
+                    showToastMessage('danger', 'Error', response.errorMessage);
+                }
+                hideColrightAjaxloader();
+                var productElements = $$('#webpos_cart .needupdate');
+                if (productElements.length > 0)
+                    saveCart();
+                else
+                    $D('#add-discount').removeClass('no-hide-category');
+                if (response.is_coupon)
+                    $D('#total_wp').addClass('coupon');
+                else{
+                    if($('apply_discount_coupon_code').value)
+                        showToastMessage('danger','Error','Coupon code "'+$('apply_discount_coupon_code').value+'" is not valid');
+                    $D('#total_wp').removeClass('coupon');
+                    $('apply_discount_coupon_code').value = '';
+                }
+                if(response.is_custom_discount)
+                    $D('#total_wp').addClass('customdiscount');
+                else
+                    $D('#total_wp').removeClass('customdiscount');
+                if(!response.is_coupon && !response.is_custom_discount)
+                    $D('#total_wp').removeClass();
+                if(response.grand_total)
+                    $D('#webpos_subtotal_button').html(response.grand_total);
+                if(response.grandTotal){
+                    $('cashin_fullamount').innerHTML = response.grandTotal;
+                    if($('remain_value_label')) $('remain_value_label').innerHTML = response.grandTotal;
+                    if($('remain_value')) $('remain_value').innerHTML = response.grandTotal;
+                }
+                if(response.downgrandtotal)
+                    $('round_down_cashin').innerHTML = response.downgrandtotal;
+                if(response.upgrandtotal)
+                    $('round_up_cashin').innerHTML = response.upgrandtotal;
+                canReset = false;
+            },
+        }
+        );
+    });
+    function removeAllDiscount(){
+        showColrightAjaxloader();
+        $D('#discount-webpos').fadeOut();
+        if($D('#add-discount').hasClass('active')){         
+            $D('#add-discount').removeClass('active');
+                    if($('webpos_overlay')) $('webpos_overlay').hide();
+        }
+        $D('#add-discount').addClass('no-hide-category');
+        if($D('#coupon-discount').hasClass('btn2'))
+            var url = '<?php echo $this->getUrl('webpos/index/removeCoupon',array('_forced_secure' => $this->getRequest()->isSecure())) ?>';
+        else
+            var url = '<?php echo $this->getUrl('webpos/index/removeDiscount',array('_forced_secure' => $this->getRequest()->isSecure())) ?>';
+        var parameters = {
+        };
+        var request = new Ajax.Request(url, {
+            method: 'get',
+            parameters: parameters,
+            onSuccess: function (transport) {
+                var response = JSON.parse(transport.responseText);
+                if (response.payment_method && $('payment_method'))
+                    $('payment_method').update(response.payment_method);
+                if (response.shipping_method && $('shipping_method'))
+                    $('shipping_method').update(response.shipping_method);
+                if (response.totals && $('pos_totals'))
+                    $('pos_totals').update(response.totals);
+                if (response.errorMessage && response.errorMessage != '') {
+                    showToastMessage('danger', 'Error', response.errorMessage);
+                }
+                hideColrightAjaxloader();
+                var productElements = $$('#webpos_cart .needupdate');
+                if (productElements.length > 0)
+                    saveCart();
+                else
+                    $D('#add-discount').removeClass('no-hide-category');
+                if (response.is_coupon)
+                    $D('#total_wp').addClass('coupon');
+                else{
+                    $D('#total_wp').removeClass('coupon');
+                    $('apply_discount_coupon_code').value = '';
+                }
+                if(response.grand_total)
+                    $D('#webpos_subtotal_button').html(response.grand_total);
+                /*reset discount*/
+                $('discount_name').value = '';
+                $('apply_discount_wp').value = '';
+                hisCustomCart = [""];
+                countCart = 0;
+                if($('webpos_overlay'))
+                    $('webpos_overlay').hide();
+                if(response.type == 'true')
+                    document.getElementById("apply_discount_wp").placeholder = "0.00%";
+                else
+                    document.getElementById("apply_discount_wp").placeholder = "<?php echo Mage::helper('core')->currency(0,true,false); ?>";
+                /**/
+            },
+        }
+        );
+    }
+    /*end Mr Jack*/
+
+<?php
+$quote = Mage::getSingleton('checkout/cart')->getQuote();
+$customer = $quote->getCustomer();
+if ($customer && $customer->getId()):
+?>
+    $D(document).ready(function () {
+        $D('#add-customer').addClass('active');
+        $('add-customer').innerHTML = '<p><?php echo $quote->getBillingAddress()->getFirstname() . " " . $quote->getBillingAddress()->getLastname() . "</p><span>" . $quote->getBillingAddress()->getEmail() . "</span>"; ?>';
+        $D('#add-customer').attr('onclick', 'showAddCustomer()');
+        $D('#remove-customer').show();
+    });
+<?php else: ?>
+    $D('#add-customer').removeClass('active');
+<?php endif; ?>
+</script>
+<?php //}?>

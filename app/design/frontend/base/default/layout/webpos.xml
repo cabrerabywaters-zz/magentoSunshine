@@ -1,0 +1,370 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magestore
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    Magestore
+ * @package     Magestore_Webpos
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<layout version="0.1.0">
+    <default>
+        <!-- update layout for all frontend page -->
+    </default>
+    <webpos_index_index>
+        <remove name="ajaxcart-default" />
+        <!-- remove TM_Ajaxpro js block -->
+        <remove name="ajaxpro.head" />
+        <remove name="ajaxpro.top.container" />
+        <remove name="ajaxpro.before_body_end" />
+        <!-- end -->
+        <reference name="head">
+			<!-- S:Infortis theme -->
+			<action method="removeItem" ><type>js</type><name>infortis/jquery/jquery-1.7.2.min.js</name><params/></action>    
+			<action method="removeItem" ><type>js</type><name>infortis/jquery/jquery-noconflict.js</name><params/></action>    
+			<action method="removeItem" ><type>js</type><name>infortis/jquery/plugins/jquery.easing.min.js</name><params/></action>    
+			<action method="removeItem" ><type>js</type><name>infortis/jquery/plugins/jquery.tabs.min.js</name><params/></action>    
+			<action method="removeItem" ><type>js</type><name>infortis/jquery/plugins/jquery.accordion.min.js</name><params/></action>    
+			<action method="removeItem" ><type>js</type><name>infortis/jquery/plugins/jquery.ba-throttle-debounce.min.js</name><params/></action>    
+			<action method="removeItem" ><type>js</type><name>infortis/jquery/plugins/jquery.owlcarousel.min.js</name><params/></action>    
+			<action method="removeItem" ><type>js</type><name>infortis/jquery/plugins/jquery.flexslider.min.js</name><params/></action>    
+			<action method="removeItem" ><type>js</type><name>infortis/jquery/plugins/jquery.cycle.2.999.js</name><params/></action>    
+			<action method="removeItem" ><type>js</type><name>infortis/jquery/plugins/jquery.easing.1.3.js</name><params/></action>    
+			<!-- E: Infortis theme -->
+			
+			<!-- Start: Authorizenet -->
+			<action method="addJs"><file>mage/directpost.js</file></action>
+			<!-- End: Authorizenet -->
+            <!-- JS from Product view page -->
+            <action method="addJs">
+                <script>varien/product.js</script>
+            </action>
+            <action method="addJs">
+                <script>varien/configurable.js</script>
+            </action>
+            <action method="addItem">
+                <type>js_css</type>
+                <name>calendar/calendar-win2k-1.css</name>
+                <params/>
+            </action>
+            <action method="addJs">
+                <script>calendar/calendar.js</script>
+            </action>
+            <action method="addJs">
+                <script>calendar/calendar-setup.js</script>
+            </action>	
+            <!-- end -->
+			
+            <!-- Daniel - updated for magento 1.7 -->
+            <action method="removeItem" >
+                <type>skin_css</type>
+                <name>css/styles.css</name>
+                <params/>
+            </action>                                   					
+            <!-- Daniel - updated for magento 1.7 -->
+		   
+            <action method="addJs">
+                <script>magestore/webpos/jquery-1.11.2.min.js</script>
+            </action>
+		   
+		   
+            <action method="addCss">
+                <stylesheet>css/magestore/webpos/orderlist/orderlist.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/magestore/webpos/bootstrap.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/magestore/webpos/bootstrap2-toggle.css</stylesheet>
+            </action> 
+            <action method="addCss">
+                <stylesheet>css/magestore/webpos/login.css</stylesheet>
+            </action>
+            <action method="addJs">
+                <script>magestore/webpos/webpos.js</script>
+            </action>
+            <action method="addJs">
+                <script>magestore/webpos/tinybox.js</script>
+            </action>
+            <action method="addJs">
+                <script>magestore/webpos/window.js</script>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/magestore/webpos/webpos30.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/magestore/webpos/mobilewebpos.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/magestore/webpos/tinybox.css</stylesheet>
+            </action> 	
+            <action method="addJs">
+                <file>magestore/webpos/swipe.js</file>
+            </action>
+            <action method="addJs">
+                <file>magestore/webpos/jester.js</file>
+            </action>
+
+            <!-- Rule-->
+            <action method="addCss" ifconfig="rewardpoints/rewardpointsrule/enable">
+                <stylesheet>css/magestore/rewardpointsrule.css</stylesheet>
+            </action>
+            <action method="addJs">
+                <script>magestore/webpos/rewardpointswebpos.js</script>
+            </action>
+            <action method="addJs">
+                <script>prototype/window.js</script>
+            </action>
+            <action method="addItem">
+                <type>js_css</type>
+                <name>prototype/windows/themes/default.css</name>
+            </action>	
+            <action method="addItem" ifconfig="rewardpoints/rewardpointsrule/enable">
+                <type>skin_js</type>
+                <name>js/magestore/rewardpointsrule.js</name>
+                <params/>
+            </action>       
+            <action method="addJs">
+                <script>magestore/webpos/bootstrap2-toggle.min.js</script>
+            </action>
+            <action method="addJs">
+                <script>magestore/webpos/accounting.min.js</script>
+            </action>
+            <action method="addJs">
+                <script>magestore/webpos/webpos30.js</script>
+            </action>
+            <action method="addJs">
+                <script>magestore/webpos/bootstrap.min.js</script>
+            </action>
+            <action method="addJs">
+                <script>magestore/webpos/jquery.toaster.js</script>
+            </action>
+            <action method="addJs">
+                <script>magestore/webpos/jstorage/jstorage.js</script>
+            </action>
+            <action method="addJs">
+                <script>magestore/webpos/jstorage/webpos_storage.js</script>
+            </action>
+            <action method="addJs">
+                <script>magestore/webpos/product/bundle.js</script>
+            </action>
+
+			
+        </reference>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/webpos1column.phtml</template>
+            </action>
+        </reference>
+        <remove name="top.links" />
+        <remove name="header" />
+        <remove name="footer" />
+        <reference name="content">
+            <block type="core/template" name="extraCss" template="webpos/webpos/extracss.phtml"/>
+            <block type="core/template" name="extraJs" template="webpos/webpos/extrajs.phtml"/>
+            <!--<block type="page/switch" name="store_language" as="store_language"-->
+            <!--template="webpos/webpos/switch.phtml"/>-->
+            <block type="webpos/webpos" name="webpos" template="webpos/webpos.phtml">
+                <block type="core/template" name="menu_webpos_category" template="webpos/webpos/category.phtml"/>
+                <block type="core/template" name="popup_webpos" template="webpos/webpos/popups.phtml"/>
+                <block type="core/template" name="menu_webpos" template="webpos/webpos/menu.phtml">
+                    <block type="page/switch" name="store_language" as="store_language"
+                           template="webpos/webpos/switch.phtml"/>
+                </block>
+                <!-- Mr Jack Rewrite Subtotal  -->
+                <block type="core/template" name="cart_webpos" template="webpos/webpos/cart.phtml">
+                    <block type="webpos/cart_items" name="pos_items" as="pos_items" template="webpos/webpos/cart/items.phtml"/>
+                    <block type="webpos/cart_totals" name="checkout.onepage.review.info.totals" as="totals" template="webpos/webpos/review/totals.phtml"/>
+                </block>
+                <!-- -->
+                <block type="webpos/customer" name="create_customer_webpos" template="webpos/webpos/createcustomer.phtml"/>
+                <block type="webpos/customer" name="shipping_webpos" template="webpos/webpos/shipping.phtml"/>
+				
+                <block type="webpos/listproduct" name="product_list" template="webpos/webpos/productlist.phtml"/>
+                <block type="core/template" name="product_popular" template="webpos/webpos/product_popular.phtml"/>
+                <block type="core/template" name="product_recent_added" template="webpos/webpos/product_recent.phtml"/>
+                <block type="core/template" name="order_area" template="webpos/webpos/order.phtml">
+                    <block type="webpos/admin_orderlist_orderlist" name="order_list" template="webpos/webpos/orderlist/orderlist.phtml">								
+                    </block> 
+                </block>
+                <block type="core/template" name="setting_area" template="webpos/webpos/setting.phtml"/>
+				
+                <block type="core/template" name="orderinfo_webpos" template="webpos/webpos/orderinfo.phtml">
+                    <block type="checkout/onepage_shipping_method_available" name="webpos_shipping_method" as="webpos_shipping_method" template="webpos/webpos/shipping_method.phtml"/>
+				   
+                    <block type="webpos/onepage_payment_methods" name="webpos_payment_method" as="webpos_payment_method" template="webpos/webpos/payment_method.phtml">
+                        <action method="setMethodFormTemplate">
+                            <method>purchaseorder</method>
+                            <template>payment/form/purchaseorder.phtml</template>
+                        </action>
+                    </block>
+                    <block type="checkout/cart_totals" name="webpos_order_review" as="totals" template="webpos/webpos/order_review.phtml"/>
+                
+                </block>
+                <block type="core/template" name="login_webpos" template="webpos/webpos/login.phtml"/>
+                <block type="core/template" name="customer_sale" template="webpos/webpos/customer_sale.phtml"/>
+                    				
+            </block>			           
+        </reference> 
+        <reference name="before_body_end">
+            <block type="core/template" name="popup_webpos" template="webpos/admin/webpos/orderlist/popup.phtml"/>
+        </reference>
+    </webpos_index_index> 
+
+    <webpos_product_editprice>
+        <block type="core/template" name="webpos_reloadall" as="webpos_reloadall" output="toHtml" template="webpos/webpos/reload_all.phtml">
+            <block type="checkout/onepage_shipping_method_available" name="webpos_shipping_method" as="webpos_shipping_method" template="webpos/webpos/shipping_method.phtml"/>
+
+            <block type="webpos/onepage_payment_methods" name="webpos_payment_method" as="webpos_payment_method" template="webpos/webpos/payment_method.phtml">
+                <action method="setMethodFormTemplate">
+                    <method>purchaseorder</method>
+                    <template>payment/form/purchaseorder.phtml</template>
+                </action>
+            </block>
+            <!-- Mr Jack Rewrite Subtotal-->
+            <block type="core/template" name="pos_items" as="pos_items" template="webpos/webpos/cart/items.phtml"/>
+            <block type="webpos/cart_totals" name="checkout.onepage.review.info.totals" as="totals" template="webpos/webpos/review/totals.phtml"/>
+
+            <!-- End Jack -->
+        </block>
+    </webpos_product_editprice>
+	
+    <webpos_index_applydiscount>
+        <block type="core/template" name="webpos_reloadall" as="webpos_reloadall" output="toHtml" template="webpos/webpos/reload_all.phtml">
+            <block type="checkout/onepage_shipping_method_available" name="webpos_shipping_method" as="webpos_shipping_method" template="webpos/webpos/shipping_method.phtml"/>
+				   
+            <block type="webpos/onepage_payment_methods" name="webpos_payment_method" as="webpos_payment_method" template="webpos/webpos/payment_method.phtml">
+                <action method="setMethodFormTemplate">
+                    <method>purchaseorder</method>
+                    <template>payment/form/purchaseorder.phtml</template>
+                </action>
+            </block>
+            <block type="core/template" name="pos_items" as="pos_items" template="webpos/webpos/cart/items.phtml"/>
+            <block type="webpos/cart_totals" name="checkout.onepage.review.info.totals" as="totals" template="webpos/webpos/review/totals.phtml"/>
+            
+        </block>
+    </webpos_index_applydiscount>
+    <webpos_index_removecoupon>
+        <block type="core/template" name="webpos_reloadall" as="webpos_reloadall" output="toHtml" template="webpos/webpos/reload_all.phtml">
+            <block type="checkout/onepage_shipping_method_available" name="webpos_shipping_method" as="webpos_shipping_method" template="webpos/webpos/shipping_method.phtml"/>
+				   
+            <block type="webpos/onepage_payment_methods" name="webpos_payment_method" as="webpos_payment_method" template="webpos/webpos/payment_method.phtml">
+                <action method="setMethodFormTemplate">
+                    <method>purchaseorder</method>
+                    <template>payment/form/purchaseorder.phtml</template>
+                </action>
+            </block>
+            <block type="core/template" name="pos_items" as="pos_items" template="webpos/webpos/cart/items.phtml"/>
+            <block type="webpos/cart_totals" name="checkout.onepage.review.info.totals" as="totals" template="webpos/webpos/review/totals.phtml"/>
+            
+        </block>
+    </webpos_index_removecoupon>
+    <webpos_index_removediscount>
+        <block type="core/template" name="webpos_reloadall" as="webpos_reloadall" output="toHtml" template="webpos/webpos/reload_all.phtml">
+            <block type="checkout/onepage_shipping_method_available" name="webpos_shipping_method" as="webpos_shipping_method" template="webpos/webpos/shipping_method.phtml"/>
+				   
+            <block type="webpos/onepage_payment_methods" name="webpos_payment_method" as="webpos_payment_method" template="webpos/webpos/payment_method.phtml">
+                <action method="setMethodFormTemplate">
+                    <method>purchaseorder</method>
+                    <template>payment/form/purchaseorder.phtml</template>
+                </action>
+            </block>
+            <block type="core/template" name="pos_items" as="pos_items" template="webpos/webpos/cart/items.phtml"/>
+            <block type="webpos/cart_totals" name="checkout.onepage.review.info.totals" as="totals" template="webpos/webpos/review/totals.phtml"/>
+            
+        </block>
+    </webpos_index_removediscount>
+	
+    <webpos_order_print translate="label">		 
+        <label>Sales Order Print View</label>
+        <reference name="content">
+            <block type="webpos/admin_orderlist_printinvoice" name="order.print" template="webpos/webpos/orderlist/print.phtml">
+                <action method="addItemRender">
+                    <type>default</type>
+                    <block>sales/order_item_renderer_default</block>
+                    <template>sales/order/items/renderer/default.phtml</template>
+                </action>
+                <action method="addItemRender">
+                    <type>grouped</type>
+                    <block>sales/order_item_renderer_grouped</block>
+                    <template>sales/order/items/renderer/default.phtml</template>
+                </action>
+                <block type="webpos/admin_orderlist_totals" name="order_totals" template="sales/order/totals.phtml">
+                    <action method="setLabelProperties">
+                        <value>colspan="4" class="a-right"</value>
+                    </action>
+                    <action method="setValueProperties">
+                        <value>class="last a-right"</value>
+                    </action>
+                    <block type="tax/sales_order_tax" name="tax" template="tax/order/tax.phtml">
+                        <action method="setIsPlaneMode">
+                            <value>1</value>
+                        </action>
+                    </block>
+                    <block type="webpos/sales_order_totals_giftwrap" name="giftwrap" />           
+                    <block type="webpos/sales_order_totals_discount" name="webpos_discount" /> 
+                </block>
+            </block>
+        </reference>
+        <block type="core/text_list" name="additional.product.info" />
+        <reference name="order_totals">
+            <block type="rewardpoints/totals_order_point" name="rewardpoints.total.point" />
+            <block type="rewardpointsreferfriends/orderviewpage"/>
+        </reference>
+    </webpos_order_print>
+	
+    <webpos_order_vieworder>
+        <reference name="content">
+            <block type="webpos/admin_orderlist_vieworder" name="view_order" template="webpos/webpos/orderlist/view.phtml" output="toHtml">
+                <block type="webpos/admin_orderlist_payment" name="order_payment"/>
+                <block type="webpos/sales_order_totals" name="order_totals" template="webpos/webpos/orderlist/totals.phtml">
+                    <block type="adminhtml/sales_order_totals_tax" name="tax" template="webpos/webpos/orderlist/tax.phtml" />
+                    <block type="webpos/sales_order_totals_giftwrap" name="giftwrap" />           
+                    <block type="webpos/sales_order_totals_discount" name="webpos_discount" />
+                </block>
+            </block>
+        </reference>
+        <reference name="order_totals">
+            <block type="rewardpoints/totals_order_point" name="rewardpoints.total.point" />
+            <block type="rewardpointsreferfriends/orderviewpage"/>
+        </reference>
+    </webpos_order_vieworder>
+    <webpos_order_orderlistsearch>	
+        <block type="webpos/admin_orderlist_reload" name="order_reload" template="webpos/webpos/orderlist/reload_order.phtml" output="toHtml">				
+            <block type="webpos/admin_orderlist_orderlist" name="order_list" template="webpos/webpos/orderlist/orderlist.phtml">								
+            </block> 
+        </block>
+    </webpos_order_orderlistsearch>
+	
+	
+
+    <!-- reload billing and shipping address -->
+    <webpos_index_save_customer_exist>
+        <block type="webpos/reload" output="toHtml" name="webpos_reload" as="webpos_reload" template="webpos/admin/webpos/reload_data.phtml">
+            <block type="webpos/onepage_address" name="webpos_billing" as="webpos.billing" template="webpos/admin/webpos/billing.phtml" />
+            <block type="webpos/onepage_address" name="webpos_shipping" as="webpos.shipping" template="webpos/admin/webpos/shipping.phtml" />
+        </block>
+    </webpos_index_save_customer_exist>
+    <!-- end -->
+	
+    <webpos_webpos_review>
+        <block type="checkout/onepage_review_info" name="review" output="toHtml" template="webpos/admin/webpos/review/info.phtml">
+            <block type="checkout/cart_totals" name="checkout.onepage.review.info.totals" as="totals" template="webpos/admin/webpos/review/totals.phtml"/>
+        </block>
+    </webpos_webpos_review>
+	
+
+</layout>

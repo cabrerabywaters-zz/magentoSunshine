@@ -1,0 +1,74 @@
+<?php 
+/* Newsletter subscribe */
+?>
+<?php $config1 = Mage::getStoreConfig('web/default/cms_home_page'); ?>
+
+<?php if($config1=='fabia_home_five') { ?> <!-- For version 5 -->
+    <div class="newsletter-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="newsletter">
+                        <form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail1">
+                        <h4><span><?php echo $this->__('Subscribe for offers') ?></span></h4>
+                        <p><?php echo $this->__('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet cumque, perferendis accusamus porro illo exercitationem molestias.') ?></p>
+                        <input type="text" name="email" id="newsletter1" title="<?php echo $this->__('Sign up for our newsletter') ?>" class="input-text required-entry validate-email" placeholder="<?php echo $this->__('Enter your email address') ?>" />                              
+                        <button type="submit" title="<?php echo $this->__('Subscribe') ?>" class="button subscribe"><span><?php echo $this->__('Subscribe') ?></span>
+                        </button> 
+                        </form>
+                        </div>                           
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script type="text/javascript">
+    //<![CDATA[
+        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail1');
+    //]]>
+    </script>
+
+
+<?php }elseif($config1=='fabia_home_eight') { ?> <!-- For version 8 -->
+
+<div class="block-subscribe">
+  <div class="newsletter">
+    <form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail1">
+      <h4><?php echo $this->__('Newsletter') ?></h4>
+         <input type="text" name="email" id="newsletter1" title="<?php echo $this->__('Sign up for our newsletter') ?>" class="input-text required-entry validate-email" placeholder="<?php echo $this->__('Enter your email address') ?>" />                              
+         <button type="submit" title="<?php echo $this->__('Subscribe') ?>" class="subscribe"><span><?php echo $this->__('Subscribe') ?></span></button>
+
+    </form>
+    <script type="text/javascript">
+    //<![CDATA[
+        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail1');
+    //]]>
+    </script>
+  </div><!--newsletter-->
+</div><!--block-subscribe-->
+
+<?php } else { ?>
+
+<div class="newsletter-wrap">
+    <?php if($config1=='fabia_home_seven') { ?>
+    <h4><?php echo $this->__('Sign up for Newsletter') ?></h4>
+    <?php } else {?>
+    <h4><?php echo $this->__('Sign up for emails') ?></h4>
+
+    <?php }?>
+    <form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail1">
+     <div id="container_form_news"> 
+      <div id="container_form_news2"> 
+         <input type="text" name="email" id="newsletter1" title="<?php echo $this->__('Sign up for our newsletter') ?>" class="input-text required-entry validate-email" placeholder="<?php echo $this->__('Enter your email address') ?>" />                              
+         <button type="submit" title="<?php echo $this->__('Subscribe') ?>" class="button subscribe"><span><?php echo $this->__('Subscribe') ?></span></button>
+      </div><!--container_form_news2-->
+     </div><!--container_form_news-->
+    </form>
+    <script type="text/javascript">
+    //<![CDATA[
+        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail1');
+    //]]>
+    </script>
+</div> <!--newsletter-wrap-->
+
+<?php } ?>

@@ -1,0 +1,81 @@
+<?php
+/**
+ * @project     SocialLogin
+ * @package     LitExtension_SocialLogin
+ * @author      LitExtension
+ * @email       litextension@gmail.com
+ */
+?>
+<?php
+$currentUrl = Mage::helper('core/url')->getCurrentUrl();
+$block = new LitExtension_SocialLogin_Block_Button();
+if (Mage::getStoreConfig('le_sociallogin/general/showonloginpage') == 'inloginbox') {
+    $pos = strpos($currentUrl,'customer/account/login');
+    if($pos !== false) {
+        if ($this->checkEnable() == true && $this->getClass() != 'ico-az'):?>
+            <a onclick="showLESocialPopup('<?php echo $this->_getButtonUrl(); ?>', <?php echo $this->getWidth(); ?>, <?php echo $this->getHeight(); ?>);">
+                <div class="<?php echo $this->getClass(); ?> le-icon-social"
+                     title="<?php echo $this->__('Connect with ') . $this->__($this->getTitle()); ?>"></div>
+            </a>
+        <?php elseif($this->checkEnable() == true && $this->getClass() == 'ico-az'): ?>
+            <a href="#" id="LoginWithAmazon">
+                <div class="<?php echo $this->getClass(); ?> le-icon-social"
+                     title="<?php echo $this->__('Connect with ') . $this->__($this->getTitle()); ?>"></div>
+            </a>
+        <?php endif;
+    } else {
+        if ($this->checkEnable() == true && $this->getClass() != 'ico-az'):?>
+            <button class="<?php echo $this->getClass(); ?> le-icon-social"
+                    title="<?php echo $this->__('Connect with ') . $this->__($this->getTitle()); ?>"
+                    onclick="showLESocialPopup('<?php echo $this->_getButtonUrl(); ?>', <?php echo $this->getWidth(); ?>, <?php echo $this->getHeight(); ?>);"></button>
+        <?php elseif($this->checkEnable() == true && $this->getClass() == 'ico-az'): ?>
+            <a href="#" id="LoginWithAmazon">
+                <button class="<?php echo $this->getClass(); ?> le-icon-social"
+                    title="<?php echo $this->__('Connect with ') . $this->__($this->getTitle()); ?>"></button>
+            </a>
+        <?php endif;
+    }
+
+} else {
+    if ($this->checkEnable() == true && $this->getClass() != 'ico-az'):?>
+        <button class="<?php echo $this->getClass(); ?> le-icon-social"
+                title="<?php echo $this->__('Connect with ') . $this->__($this->getTitle()); ?>"
+                onclick="showLESocialPopup('<?php echo $this->_getButtonUrl(); ?>', <?php echo $this->getWidth(); ?>, <?php echo $this->getHeight(); ?>);"></button>
+    <?php elseif($this->checkEnable() == true && $this->getClass() == 'ico-az'): ?>
+        <a href="#" id="LoginWithAmazon">
+            <button class="<?php echo $this->getClass(); ?> le-icon-social"
+                    title="<?php echo $this->__('Connect with ') . $this->__($this->getTitle()); ?>"></button>
+        </a>
+    <?php endif;
+}
+?>
+
+<?php
+if(Mage::getStoreConfig('le_sociallogin/amazon/enabled') == true && $this->getClass() == 'ico-az'){
+?>
+    <div id="amazon-root"></div>
+    <script type="text/javascript">
+
+        window.onAmazonLoginReady = function() {
+            amazon.Login.setClientId('<?php echo Mage::getStoreConfig('le_sociallogin/amazon/api_key'); ?>');
+        };
+        (function(d) {
+            var a = d.createElement('script'); a.type = 'text/javascript';
+            a.async = true; a.id = 'amazon-login-sdk';
+            a.src = 'https://api-cdn.amazon.com/sdk/login1.js';
+            d.getElementById('amazon-root').appendChild(a);
+        })(document);
+
+    </script>
+    <script type="text/javascript">
+
+        document.getElementById('LoginWithAmazon').onclick = function() {
+            options = { scope : 'profile' };
+            amazon.Login.authorize(options, '<?php echo Mage::getUrl('le_sociallogin/amazon/connect',array('_secure'=>true)); ?>');
+            return false;
+        };
+    </script>
+
+<?php
+}
+?>

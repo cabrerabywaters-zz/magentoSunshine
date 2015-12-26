@@ -1,0 +1,38 @@
+<?php
+/**
+ * MageWorx
+ * Multi Fees Extension
+ *
+ * @category   MageWorx
+ * @package    MageWorx_MultiFees
+ * @copyright  Copyright (c) 2015 MageWorx (http://www.mageworx.com/)
+ */
+
+$shippingMethods = $this->getParentBlock()->getShippingRates();
+$selectedShippingMethod = $this->getParentBlock()->getAddressShippingMethod();
+$shippingFeeBlock = $this->getLayout()->createBlock('mageworx_multifees/fee')->setTemplate('mageworx/multifees/shipping_fee.phtml');
+?>
+<script type="text/javascript">
+//<![CDATA[
+
+if (typeof feeOptionImgData=='undefined') var feeOptionImgData = [];
+if (typeof MultiFees!='undefined') {
+<?php
+foreach($shippingMethods as $code => $rates) {
+    foreach($rates as $rate) { ?>
+        MultiFees.addShipping('<?php echo $rate->getCode() ?>', <?php echo Zend_Json::encode($shippingFeeBlock->setCode($rate->getCode())->toHtml()) ?>);
+        <?php
+        if ($selectedShippingMethod) { 
+            if ($rate->getCode()==$selectedShippingMethod) { ?>
+                MultiFees.showShipping('<?php echo $rate->getCode() ?>');
+            <?php
+            }
+        } elseif (count($shippingMethods)==1 && count($rates)==1) { ?>
+            MultiFees.showShipping('<?php echo $rate->getCode() ?>');
+        <?php } ?>
+    <?php } ?>
+<?php } ?>
+}
+//]]>
+</script>
+<input type="hidden" name="is_shipping_fee" value="1" />

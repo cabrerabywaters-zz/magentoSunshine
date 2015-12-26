@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+   <default>
+	<reference name="head">
+	    <action method="addCss" ifconfig="fabiasettings/fabiasettings_quickview/enable"><stylesheet>magik/css/jquery.fancybox.css</stylesheet></action>
+        <action method="addJs" ifconfig="fabiasettings/fabiasettings_quickview/enable"><script>magik/quickview/jquery-1.10.1.min.js</script></action>
+            <action method="addJs" ifconfig="fabiasettings/fabiasettings_quickview/enable"><script>magik/quickview/jquery.fancybox.pack.js</script></action>
+            <action method="addJs" ifconfig="fabiasettings/fabiasettings_quickview/enable"><script>magik/quickview/mgkquickview.js</script></action>
+	</reference>
+    </default>		
+    <quickview_index_view>
+	<update handle="catalog_product_view"/>
+        <reference name="root">
+            <action method="setTemplate"><template>magik/quickview/page/productdetail.phtml</template></action>
+        </reference>
+        <reference name="content">
+	    <remove name="product.info.upsell"/>
+	    <remove name="product.info.additional"/>
+	    <remove name="catalog.product.related"/>
+	</reference>
+        <remove name="footer"/>
+    </quickview_index_view>
+</layout>

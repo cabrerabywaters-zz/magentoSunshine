@@ -1,0 +1,527 @@
+<?php 
+/* Header */
+?>
+<?php $config1 = Mage::getStoreConfig('web/default/cms_home_page'); ?>
+<?php if(($config1=='fabia_home_one')) { ?> <!-- For version 1 -->
+<header>
+<div class="header-container">
+ <div class="container">
+  <div class="row">
+    <div class="col-lg-2 col-sm-2 col-xs-4">
+      <div class="logo">
+        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><?php echo $this->getChildHtml('fabiaLogo', false) ?></a>
+      </div><!--logo-->
+    </div><!--col-lg-2 col-sm-2 col-xs-4-->
+    <div class="col-lg-6 col-sm-5 col-xs-8 toplinks">
+      <div class="welcome-msg hidden-xs"><?php echo $this->getWelcome() ?><?php echo $this->getAdditionalHtml() ?></div>
+      <div class="links">
+            <div class="myaccount"><a href="<?php echo $this->getUrl('')?>customer/account/" title="<?php echo $this->__('My Account') ?>"><span class="hidden-xs"><?php echo $this->__('My Account') ?></span></a></div>
+            <div class="wishlist"><a href="<?php echo $this->getUrl('wishlist') ?>" title="<?php echo $this->__('Wishlist') ?>"><span class="hidden-xs"><?php echo $this->__('Wishlist') ?></span></a></div>
+            <?php if(Mage::getStoreConfig('mgkonestepcheckout_section/mgkopcgeneral_group/mgkextenable')==1){?>
+            <div class="check"><a href="<?php echo $this->getUrl('')?>onestepcheckout/" title="<?php echo $this->__('Checkout') ?>">
+             <span class="hidden-xs"><?php echo $this->__('Checkout') ?></span></a>
+           </div>
+           <?php }else{ ?>
+           <div class="check"><a href="<?php echo $this->getUrl('')?>checkout/onepage/" title="<?php echo $this->__('Checkout') ?>">
+             <span class="hidden-xs"><?php echo $this->__('Checkout') ?></span></a>
+           </div>
+           <?php } ?>
+           <div class="demo"><a href="<?php echo $this->getUrl('')?>blog" title="<?php echo $this->__('Blog') ?>"><span class="hidden-xs"><?php echo $this->__('Blog') ?></span></a></div>
+          <?php if(!Mage::getSingleton( 'customer/session' )->isLoggedIn()) { ?>
+             <div class="login"><a href="<?php echo $this->getUrl('')."customer/account/login/"; ?>" title="<?php echo $this->__('Log In') ?>"><span class="hidden-xs"><?php echo $this->__('Log In') ?></span></a>
+             </div>
+          <?php } ?>
+          <?php if(Mage::getSingleton( 'customer/session' )->isLoggedIn()) { ?>
+             <div class="logout"><a href="<?php echo $this->getUrl('')."customer/account/logout/"; ?>" title="<?php echo $this->__('Log Out') ?>"><span class="hidden-xs"><?php echo $this->__('Log Out') ?></span></a>
+             </div>
+          <?php } ?>
+         </div> <!--links-->
+    </div><!--col-lg-6 col-sm-5 col-xs-8 toplinks-->
+    <div class="col-lg-4 col-sm-5 col-xs-12 right_menu">
+      <div class="menu_top">
+        <?php if (Mage::getStoreConfig('fabiasettings/fabiasettings_shoppingcart/shoppingcart_top')): ?>
+           <?php echo $this->getChildHtml('cartTop') ?>
+        <?php endif; ?> 
+      </div> <!--menu_top-->
+      <div class="lang-curr">
+        <?php echo $this->getChildHtml('store_language') ?>     
+        <?php echo $this->getChildHtml('custom_currency_selector') ?>
+      </div> <!--lang-curr-->
+    </div><!--col-lg-4 col-sm-5 col-xs-12 right_menu-->
+  </div> <!--row-->
+ </div><!--container-->
+</div><!-- header-container-->
+</header>
+<nav>
+  <div class="container">
+    <div class="row">
+        <div class="mm-toggle-wrap">
+          <div class="mm-toggle"><i class="icon-align-justify"></i><span class="mm-label"><?php echo $this->__('Menu') ?></span> </div>
+        </div>
+      <div class="nav-inner col-lg-12">
+        <?php echo $this->getChildHtml('topMenu'); ?>
+        <?php echo $this->getChildHtml('topSearch') ?>
+      </div><!--nav-inner col-lg-12-->
+    </div><!--row-->
+  </div><!--container-->
+</nav>
+<?php echo $this->getChildHtml('topContainer'); ?>
+<?php } ?> <!-- End Version 1 -->
+
+<?php if(($config1=='fabia_home_two')) { ?> <!-- For version 2 -->
+<header>
+<div class="header-container">
+ <div class="container">
+  <div class="row">
+    <div class="col-lg-2 col-sm-2 col-xs-4">
+      <div class="logo">
+        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><?php echo $this->getChildHtml('fabiaLogo', false) ?></a>
+      </div><!--logo-->
+    </div><!--col-lg-2 col-sm-2 col-xs-4-->
+    <div class="col-lg-6 col-sm-5 col-xs-8 toplinks">
+      <div class="welcome-msg hidden-xs"><?php echo $this->getWelcome() ?><?php echo $this->getAdditionalHtml() ?></div>
+      <div class="links">
+            <div class="myaccount"><a href="<?php echo $this->getUrl('')?>customer/account/" title="<?php echo $this->__('My Account') ?>"><span class="hidden-xs"><?php echo $this->__('My Account') ?></span></a></div>
+            <div class="wishlist"><a href="<?php echo $this->getUrl('wishlist') ?>" title="<?php echo $this->__('Wishlist') ?>"><span class="hidden-xs"><?php echo $this->__('Wishlist') ?></span></a></div>
+            <?php if(Mage::getStoreConfig('mgkonestepcheckout_section/mgkopcgeneral_group/mgkextenable')==1){?>
+            <div class="check"><a href="<?php echo $this->getUrl('')?>onestepcheckout/" title="<?php echo $this->__('Checkout') ?>">
+             <span class="hidden-xs"><?php echo $this->__('Checkout') ?></span></a>
+           </div>
+           <?php }else{ ?>
+           <div class="check"><a href="<?php echo $this->getUrl('')?>checkout/onepage/" title="<?php echo $this->__('Checkout') ?>">
+             <span class="hidden-xs"><?php echo $this->__('Checkout') ?></span></a>
+           </div>
+           <?php } ?>
+           <div class="demo"><a href="<?php echo $this->getUrl('')?>blog" title="<?php echo $this->__('Blog') ?>"><span class="hidden-xs"><?php echo $this->__('Blog') ?></span></a></div>
+          <?php if(!Mage::getSingleton( 'customer/session' )->isLoggedIn()) { ?>
+             <div class="login"><a href="<?php echo $this->getUrl('')."customer/account/login/"; ?>" title="<?php echo $this->__('Log In') ?>"><span class="hidden-xs"><?php echo $this->__('Log In') ?></span></a>
+             </div>
+          <?php } ?>
+          <?php if(Mage::getSingleton( 'customer/session' )->isLoggedIn()) { ?>
+             <div class="logout"><a href="<?php echo $this->getUrl('')."customer/account/logout/"; ?>" title="<?php echo $this->__('Log Out') ?>"><span class="hidden-xs"><?php echo $this->__('Log Out') ?></span></a>
+             </div>
+          <?php } ?>
+         </div> <!--links-->
+    </div><!--col-lg-6 col-sm-5 col-xs-8 toplinks-->
+    <div class="col-lg-4 col-sm-5 col-xs-12 right_menu">
+      <div class="menu_top">
+        <?php if (Mage::getStoreConfig('fabiasettings/fabiasettings_shoppingcart/shoppingcart_top')): ?>
+           <?php echo $this->getChildHtml('cartTop') ?>
+        <?php endif; ?> 
+      </div> <!--menu_top-->
+      <div class="lang-curr">
+        <?php echo $this->getChildHtml('store_language') ?>     
+        <?php echo $this->getChildHtml('custom_currency_selector') ?>
+      </div> <!--lang-curr-->
+    </div><!--col-lg-4 col-sm-5 col-xs-12 right_menu-->
+  </div> <!--row-->
+ </div><!--container-->
+</div><!-- header-container-->
+</header>
+<nav>
+  <div class="container">
+    <div class="row">
+        <div class="mm-toggle-wrap">
+          <div class="mm-toggle"><i class="icon-align-justify"></i><span class="mm-label"><?php echo $this->__('Menu') ?></span> </div>
+        </div>
+      <div class="nav-inner col-lg-12">
+        <?php echo $this->getChildHtml('topMenu'); ?>
+        <?php echo $this->getChildHtml('topSearch') ?>
+      </div><!--nav-inner col-lg-12-->
+    </div><!--row-->
+  </div><!--container-->
+</nav>
+<?php echo $this->getChildHtml('topContainer'); ?>
+<?php } ?> <!-- End Version 2 -->
+
+<?php if(($config1=='fabia_home_three')) { ?> <!-- For version 3 -->
+<header>
+<div class="header-container">
+ <div class="container">
+  <div class="row">
+    <div class="col-lg-2 col-sm-2 col-xs-4">
+      <div class="logo">
+        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><?php echo $this->getChildHtml('fabiaLogo3', false) ?></a>
+      </div><!--logo-->
+    </div><!--col-lg-2 col-sm-2 col-xs-4-->
+    <div class="col-lg-6 col-sm-5 col-xs-8 toplinks">
+      <div class="welcome-msg hidden-xs"><?php echo $this->getWelcome() ?><?php echo $this->getAdditionalHtml() ?></div>
+      <div class="links">
+            <div class="myaccount"><a href="<?php echo $this->getUrl('')?>customer/account/" title="<?php echo $this->__('My Account') ?>"><span class="hidden-xs"><?php echo $this->__('My Account') ?></span></a></div>
+            <div class="wishlist"><a href="<?php echo $this->getUrl('wishlist') ?>" title="<?php echo $this->__('Wishlist') ?>"><span class="hidden-xs"><?php echo $this->__('Wishlist') ?></span></a></div>
+            <?php if(Mage::getStoreConfig('mgkonestepcheckout_section/mgkopcgeneral_group/mgkextenable')==1){?>
+            <div class="check"><a href="<?php echo $this->getUrl('')?>onestepcheckout/" title="<?php echo $this->__('Checkout') ?>">
+             <span class="hidden-xs"><?php echo $this->__('Checkout') ?></span></a>
+           </div>
+           <?php }else{ ?>
+           <div class="check"><a href="<?php echo $this->getUrl('')?>checkout/onepage/" title="<?php echo $this->__('Checkout') ?>">
+             <span class="hidden-xs"><?php echo $this->__('Checkout') ?></span></a>
+           </div>
+           <?php } ?>
+           <div class="demo"><a href="<?php echo $this->getUrl('')?>blog" title="<?php echo $this->__('Blog') ?>"><span class="hidden-xs"><?php echo $this->__('Blog') ?></span></a></div>
+          <?php if(!Mage::getSingleton( 'customer/session' )->isLoggedIn()) { ?>
+             <div class="login"><a href="<?php echo $this->getUrl('')."customer/account/login/"; ?>" title="<?php echo $this->__('Log In') ?>"><span class="hidden-xs"><?php echo $this->__('Log In') ?></span></a>
+             </div>
+          <?php } ?>
+          <?php if(Mage::getSingleton( 'customer/session' )->isLoggedIn()) { ?>
+             <div class="logout"><a href="<?php echo $this->getUrl('')."customer/account/logout/"; ?>" title="<?php echo $this->__('Log Out') ?>"><span class="hidden-xs"><?php echo $this->__('Log Out') ?></span></a>
+             </div>
+          <?php } ?>
+         </div> <!--links-->
+    </div><!--col-lg-6 col-sm-5 col-xs-8 toplinks-->
+    <div class="col-lg-4 col-sm-5 col-xs-12 right_menu">
+      <div class="menu_top">
+        <?php if (Mage::getStoreConfig('fabiasettings/fabiasettings_shoppingcart/shoppingcart_top')): ?>
+           <?php echo $this->getChildHtml('cartTop') ?>
+        <?php endif; ?> 
+      </div> <!--menu_top-->
+      <div class="lang-curr">
+        <?php echo $this->getChildHtml('store_language') ?>     
+        <?php echo $this->getChildHtml('custom_currency_selector') ?>
+      </div> <!--lang-curr-->
+    </div><!--col-lg-4 col-sm-5 col-xs-12 right_menu-->
+  </div> <!--row-->
+ </div><!--container-->
+</div><!-- header-container-->
+</header>
+<nav>
+  <div class="container">
+    <div class="row">
+        <div class="mm-toggle-wrap">
+           <div class="mm-toggle"><i class="icon-align-justify"></i><span class="mm-label"><?php echo $this->__('Menu') ?></span> </div>
+        </div>
+      <div class="nav-inner col-lg-12">
+        <?php echo $this->getChildHtml('topMenu'); ?>
+        <?php echo $this->getChildHtml('topSearch') ?>
+      </div><!--nav-inner col-lg-12-->
+    </div><!--row-->
+  </div><!--container-->
+</nav>
+<?php echo $this->getChildHtml('topContainer'); ?>
+<?php } ?> <!--End Version 3 -->
+
+<?php if(($config1=='fabia_home_four')) { ?> <!-- For version 4 -->
+<header>
+<div class="header-container">
+ <div class="container">
+  <div class="row">
+    <div class="col-lg-2 col-sm-3 col-md-2 col-xs-12">
+      <div class="logo">
+        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><?php echo $this->getChildHtml('fabiaLogo3', false) ?></a>
+      </div><!--logo-->
+    </div><!--col-lg-2 col-sm-3 col-md-2 col-xs-12-->
+    <div class="col-lg-4 col-sm-4 col-xs-12 search-section">
+      <?php echo $this->getChildHtml('topSearch') ?>
+    </div><!--col-lg-4 col-sm-4 col-xs-12 search-section-->
+    <div class="col-lg-6 col-sm-5 col-md-6 col-xs-12 toplinks">
+      <div class="welcome-msg hidden-xs"><?php echo $this->getWelcome() ?><?php echo $this->getAdditionalHtml() ?></div>
+      <div class="links">
+            <div class="myaccount"><a href="<?php echo $this->getUrl('')?>customer/account/" title="<?php echo $this->__('My Account') ?>"><?php echo $this->__('My Account') ?></a></div>
+            <div class="wishlist"><a href="<?php echo $this->getUrl('wishlist') ?>" title="<?php echo $this->__('Wishlist') ?>"><?php echo $this->__('Wishlist') ?></a></div>
+            <?php if(Mage::getStoreConfig('mgkonestepcheckout_section/mgkopcgeneral_group/mgkextenable')==1){?>
+            <div class="check hidden-xs"><a href="<?php echo $this->getUrl('')?>onestepcheckout/" title="<?php echo $this->__('Checkout') ?>">
+             <span class="hidden-xs"><?php echo $this->__('Checkout') ?></span></a>
+           </div>
+           <?php }else{ ?>
+           <div class="check hidden-xs"><a href="<?php echo $this->getUrl('')?>checkout/onepage/" title="<?php echo $this->__('Checkout') ?>">
+             <span class="hidden-xs"><?php echo $this->__('Checkout') ?></span></a>
+           </div>
+           <?php } ?>
+           <div class="demo hidden-xs"><a href="<?php echo $this->getUrl('')?>blog" title="<?php echo $this->__('Blog') ?>"><span class="hidden-xs"><?php echo $this->__('Blog') ?></span></a></div>
+          <?php if(!Mage::getSingleton( 'customer/session' )->isLoggedIn()) { ?>
+             <div class="login"><a href="<?php echo $this->getUrl('')."customer/account/login/"; ?>" title="<?php echo $this->__('Log In') ?>"><?php echo $this->__('Log In') ?></a>
+             </div>
+          <?php } ?>
+          <?php if(Mage::getSingleton( 'customer/session' )->isLoggedIn()) { ?>
+             <div class="logout"><a href="<?php echo $this->getUrl('')."customer/account/logout/"; ?>" title="<?php echo $this->__('Log Out') ?>"><?php echo $this->__('Log Out') ?></a>
+             </div>
+          <?php } ?>
+         </div> <!--links-->
+    </div><!--col-lg-6 col-sm-5 col-md-6 col-xs-12 toplinks-->
+  </div> <!--row-->
+ </div><!--container-->
+</div><!-- header-container-->
+</header>
+<nav>
+  <div class="container">
+    <div class="row">
+        <div class="mm-toggle-wrap">
+          <div class="mm-toggle"><i class="icon-align-justify"></i><span class="mm-label"><?php echo $this->__('Menu') ?></span> </div>
+        </div>
+      <div class="nav-inner col-lg-12">
+        <?php echo $this->getChildHtml('topMenu'); ?>
+     <div class="col-lg-4 col-sm-4 col-xs-10 right_menu">
+      <div class="menu_top">
+        <?php if (Mage::getStoreConfig('fabiasettings/fabiasettings_shoppingcart/shoppingcart_top')): ?>
+           <?php echo $this->getChildHtml('cartTop') ?>
+        <?php endif; ?> 
+      </div> <!--menu_top-->
+      <div class="lang-curr">
+        <?php echo $this->getChildHtml('store_language') ?>     
+        <?php echo $this->getChildHtml('custom_currency_selector') ?>
+      </div> <!--lang-curr-->
+    </div><!--col-lg-4 col-sm-4 col-xs-10 right_menu-->
+      </div><!--nav-inner col-lg-12-->
+    </div><!--row-->
+  </div><!--container-->
+</nav>
+<?php echo $this->getChildHtml('topContainer'); ?>
+<?php } ?> <!--End Version 4 -->
+
+
+<?php if(($config1=='fabia_home_five')) { ?> <!-- For version 5 -->
+<div class="header-container">
+    <div class="header-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
+              <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('fabia_header_phone_number_block')->toHtml() ?>
+              <div class="welcome-msg hidden-xs"><?php echo $this->getWelcome() ?><?php echo $this->getAdditionalHtml() ?>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-7 col-xs-12">
+              <?php if (Mage::getStoreConfig('fabiasettings/fabiasettings_shoppingcart/shoppingcart_top')): ?>
+                 <?php echo $this->getChildHtml('cartTop') ?>
+              <?php endif; ?> 
+              <?php echo $this->getChildHtml('topSearch') ?>
+              <div class="toplinks">
+                <div class="links">
+                  <?php if(!Mage::getSingleton( 'customer/session' )->isLoggedIn()) { ?>
+                     <div class="login"><a href="<?php echo $this->getUrl('')."customer/account/login/"; ?>" title="<?php echo $this->__('Log In') ?>"><span class="hidden-xs"><?php echo $this->__('Log In') ?></span></a>
+                     </div>
+                  <?php } ?>
+                  <?php if(Mage::getSingleton( 'customer/session' )->isLoggedIn()) { ?>
+                     <div class="logout"><a href="<?php echo $this->getUrl('')."customer/account/logout/"; ?>" title="<?php echo $this->__('Log Out') ?>"><span class="hidden-xs"><?php echo $this->__('Log Out') ?></span></a>
+                     </div>
+                  <?php } ?>
+                  <div class="wishlist"><a href="<?php echo $this->getUrl('wishlist') ?>" title="<?php echo $this->__('Wishlist') ?>"><span class="hidden-xs"><i class="icon-star">&nbsp;</i><span class="wishlist-items"><?php echo $this->helper('wishlist')->getItemCount(); ?></span></span></a>
+                  </div>
+                </div>
+              </div>
+              <?php echo $this->getChildHtml('store_language') ?>     
+              <?php echo $this->getChildHtml('custom_currency_selector') ?>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<nav>
+  <div class="header container">
+    <div class="row">
+      <div class="col-xs-12">
+         <div class="logo">
+           <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><?php echo $this->getChildHtml('fabiaLogo5', false) ?></a>
+         </div><!--logo-->
+        <div class="nav-inner"> 
+          <?php echo $this->getChildHtml('topMenuMob5'); ?>
+          <?php echo $this->getChildHtml('topMenu5'); ?>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>    
+<?php echo $this->getChildHtml('topContainer'); ?>
+<?php } ?> <!--End Version 5 -->
+
+
+<?php if(($config1=='fabia_home_six') or ($config1=='brasil_home') or ($config1=='peru_home') or ($config1=='espana_home')) { ?> <!-- For version 6 -->
+<header>
+<div class="header-container">
+ <div class="container">
+  <div class="row">
+    <div class="col-lg-2 col-sm-2 col-xs-4">
+      <div class="logo">
+        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><?php echo $this->getChildHtml('fabiaLogo3', false) ?></a>
+      </div><!--logo-->
+    </div><!--col-lg-2 col-sm-2 col-xs-4-->
+    <div class="col-lg-6 col-sm-5 col-xs-8 toplinks">
+      <div class="welcome-msg hidden-xs"><?php echo $this->getWelcome() ?><?php echo $this->getAdditionalHtml() ?></div>
+      <div class="links">
+            <div class="myaccount"><a href="<?php echo $this->getUrl('')?>customer/account/" title="<?php echo $this->__('My Account') ?>"><span class="hidden-xs"><?php echo $this->__('My Account') ?></span></a></div>
+            <div class="wishlist"><a href="<?php echo $this->getUrl('wishlist') ?>" title="<?php echo $this->__('Wishlist') ?>"><span class="hidden-xs"><?php echo $this->__('Wishlist') ?></span></a></div>
+            <?php if(Mage::getStoreConfig('mgkonestepcheckout_section/mgkopcgeneral_group/mgkextenable')==1){?>
+            <div class="check"><a href="<?php echo $this->getUrl('')?>onestepcheckout/" title="<?php echo $this->__('Checkout') ?>">
+             <span class="hidden-xs"><?php echo $this->__('Checkout') ?></span></a>
+           </div>
+           <?php }else{ ?>
+           <div class="check"><a href="<?php echo $this->getUrl('')?>checkout/onepage/" title="<?php echo $this->__('Checkout') ?>">
+             <span class="hidden-xs"><?php echo $this->__('Checkout') ?></span></a>
+           </div>
+           <?php } ?>
+           <div class="demo"><a href="<?php echo $this->getUrl('')?>blog" title="<?php echo $this->__('Blog') ?>"><span class="hidden-xs"><?php echo $this->__('Blog') ?></span></a></div>
+          <?php if(!Mage::getSingleton( 'customer/session' )->isLoggedIn()) { ?>
+             <div class="login"><a href="<?php echo $this->getUrl('')."customer/account/login/"; ?>" title="<?php echo $this->__('Log In') ?>"><span class="hidden-xs"><?php echo $this->__('Log In') ?></span></a>
+             </div>
+          <?php } ?>
+          <?php if(Mage::getSingleton( 'customer/session' )->isLoggedIn()) { ?>
+             <div class="logout"><a href="<?php echo $this->getUrl('')."customer/account/logout/"; ?>" title="<?php echo $this->__('Log Out') ?>"><span class="hidden-xs"><?php echo $this->__('Log Out') ?></span></a>
+             </div>
+          <?php } ?>
+         </div> <!--links-->
+    </div><!--col-lg-6 col-sm-5 col-xs-8 toplinks-->
+    <div class="col-lg-4 col-sm-5 col-xs-12 right_menu">
+      <div class="menu_top">
+        <?php if (Mage::getStoreConfig('fabiasettings/fabiasettings_shoppingcart/shoppingcart_top')): ?>
+           <?php echo $this->getChildHtml('cartTop') ?>
+        <?php endif; ?> 
+      </div> <!--menu_top-->
+      <div class="lang-curr">
+        <?php echo $this->getChildHtml('store_language') ?>     
+        <?php echo $this->getChildHtml('custom_currency_selector') ?>
+      </div> <!--lang-curr-->
+    </div><!--col-lg-4 col-sm-5 col-xs-12 right_menu-->
+  </div> <!--row-->
+ </div><!--container-->
+</div><!-- header-container-->
+</header>
+<nav>
+  <div class="container">
+    <div class="row">
+        <div class="mm-toggle-wrap">
+            <div class="mm-toggle"><i class="icon-align-justify"></i><span class="mm-label"><?php echo $this->__('Menu') ?></span> </div>
+        </div>
+      <div class="nav-inner col-lg-12">
+        <?php echo $this->getChildHtml('topMenu'); ?>
+        <?php echo $this->getChildHtml('topSearch') ?>
+      </div><!--nav-inner col-lg-12-->
+    </div><!--row-->
+  </div><!--container-->
+</nav>
+<?php echo $this->getChildHtml('topContainer'); ?>
+<?php } ?> <!-- End Version 6 -->
+
+<?php if(($config1=='fabia_home_seven')) { ?> <!-- For version 7 -->
+<header>
+<div class="header-container">
+ <div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-xs-6">
+      <?php echo $this->getChildHtml('custom_currency_selector') ?>
+      <?php echo $this->getChildHtml('store_language') ?>
+      <div class="welcome-msg hidden-xs"><?php echo $this->getWelcome() ?><?php echo $this->getAdditionalHtml() ?></div>
+    </div>
+    <div class="col-lg-6 col-xs-6 toplinks">
+    <div class="links">
+            <div class="myaccount"><a href="<?php echo $this->getUrl('')?>customer/account/" title="<?php echo $this->__('My Account') ?>"><?php echo $this->__('My Account') ?></a></div>
+           
+            <?php if(Mage::getStoreConfig('mgkonestepcheckout_section/mgkopcgeneral_group/mgkextenable')==1){?>
+            <div class="check hidden-xs"><a href="<?php echo $this->getUrl('')?>onestepcheckout/" title="<?php echo $this->__('Checkout') ?>">
+             <span class="hidden-xs"><?php echo $this->__('Checkout') ?></span></a>
+           </div>
+           <?php }else{ ?>
+           <div class="check hidden-xs"><a href="<?php echo $this->getUrl('')?>checkout/onepage/" title="<?php echo $this->__('Checkout') ?>">
+             <span class="hidden-xs"><?php echo $this->__('Checkout') ?></span></a>
+           </div>
+           <?php } ?>
+           <div class="demo hidden-xs"><a href="<?php echo $this->getUrl('')?>blog" title="<?php echo $this->__('Blog') ?>"><span class="hidden-xs"><?php echo $this->__('Blog') ?></span></a></div>
+          <?php if(!Mage::getSingleton( 'customer/session' )->isLoggedIn()) { ?>
+             <div class="login"><a href="<?php echo $this->getUrl('')."customer/account/login/"; ?>" title="<?php echo $this->__('Log In') ?>"><?php echo $this->__('Log In') ?></a>
+             </div>
+          <?php } ?>
+          <?php if(Mage::getSingleton( 'customer/session' )->isLoggedIn()) { ?>
+             <div class="logout"><a href="<?php echo $this->getUrl('')."customer/account/logout/"; ?>" title="<?php echo $this->__('Log Out') ?>"><?php echo $this->__('Log Out') ?></a>
+             </div>
+          <?php } ?>
+         </div> <!--links-->
+       </div>
+     </div>
+   </div>
+ </div>
+</header>
+<nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-1 col-sm-1 nav-wrapper"> 
+          <?php echo $this->getChildHtml('topMenu7'); ?>
+        </div> 
+
+        <div class="col-lg-3 col-xs-4 col-sm-4 search-section">
+          <?php echo $this->getChildHtml('topSearch') ?>
+        </div>
+
+        <div class="col-lg-4 col-xs-12 col-sm-3 col-md-4 logo">
+          <div class="logo-img">
+          <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>">
+            <?php echo $this->getChildHtml('fabiaLogo7', false) ?>
+          </a>
+        </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-4 nav-right">
+          <?php if (Mage::getStoreConfig('fabiasettings/fabiasettings_shoppingcart/shoppingcart_top')): ?>
+             <?php echo $this->getChildHtml('cartTop') ?>
+             <div class="wishlist"><a href="<?php echo $this->getUrl('wishlist') ?>" title="<?php echo $this->__('Wishlist') ?>"><span><?php echo $this->__('Wishlist') ?></span></a></div>
+          <?php endif; ?> 
+        </div>
+      </div>
+    </div>
+  </nav>
+      
+<?php echo $this->getChildHtml('topContainer'); ?>
+<?php } ?> <!--End Version 7 -->
+
+<?php if(($config1=='fabia_home_eight')) { ?> <!-- For version 8 -->
+<header class="header-container">
+  <div class="header-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6">
+           <?php echo $this->getChildHtml('store_language') ?>     
+           <?php echo $this->getChildHtml('custom_currency_selector') ?>
+           <div class="welcome-msg hidden-xs"><?php echo $this->getWelcome() ?><?php echo $this->getAdditionalHtml() ?></div>
+        </div><!--col-xs-6-->
+        <div class="col-xs-6">
+         <div class="toplinks">
+          <div class="links">
+          <?php if(!Mage::getSingleton( 'customer/session' )->isLoggedIn()) { ?>
+             <div class="login"><a href="<?php echo $this->getUrl('')."customer/account/login/"; ?>" title="<?php echo $this->__('Log In') ?>"><span class="hidden-xs"><?php echo $this->__('Log In') ?></span></a>
+             </div>
+          <?php } ?>
+          <?php if(Mage::getSingleton( 'customer/session' )->isLoggedIn()) { ?>
+             <div class="logout"><a href="<?php echo $this->getUrl('')."customer/account/logout/"; ?>" title="<?php echo $this->__('Log Out') ?>"><span class="hidden-xs"><?php echo $this->__('Log Out') ?></span></a>
+             </div>
+          <?php } ?>
+          <div class="myaccount"><a href="<?php echo $this->getUrl('')?>customer/account/" title="<?php echo $this->__('My Account') ?>"><span class="hidden-xs"><?php echo $this->__('My Account') ?></span></a></div>
+          <div class="wishlist"><a href="<?php echo $this->getUrl('wishlist') ?>" title="<?php echo $this->__('Wishlist') ?>"><span class="hidden-xs"><?php echo $this->__('Wishlist') ?></span></a></div>
+          <?php if(Mage::getStoreConfig('mgkonestepcheckout_section/mgkopcgeneral_group/mgkextenable')==1){?>
+            <div class="check"><a href="<?php echo $this->getUrl('')?>onestepcheckout/" title="<?php echo $this->__('Checkout') ?>">
+             <span class="hidden-xs"><?php echo $this->__('Checkout') ?></span></a>
+           </div>
+           <?php }else{ ?>
+           <div class="check"><a href="<?php echo $this->getUrl('')?>checkout/onepage/" title="<?php echo $this->__('Checkout') ?>">
+             <span class="hidden-xs"><?php echo $this->__('Checkout') ?></span></a>
+           </div>
+           <?php } ?>
+         </div> <!--links-->
+         </div><!--toplinks-->
+        </div><!--col-xs-6-->
+      </div><!--row-->
+    </div><!--container-->
+  </div><!--header-top-->
+  <div class="header">
+    <div class="container">
+      <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12"> </div>
+      <div class="col-lg-2 col-sm-3 col-md-3 col-xs-12">
+        <div class="logo">
+          <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><?php echo $this->getChildHtml('fabiaLogo8', false) ?></a>
+        </div><!--logo-->
+      </div><!--col-lg-2 col-sm-3 col-md-3 col-xs-12-->
+      <div class="col-lg-5 col-sm-4 col-md-4 col-xs-9 pull-right"> </div>
+    </div><!--container-->
+  </div><!--header-->
+</header>
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <?php if (Mage::getStoreConfig('fabiasettings/fabiasettings_shoppingcart/shoppingcart_top')): ?>
+          <?php echo $this->getChildHtml('cartTop') ?>
+      <?php endif; ?> 
+      <?php echo $this->getChildHtml('topSearch') ?>
+      <?php echo $this->getChildHtml('topMenuMob5'); ?>
+      <?php echo $this->getChildHtml('topMenu8') ?>
+    </div><!--nav-inner-->
+  </div><!--container-->
+</nav>
+<?php } ?> <!--For Version 8-->

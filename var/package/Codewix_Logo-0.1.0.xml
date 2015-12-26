@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+    <name>Codewix_Logo</name>
+    <version>0.1.0</version>
+    <stability>stable</stability>
+    <license uri="http://opensource.org/licenses/osl-3.0.php">OSL v3.0</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Extension will replace logo src text field to image uploader.</summary>
+    <description>By default Magento asks you to upload logo at filesystem and provide its path in admin.&#xD;
+&#xD;
+So this extension will allow you to upload logo directly in admin at same place you enter logo source.</description>
+    <notes>First Release</notes>
+    <authors><author><name>Codewix Development</name><user>Ravinder</user><email>codewix@gmail.com</email></author></authors>
+    <date>2014-12-16</date>
+    <time>16:46:48</time>
+    <contents><target name="magecommunity"><dir name="Codewix"><dir name="Logo"><dir name="Helper"><file name="Data.php" hash="35eb0d11ec32eea7e20ab9748d3781c2"/></dir><dir name="Model"><dir name="System"><dir name="Config"><dir name="Backend"><file name="Logo.php" hash="b1de2f3610f504053291a005945b9be4"/></dir></dir></dir></dir><dir name="etc"><file name="config.xml" hash="1b61ed8a2b823a729450d0c8ba6bf70e"/><file name="system.xml" hash="93bbf33b0f42832df1de416744aca0da"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Codewix_Logo.xml" hash="49b071a14c14de5b827d1f14f45f2ba4"/></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.0.2</min><max>6.0.0</max></php></required></dependencies>
+</package>

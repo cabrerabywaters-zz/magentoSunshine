@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Codewix_Logo>
+            <version>0.1.0</version>
+        </Codewix_Logo>
+    </modules>
+    <global>
+        <blocks>
+            <codewix_logo>
+                <class>Codewix_Logo_Block</class>
+            </codewix_logo>
+        </blocks>
+        <models>
+            <codewix_logo>
+                <class>Codewix_Logo_Model</class>
+            </codewix_logo>
+        </models>
+        <helpers>
+            <codewix_logo>
+                <class>Codewix_Logo_Helper</class>
+            </codewix_logo>
+        </helpers>
+    </global>
+</config>

@@ -1,0 +1,42 @@
+<?php
+/**
+ * MageWorx
+ * Multi Fees Extension
+ *
+ * @category   MageWorx
+ * @package    MageWorx_MultiFees
+ * @copyright  Copyright (c) 2015 MageWorx (http://www.mageworx.com/)
+ */
+
+$shippingMethods = $this->getParentBlock()->getShippingRates();
+$selectedShippingMethod = $this->getParentBlock()->getShippingMethod();
+$shippingFeeBlock = $this->getLayout()->createBlock('mageworx_multifees/adminhtml_sales_order_create_fee')->setTemplate('mageworx/multifees/shipping_fee.phtml');
+?>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof feeOptionImgData=='undefined') var feeOptionImgData = [];
+function addShippingFees() {
+<?php
+foreach($shippingMethods as $code => $rates) {
+    foreach($rates as $rate) { ?>
+        MultiFees.addShipping('<?php echo $rate->getCode() ?>', <?php echo Zend_Json::encode($shippingFeeBlock->setCode($rate->getCode())->toHtml())?> );
+        <?php if ($selectedShippingMethod) { 
+            if ($rate->getCode()==$selectedShippingMethod) { ?>
+                MultiFees.showShipping('<?php echo $rate->getCode() ?>');
+            <?php
+            }
+        } elseif (count($shippingMethods)==1 && count($rates)==1) { ?>
+            MultiFees.showShipping('<?php echo $rate->getCode() ?>');
+        <?php } ?>
+    <?php } ?>
+<?php } ?>
+}
+if (typeof MultiFees=='undefined') {
+    document.observe('dom:loaded', function(){addShippingFees();});
+} else {
+    addShippingFees();
+}
+if ($('order-shipping-method-info')) $('order-shipping-method-info').hide();
+if ($('order-shipping-method-choose')) $('order-shipping-method-choose').show();
+//]]>
+</script>

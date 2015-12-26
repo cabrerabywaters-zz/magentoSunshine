@@ -1,0 +1,125 @@
+<?php
+              // some helpers
+              $_helper = $this->helper('catalog/output');
+              $storeId = Mage::app()->getStore()->getId();
+              $catalog = $this->getLayout()->createBlock('catalog/product_list')->setStoreId($storeId);
+              $productCount = $this->getData('num_products');
+
+$visibility = array( 
+                    Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH, 
+                    Mage_Catalog_Model_Product_Visibility::VISIBILITY_IN_CATALOG
+                );
+$attributeInfo = Mage::getResourceModel('eav/entity_attribute_collection')
+              ->setCodeFilter('magikfeatured')
+              ->getFirstItem();
+  $attribute_info = $attributeInfo->getData();
+ 
+  if($attribute_info['attribute_code'] == 'magikfeatured'){
+$collection = Mage::getResourceModel('reports/product_collection') 
+                      ->addAttributeToSelect('*')     
+                      ->setStoreId($storeId) 
+                      ->addStoreFilter($storeId)     
+                      ->addAttributeToFilter('visibility', $visibility)
+                      ->addAttributeToFilter('magikfeatured', true) 
+                      ->setOrder('updated_at', 'desc')
+                      ->addAttributeToSelect('status') 
+                      ->setPageSize($productCount);
+Mage::getSingleton('cataloginventory/stock')->addInStockFilterToCollection($collection);
+$collection->addFieldToFilter(array(array('attribute' => 'magikfeatured', 'eq' => 1)));
+
+/*  To display product by category id */
+if($categoryId=$this->getData('category_id')){
+      $category = Mage::getModel('catalog/category')->load($categoryId);
+      $collection->addCategoryFilter($category);
+    } ?>
+
+
+  <div class="pdt-content pdt_new_arrivals is-loaded">
+     
+
+<?php             // if no products are currently featured, display some text
+              if (!$collection->count()) :
+?>
+      <p class="note-msg"><?php echo $this->__('There are no featured products at the moment.') ?></p>
+      <?php else : ?>
+
+<ul class="pdt-list products-grid zoomOut play">
+      
+        <?php
+                $_collectionSize = $collection->count();
+                $_columnCount = 5;  
+                $i = 0;
+               
+                foreach ($collection as $_product) :
+                        $_product = Mage::getModel('catalog/product')->setStoreId($storeId)->load($_product->getId());
+
+        ?>
+        <?php if ($i++%$_columnCount==0): ?>            
+        <?php endif ?>  
+        
+    <li class="item item-animate <?php if(($i-1)%$_columnCount==0): ?>wide-first<?php elseif($i%$_columnCount==0): ?> last<?php elseif($i%$_columnCount!==0): ?> odd1<?php endif; ?>">
+         <div class="item-inner">
+           <div class="item-img">
+             <div class="item-img-info">
+               <a class="product-image" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><img class="img-responsive" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image') ?>"></a>
+               <?php echo $this->helper('fabiasettings')->getLabel($_product);  ?>
+               <?php  if(Mage::app()->getStore()->getConfig('fabiasettings/fabiasettings_quickview/enable')==1){?> 
+                 <a rel="nofollow" href="<?php echo Mage::getBaseUrl().'quickview/index/view?prodid='.$_product->getId(); ?>" data-fancybox-type="iframe" class="magik-btn-quickview quickview-btn" id="magik-btn-quickview_<?php echo $_product->getId()?>"><span><?php echo $this->__('Quick View') ?></span></a>
+               <?php }  ?>
+             </div> <!--item-img-info-->
+           </div> <!--item-img-->
+           <div class="item-info">
+            <div class="info-inner">
+              <div class="item-title">
+                 <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>">
+                      <?php $prod_name = $this->htmlEscape($_product->getName()) ; 
+                      if(strlen($prod_name) > 30) {echo substr($prod_name,0,30)."...";}else {echo $prod_name;}?>
+                 </a>
+              </div> <!--item-title-->
+              <div class="item-content">
+                    <?php
+                        $summaryData = Mage::getModel('review/review_summary')
+                                ->setStoreId($storeId)
+                                ->load($_product->getId());
+                        if($summaryData->getRatingSummary()){ ?>
+                            <div class="ratings">
+                                <div class="rating-box">
+                                        <div class="rating" style="width: <?php echo $summaryData->getRatingSummary().'%'; ?>"></div>
+                                </div> <!--rating-box-->
+                            </div> <!--ratings-->
+                    <?php } else { ?>  
+                            <div class="ratings"><div class="rating-box"><div style="width:0%" class="rating"></div></div></div>
+                    <?php } ?>
+                    <div class="item-price"><?php echo $this->getPriceHtml($_product, true) ?></div>
+                    <div class="actions">
+                     <a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist" title="<?php echo $this->__('Add to Wishlist');?>"></a>
+                     <div class="add_cart">
+                      <?php if($_product->isSaleable()): ?>
+                        <button type="button"  title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><?php echo $this->__('Add to Cart') ?></span></button>
+                      <?php else: ?>
+                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                      <?php endif; ?> 
+                     </div> <!--add_cart-->                          
+                        <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                           <a href="<?php echo $_compareUrl ?>" class="link-compare add_to_compare" title="<?php echo $this->__('Add to Compare');?>"></a>
+                        <?php endif; ?>
+                  
+                    </div> <!--actions-->
+              </div> <!--item-content-->
+            </div><!--info-inner-->
+           </div><!--item-info-->       
+         </div> <!--item-inner-->
+       </li> <!--item item-animate wide-first-->
+
+            <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>            
+            <?php endif ?>      
+                <?php endforeach ?> 
+
+         </ul>
+
+      <?php endif ?>  <!--Endif !$collection->count() -->
+  </div> <!--pdt-content pdt_new_arrivals is-loaded-->
+
+<?php } ?> <!-- chk attribute_code -->
+
+

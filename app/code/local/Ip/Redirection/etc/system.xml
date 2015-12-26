@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <iPragmatech translate="label" module="redirection">
+            <label>iPragmatech Extension</label>
+            <sort_order>300</sort_order>
+        </iPragmatech>
+    </tabs>
+	<sections>
+        <redirection translate="label">
+            <label>Custom Redirection</label>
+            <tab>iPragmatech</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1001</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings translate="label">
+                    <label>Custom Redirection Setting</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label comment">
+                            <label>Redirection Setting</label>
+                            <!-- <comment><![CDATA[]]></comment> -->
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <group translate="label comment">
+                            <label>Customer Group</label>
+                            <comment>
+		                        <![CDATA[
+		                            <div style="width: 257px;margin-top:3px;padding:10px;background-color:#fff;border:1px solid #ddd;margin-bottom:7px;">
+		                            	Please select the Customer Group on which you want to apply redirection. 
+		                            	If not select any Customer Group then Redirection will apply for all Customer.
+		                            </div>
+		                    	]]>
+		                    </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_customer_group</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </group>
+                        <login_redirection>
+                            <label>Login Redirection</label>
+                            <!-- <comment><![CDATA[]]></comment> -->
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </login_redirection>
+                        <path_redirect>
+                            <label>Path Redirect</label>
+                             <comment>
+		                        <![CDATA[
+		                            <div style="width: 257px;margin-top:3px;padding:10px;background-color:#fff;border:1px solid #ddd;margin-bottom:7px;">
+		                            	Please Enter the Custom Url Redirection after Login. 
+		                            	<b><br />Example: <br />
+		                            	customer/account
+		                            	<br />catalog/seo_sitemap/category </b>
+		                            </div>
+		                    	]]>
+		                    </comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-text</validate>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <login_redirection>1</login_redirection>
+                                <enabled>1</enabled>
+                            </depends>
+                        </path_redirect>
+                        <logout_redirection>
+                            <label>Logout Redirection</label>
+                            <!-- <comment><![CDATA[]]></comment> -->
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </logout_redirection>
+                        <logout_path_redirect>
+                            <label>Logout Path Redirect</label>
+                            <comment>
+		                        <![CDATA[
+		                            <div style="width: 257px;margin-top:3px;padding:10px;background-color:#fff;border:1px solid #ddd;margin-bottom:7px;">
+		                            	Please Enter the Custom Url Redirection after Logout. 
+		                            	<b><br />Example: <br />
+		                            	customer/account
+		                            	<br />catalog/seo_sitemap/category </b>
+		                            </div>
+		                    	]]>
+		                    </comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-text</validate>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <logout_redirection>1</logout_redirection>
+                                <enabled>1</enabled>
+                            </depends>
+                        </logout_path_redirect>
+                        <registration_redirection>
+                            <label>SignUp Redirection</label>
+                            <!-- <comment><![CDATA[]]></comment> -->
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </registration_redirection>
+                        <signup_path_redirect>
+                            <label>SignUp Path Redirect</label>
+                            <comment>
+                            	<![CDATA[
+		                            <div style="width: 257px;margin-top:3px;padding:10px;background-color:#fff;border:1px solid #ddd;margin-bottom:7px;">
+		                            	Please Enter the Custom Url Redirection after Signup. 
+		                            	<b><br />Example: <br />
+		                            	customer/account
+		                            	<br />catalog/seo_sitemap/category </b>
+		                            </div>
+		                    	]]>
+                            </comment> 
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-text</validate>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <registration_redirection>1</registration_redirection>
+                                <enabled>1</enabled>
+                            </depends>
+                        </signup_path_redirect>
+                    </fields>
+                </settings>
+            </groups>
+        </redirection>
+	</sections>
+</config>

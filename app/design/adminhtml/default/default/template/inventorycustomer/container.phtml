@@ -1,0 +1,47 @@
+<div id="inventory_customer" class="inventory_customer">
+    <?php echo $this->getChildHtml(); ?>
+</div>
+
+<script type="text/javascript">
+    function searchCustomer() {
+        Element.show('loading-mask');
+        searchValue = $('inventorycustomer_search_customer_grid');
+        var parameters = {search_value: searchValue.value};
+        var url = '<?php echo Mage::helper('adminhtml')->getUrl('inventorycustomeradmin/adminhtml_allcustomers/searchcustomer') ?>';
+        var request = new Ajax.Request(url, {
+            method: 'post',
+            parameters: parameters,
+            onFailure: '',
+            onSuccess: function (transport) {
+                if (transport.status == 200) {
+                    $('inventorycustomer_search_customer_grid').value = '';
+                    allcustomersGridJsObject.reload();
+                }
+            }
+        });
+    }
+
+    function deleteTodoItem(checkbox) {
+        Element.show('loading-mask');
+        checkboxValue = checkbox.value;
+        var parameters = {interaction_id: checkboxValue};
+        var url = '<?php echo Mage::helper('adminhtml')->getUrl('inventorycustomeradmin/adminhtml_todolist/marktodoisdone') ?>';
+        var request = new Ajax.Request(url, {
+            method: 'post',
+            parameters: parameters,
+            onFailure: '',
+            onSuccess: function (transport) {
+                if (transport.status == 200) {
+                    var result = transport.responseText.evalJSON();
+                    if (result.success == 1) {
+                        Element.hide('loading-mask');
+                        todolistGridJsObject.reload();
+                    } else if (result.success == 0) {
+                        Element.hide('loading-mask');
+                        alert("Please check again");
+                    }
+                }
+            }
+        });
+    }
+</script>

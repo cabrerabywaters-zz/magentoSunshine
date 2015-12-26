@@ -1,0 +1,134 @@
+<?php
+$var_attrs = array(); // will be used in JS
+$model = 'customer/attribute_collection';
+$type = 'customer';
+$collection = Mage::getResourceModel($model)
+    ->setEntityTypeFilter(Mage::getModel('eav/entity')->setType($type)->getTypeId())
+    ->addVisibleFilter()
+    ->addFilter('is_user_defined', 1)->setOrder('sort_order', 'ASC');
+$modelAttrs  = Mage::getModel('ajaxlogin/attributes');
+
+$count_custom_attr = 0;
+foreach ($collection as $attribute) {
+    $attr = $attribute->toArray();
+    $modelAttrs->load($attr['attribute_id'],'attribute_id');
+    if($attr['frontend_input'] != "hidden"  && $modelAttrs['section'] == $this->_section){
+        $count_custom_attr++;
+    }
+}
+
+if ($count_custom_attr >= 1) {
+
+    if($this->_section == 0) echo '<div class="le-window-box second litmore">
+            <div class="le-window-subtitle le-showhideme">
+                <p>'.$this->__('More Information').'</p>
+            </div>
+            <div class="le-window-content litmore">';
+
+    $store_id = Mage::app()->getStore()->getId();
+    foreach ($collection as $attribute) {
+        $attr = $attribute->toArray();
+        $modelAttrs->load($attr['attribute_id'],'attribute_id');
+        if($modelAttrs['section'] == $this->_section){
+
+            if ($attr['is_required'])
+                $var_attrs[] = $attr['attribute_code'];
+
+            $store_labels = $attribute->getStoreLabels();
+            $label = (isset($store_labels[$store_id]) && $store_labels[$store_id]) ? $store_labels[$store_id] : $attr['frontend_label'];
+            $func = 'get' . str_replace(' ', '', ucwords(str_replace('_', ' ', $attr['attribute_code'])));
+            if($attr['frontend_input'] == 'date' ) continue;
+            echo '<div class="input-fly le-showhideme">';
+            echo '<label for="' . $attr['attribute_code'] . '" ' . ($attr['is_required'] ? 'class="required"><em>*</em>' : '>') . $this->__($label) . '</label>';
+            switch ($attr['frontend_input']) {
+                case 'text':
+                    echo '
+                                <div class="input-box">
+                                    <input type="text" name="' . $attr['attribute_code'] . '" id="' . $attr['attribute_code'] . '" class="input-text '.($attr['is_required'] ? 'required-entry' : '').'" />
+                                </div>';
+                    break;
+
+                case 'image':
+                    echo '
+                                <div class="input-box">
+                                    <input type="file" id="'. $attr['attribute_code'] .'" name="'. $attr['attribute_code'] .'" class="'.($attr['is_required'] ? 'required-entry' : '').'" style="float:left;" >
+                                <div><br/>'. $this->__('File upload:') .'<strong> jpg, jpeg, gif, png</strong></div>
+                                </div>';
+                    break;
+
+                case 'textarea':
+                    echo '
+                                <div class="input-box">
+                                    <textarea name="' . $attr['attribute_code'] . '" id="' . $attr['attribute_code'] . '"  class="'.($attr['is_required'] ? 'required-entry' : '').'" ></textarea>
+                                </div>';
+                    break;
+
+                case 'select':
+                    echo '
+                                    <div class="input-box">';
+                    echo '<select name="' . $attr['attribute_code'] . '" id="' . $attr['attribute_code'] . '"  class="'.($attr['is_required'] ? 'required-entry' : '').'" >';
+                    foreach ($attribute->getSource()->getAllOptions((!$attr['is_required']), false) as $instance) {
+                        echo '<option value="' . $instance['value'] . '" ' . ($this->htmlEscape($this->getCustomer()) == $instance['value'] ? 'selected' : '') . '>' . $instance['label'] . '</option>';
+                    }
+                    echo '</select>';
+
+                    echo '
+                                    </div>';
+                    break;
+
+                case 'multiselect':
+                    echo '
+                                    <div class="input-box">';
+
+                    $multi_values = explode(',', $this->htmlEscape($this->getCustomer()));
+
+                    echo '<select name="' . $attr['attribute_code'] . '[]" id="' . $attr['attribute_code'] . '" multiple="multiple"  class="'.($attr['is_required'] ? 'required-entry' : '').'" >';
+
+                    foreach ($attribute->getSource()->getAllOptions((!$attr['is_required']), false) as $instance) {
+                        echo '<option value="' . $instance['value'] . '" ' . (in_array($instance['value'], $multi_values) ? 'selected="selected"' : '') . '>' . $instance['label'] . '</option>';
+                    }
+                    echo '</select></div>';
+                    break;
+
+                case 'date':
+                    $date_element = new Varien_Data_Form_Element_Date();
+                    $date_element->setValue($this->htmlEscape($this->getCustomer()));
+                    echo '<div class="input-box" id="le-calendar">
+                            <input type="text" name="' . $attr['attribute_code'] . '" id="' . $attr['attribute_code'] . '" value="' . $date_element->getValue(Mage::app()->getLocale()->getDateFormatWithLongYear()) . '" class="input-text" />
+                            <img style="" title="' . $this->__('Select Date') . '" id="' . $attr['attribute_code'] . '_trig" class="v-middle" alt="" src="' . $this->getSkinUrl('images/grid-cal.gif') . '">
+                            ' . $this->getChildHtml('html_calendar') . '
+                            <script type="text/javascript">
+                                Calendar.setup({
+                                    inputField : "' . $attr['attribute_code'] . '",
+                                    ifFormat : "' . Varien_Date::convertZendToStrFtime(Mage::app()->getLocale()->getDateFormatWithLongYear(), true, false) . '",
+                                    button : "' . $attr['attribute_code'] . '_trig",
+                                    showsTime: false,
+                                    align : "Bl",
+                                    singleClick : true
+                                });
+                            </script>
+
+                        </div>';
+                    break;
+            }
+            echo '</div>';
+        }
+    }
+    if($this->_section == 0) echo '</div></div>';
+} ?>
+<script type="text/javascript">
+    //<![CDATA[
+function setExtraValidation(arg) {
+    <?php $total_attr=count($var_attrs); ?>
+    if (arg) {
+    <?php for($cnt=0; $cnt<$total_attr; $cnt++) { ?>
+        $('<?php echo $var_attrs[$cnt] ?>').addClassName('required-entry');
+    <?php } ?>
+    } else {
+    <?php for($cnt=0; $cnt<$total_attr; $cnt++) { ?>
+        $('<?php echo $var_attrs[$cnt] ?>').removeClassName('required-entry');
+    <?php } ?>
+    }
+}
+setExtraValidation(true);
+</script>

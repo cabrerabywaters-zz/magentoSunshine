@@ -1,0 +1,153 @@
+
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+  */
+?>
+<!DOCTYPE html>
+<html lang="<?php echo $this->getLang() ?>">
+<head>
+<?php echo $this->getChildHtml('head') ?>
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl(); ?>css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl(); ?>css/style6.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl(); ?>css/revslider6.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl(); ?>css/owl.theme6.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl(); ?>css/jquery.mobile-menu6.css" type="text/css" />
+
+<script src="<?php echo $this->getSkinUrl(); ?>js/bootstrap.min.js" type="text/javascript"></script>
+<script src="<?php echo $this->getSkinUrl(); ?>js/common.js" type="text/javascript"></script>
+
+<script type='text/javascript'>
+        jQuery(document).ready(function(){
+            jQuery('#rev_slider_4').show().revolution({
+                dottedOverlay: 'none',
+                delay: 5000,
+                startwidth: 885,
+                startheight: 560,
+
+                hideThumbs: 200,
+                thumbWidth: 200,
+                thumbHeight: 50,
+                thumbAmount: 2,
+
+                navigationType: 'thumb',
+                navigationArrows: 'solo',
+                navigationStyle: 'round',
+
+                touchenabled: 'on',
+                onHoverStop: 'on',
+                
+                swipe_velocity: 0.7,
+                swipe_min_touches: 1,
+                swipe_max_touches: 1,
+                drag_block_vertical: false,
+            
+                spinner: 'spinner0',
+                keyboardNavigation: 'off',
+
+                navigationHAlign: 'center',
+                navigationVAlign: 'bottom',
+                navigationHOffset: 0,
+                navigationVOffset: 20,
+
+                soloArrowLeftHalign: 'left',
+                soloArrowLeftValign: 'center',
+                soloArrowLeftHOffset: 20,
+                soloArrowLeftVOffset: 0,
+
+                soloArrowRightHalign: 'right',
+                soloArrowRightValign: 'center',
+                soloArrowRightHOffset: 20,
+                soloArrowRightVOffset: 0,
+
+                shadow: 0,
+                fullWidth: 'on',
+                fullScreen: 'off',
+
+                stopLoop: 'off',
+                stopAfterLoops: -1,
+                stopAtSlide: -1,
+
+                shuffle: 'off',
+
+                autoHeight: 'off',
+                forceFullWidth: 'on',
+                fullScreenAlignForce: 'off',
+                minFullScreenHeight: 0,
+                hideNavDelayOnMobile: 1500,
+            
+                hideThumbsOnMobile: 'off',
+                hideBulletsOnMobile: 'off',
+                hideArrowsOnMobile: 'off',
+                hideThumbsUnderResolution: 0,
+
+                hideSliderAtLimit: 0,
+                hideCaptionAtLimit: 0,
+                hideAllCaptionAtLilmit: 0,
+                startWithSlide: 0,
+                fullScreenOffsetContainer: ''
+            });
+        });
+        </script>
+        
+</head>
+
+<body class="<?php echo $this->getBodyClass()?' '.$this->getBodyClass().'':'' ?> rtl" itemscope itemtype="http://schema.org/WebPage">
+  <div id="page">
+
+    <?php echo $this->getChildHtml('after_body_start') ?>
+    <?php echo $this->getChildHtml('global_notices') ?>      
+    <?php echo $this->getChildHtml('header') ?> 
+
+       <!-- Home Header Offer Block --> 
+      <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('fabia_home3_header_offer_banner_block_espana')->toHtml() ?> 
+
+    <div id="magik-slideshow" class="magik-slideshow">
+      <div class="container">
+        <div class="row wow bounceInUp animated animated">
+          <div class="LHS-nav col-lg-3 col-md-4">
+            <div id="magik-verticalmenu" class="magik-verticalmenu"> 
+              <?php echo $this->getLayout()->createBlock('catalog/navigation')->setTemplate('catalog/navigation/left_nav_fixed.phtml')->toHtml() ; ?>
+              <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('fabia_home6_lhs_block_espana')->toHtml() ?>
+            </div><!--magik-verticalmenu -->
+          </div> <!--LHS-nav col-lg-3 col-md-4-->
+          <div class="col-lg-9 col-sm-12 col-md-8 bounceInUp animated">
+             <!-- Home slider -->
+             <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('fabia_home6_slider_banner_block_espana')->toHtml() ?>  
+          </div> <!--col-lg-9 col-sm-12 col-md-8 bounceInUp animated-->
+        </div><!--row wow bounceInUp animated animated-->
+      </div> <!--container-->
+    </div><!--magik-slideshow-->   
+       
+      <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('fabia_home6_offer_banner_block_espana')->toHtml() ?>
+                                           
+              <?php echo $this->getChildHtml('breadcrumbs') ?>               
+              <?php echo $this->getChildHtml('global_messages') ?>
+              <?php echo $this->getChildHtml('content') ?>
+      
+      <!-- Logo Brand Block -->
+      <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('fabia_logo_brand_block_espana')->toHtml() ?>
+
+      <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('fabia_offer_bottom_banner_block_espana')->toHtml() ?>
+
+      <?php echo $this->getChildHtml('footer') ?> 
+      <?php echo $this->getChildHtml('before_body_end') ?>
+      <?php echo $this->getAbsoluteFooter() ?>     
+
+      </div> <!--page-->
+
+      <!-- Mobile Menu-->
+<div id="mobile-menu">
+  <ul class="mobile-menu">
+    <?php echo $this->getLayout()->createBlock('catalog/navigation')->setTemplate('catalog/navigation/top_nav_mob.phtml')->toHtml() ; ?>
+  </ul> <!--mobile-menu-->
+</div>
+      
+      <?php  if(Mage::app()->getStore()->getConfig('fabiasettings/fabiasettings_newsletterpopup/newsletterpopup_enable')==1){?>
+          <?php echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('newsletter/subscribe_home_popup.phtml')->toHtml() ; ?>
+      <?php }  ?>
+
+      
+  
+</body>
+</html>

@@ -1,0 +1,48 @@
+<?php echo $this->getFormInitScripts() ?>
+<script type="text/javascript">
+    function addNewInteraction() {
+        Element.show('loading-mask');
+        newinteraction_action = $('newinteraction_action').value;
+        newinteraction_result = $('newinteraction_result').value;
+        newinteraction_next_action = $('newinteraction_next_action').value;
+        newinteraction_remindat = $('newinteraction_remindat').value;
+        
+        // Check if form fields are filled
+        if (newinteraction_action == '' || newinteraction_result == '') {
+            Element.hide('loading-mask');
+            alert("Please fill in required fields");
+        } else {
+            var parameters = {action: newinteraction_action, result: newinteraction_result, next_action: newinteraction_next_action, remind_at: newinteraction_remindat};
+            var url = '<?php echo Mage::helper("adminhtml")->getUrl("inventorycustomeradmin/adminhtml_allcustomers/addinteraction"); ?>';
+            var request = new Ajax.Request(url, {
+                method: 'post',
+                parameters: parameters,
+                onFailure: '',
+                onSuccess: function (transport) {
+                    if (transport.status == 200) {
+                        var result = transport.responseText.evalJSON();
+                        if (result.success == 1) {
+                            Element.hide('loading-mask');
+                            this.parent.closePopup();
+                        } else {
+                            Element.hide('loading-mask');
+                            alert("Please check again");
+                        }
+                    }
+                }
+            });
+        }
+    }
+</script>
+
+<div class="content-header">
+    <?php echo $this->getHeaderHtml() ?>
+    <p class="form-buttons"><?php echo $this->getButtonsHtml('header') ?></p>
+</div>
+<?php echo $this->getFormHtml() ?>
+<?php if ($this->hasFooterButtons()): ?>
+    <div class="content-footer">
+        <p class="form-buttons"><?php echo $this->getButtonsHtml('footer') ?></p>
+    </div>
+<?php endif; ?>
+<?php echo $this->getFormScripts() ?>

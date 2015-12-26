@@ -1,0 +1,229 @@
+"Item information","Item information"
+Title,Title
+File,File
+Status,Status
+Content,Content
+"Item Information","Item Information"
+"Save Item","Save Item"
+"Delete Item","Delete Item"
+"Save And Continue Edit","Save And Continue Edit"
+"Edit Item '%s","Edit Item '%s"
+"Add Item","Add Item"
+ID,ID
+"Item Content","Item Content"
+Action,Action
+Edit,Edit
+CSV,CSV
+XML,XML
+Delete,Delete
+"Are you sure?","Are you sure?"
+"Change status","Change status"
+"Item Manager","Item Manager"
+Continue,Continue
+"Stock Request Information","Stock Request Information"
+Destination,Destination
+"You have no permission to create stock sending","You have no permission to create stock sending"
+Source,Source
+"Reason(s) for requesting stock","Reason(s) for requesting stock"
+Name,Name
+SKU,SKU
+Image,Image
+"Requesting Qty","Requesting Qty"
+"Total Qty in Source Warehouse","Total Qty in Source Warehouse"
+"Stock Requesting Information","Stock Requesting Information"
+"General Information","General Information"
+"Request Stock","Request Stock"
+Save,Save
+"Save and View","Save and View"
+Cancel,Cancel
+"View Stock Request No.'%s","View Stock Request No.'%s"
+"Edit Stock Request No.'%s","Edit Stock Request No.'%s"
+"New Stock Request","New Stock Request"
+"Destination Warehouse","Destination Warehouse"
+"Qty requested","Qty requested"
+"Created On","Created On"
+"Created by","Created by"
+Completed,Completed
+Canceled,Canceled
+View,View
+"Manage Stock Requests","Manage Stock Requests"
+"Create Stock Request","Create Stock Request"
+Export,Export
+"Reset Filter","Reset Filter"
+Search,Search
+"Total Avail. Qty in warehouse","Total Avail. Qty in warehouse"
+"Total Ordered Qty in period","Total Ordered Qty in period"
+"Sales Rate","Sales Rate"
+"Sales Rate ","Sales Rate "
+"Stock Sending Information","Stock Sending Information"
+"Source Warehouse","Source Warehouse"
+"You have no permission to create stock request","You have no permission to create stock request"
+"Qty. Sent","Qty. Sent"
+"Send Stock","Send Stock"
+"Save And View","Save And View"
+"Are you sure you want to create this stock sending?","Are you sure you want to create this stock sending?"
+"View Stock Sending No.'%s","View Stock Sending No.'%s"
+"Edit Stock Sending No.'%s","Edit Stock Sending No.'%s"
+"New Stock Sending","New Stock Sending"
+"Manage Stock Sending","Manage Stock Sending"
+"Create Stock Sending","Create Stock Sending"
+Type,Type
+Sender/Recipient,Sender/Recipient
+"Product Qty","Product Qty"
+"Created At","Created At"
+"Created By","Created By"
+"Transaction Information","Transaction Information"
+From,From
+To,To
+Reason(s),Reason(s)
+Qty,Qty
+Products,Products
+"View Transaction '%s","View Transaction '%s"
+"Items Manager","Items Manager"
+"Item News","Item News"
+"Item does not exist","Item does not exist"
+"Item was successfully saved","Item was successfully saved"
+"Unable to find item to save","Unable to find item to save"
+"Item was successfully deleted","Item was successfully deleted"
+"Please select item(s)","Please select item(s)"
+"Total of %d record(s) were successfully deleted","Total of %d record(s) were successfully deleted"
+"Total of %d record(s) were successfully updated","Total of %d record(s) were successfully updated"
+Inventory,Inventory
+"Stock Requesting Manager","Stock Requesting Manager"
+"Stock Transfering Manager","Stock Transfering Manager"
+"Stock Requesting News","Stock Requesting News"
+"Stock Transfering News","Stock Transfering News"
+"Request Stock News","Request Stock News"
+"Requesting stock does not exist","Requesting stock does not exist"
+Others,Others
+"Stock request was successfully created.","Stock request was successfully created."
+"Unable to save","Unable to save"
+"Cancel Stock Requesting No.'%s","Cancel Stock Requesting No.'%s"
+"Stock request was successfully canceled.","Stock request was successfully canceled."
+"Unable to cancel","Unable to cancel"
+"Manage Send Stock","Manage Send Stock"
+"Stock Sending News","Stock Sending News"
+"Stock sending was successfully created.","Stock sending was successfully created."
+"Cancel Stock Sending No.'%s","Cancel Stock Sending No.'%s"
+"Stock Sending was successfully canceled.","Stock Sending was successfully canceled."
+"View Transaction","View Transaction"
+Transaction,Transaction
+"Warehouse transaction does not exist!","Warehouse transaction does not exist!"
+"Send stock to another Warehouse or other destination","Send stock to another Warehouse or other destination"
+"Receive stock from another Warehouse or other source","Receive stock from another Warehouse or other source"
+"Receive stock from Purchase Order Delivery","Receive stock from Purchase Order Delivery"
+"Send stock to Supplier for Return Order","Send stock to Supplier for Return Order"
+"Send stock to Customer for Shipment","Send stock to Customer for Shipment"
+"Receive stock from Customer Refund","Receive stock from Customer Refund"
+view,view
+"ONLY WAREHOUSE","ONLY WAREHOUSE"
+"ONLY SYSTEM","ONLY SYSTEM"
+"BOTH WAREHOUSE AND SYSTEM","BOTH WAREHOUSE AND SYSTEM"
+"Warehouse with the largest product Qty.","Warehouse with the largest product Qty."
+"Warehouse with the smallest product Qty.","Warehouse with the smallest product Qty."
+"Warehouse with the minimum distance to customer’s shipping address","Warehouse with the minimum distance to customer’s shipping address"
+Warehousing,Warehousing
+"Manage Warehouses","Manage Warehouses"
+"Manage Stock","Manage Stock"
+"Adjust Stock","Adjust Stock"
+"Physical Stocktaking","Physical Stocktaking"
+"Cannot transfer Warehouse","Cannot transfer Warehouse"
+"Can transfer Warehouse","Can transfer Warehouse"
+"Send/Request Stock","Send/Request Stock"
+"Can\'t create shipment , there are no warehouse enough stock","Can\'t create shipment , there are no warehouse enough stock"
+"Shipment for order #%s","Shipment for order #%s"
+"Stock Movements","Stock Movements"
+Dashboard,Dashboard
+Enabled,Enabled
+Disabled,Disabled
+"Adjust Stock","Adjust Stock"
+Back,Back
+Reset,Reset
+"Please select a Warehouse to adjust stock","Please select a Warehouse to adjust stock"
+Continue,Continue
+"You have not permission to adjust stock any warehouse!","You have not permission to adjust stock any warehouse!"
+SKU,SKU
+"Excl. Tax","Excl. Tax"
+Total,Total
+"Incl. Tax","Incl. Tax"
+Ordered,Ordered
+Invoiced,Invoiced
+Shipped,Shipped
+Refunded,Refunded
+Canceled,Canceled
+Warehouse,Warehouse
+Supplier,Supplier
+Product,Product
+Price,Price
+Qty,Qty
+"Return to Stock","Return to Stock"
+"Return type","Return type"
+"Return to","Return to"
+"Qty to Refund","Qty to Refund"
+Subtotal,Subtotal
+"Tax Amount","Tax Amount"
+"Discount Amount","Discount Amount"
+"Row Total","Row Total"
+"No Items To Refund","No Items To Refund"
+"Credit Memo Comments","Credit Memo Comments"
+"Refund Totals","Refund Totals"
+"Append Comments","Append Comments"
+"Email Copy of Credit Memo","Email Copy of Credit Memo"
+Sales,Sales
+"Last 30 days sales report","Last 30 days sales report"
+"Unit sold & Order Qty","Unit sold & Order Qty"
+Revenue,Revenue
+"Unit Sold","Unit Sold"
+"Qty Ordered","Qty Ordered"
+Purchases,Purchases
+"Last 30 days purchases report","Last 30 days purchases report"
+"Unit bought & Purchased Qty","Unit bought & Purchased Qty"
+Values,Values
+"Unit bought","Unit bought"
+"Purchased Qty","Purchased Qty"
+"Total Cost","Total Cost"
+"Stock On-Hand","Stock On-Hand"
+"Stock On-Hand Qty Reports","Stock On-Hand Qty Reports"
+"On-Hand Qty","On-Hand Qty"
+"Unit On-Hand","Unit On-Hand"
+"Total Qty","Total Qty"
+"Inventory Valuation","Inventory Valuation"
+"Custom Stock Issuing","Custom Stock Issuing"
+"Please select Warehouse to create custom stock issuing","Please select Warehouse to create custom stock issuing"
+"You have not permission to create custom stock issuing any warehouse!","You have not permission to create custom stock issuing any warehouse!"
+Others,Others
+"Stock Request Information","Stock Request Information"
+Source,Source
+Destination,Destination
+Complete,Complete
+Status,Status
+"Reason(s) for requesting stock","Reason(s) for requesting stock"
+"Import Products to Request Stock","Import Products to Request Stock"
+"Please choose CSV file to import","Please choose CSV file to import"
+Import,Import
+"If you want to request stock for a warehouse by importing loads of products, the structure of CSV file is as follows: <h1><b>SKU,QTY</b></h1>","If you want to request stock for a warehouse by importing loads of products, the structure of CSV file is as follows: <h1><b>SKU,QTY</b></h1>"
+"Example file","Example file"
+Download,Download
+"General Instructions","General Instructions"
+"You can request stock for one of your warehouses from any other sources.","You can request stock for one of your warehouses from any other sources."
+"- If you request stock for a warehouse from another one, the stock transfer will be auto-completed. The Qty. transferred is updated instantly in both warehouses while the total Qty. in your system remains unchanged.","- If you request stock for a warehouse from another one, the stock transfer will be auto-completed. The Qty. transferred is updated instantly in both warehouses while the total Qty. in your system remains unchanged."
+"- If you request stock from other sources besides your warehouses, the total Qty. in your system will be increased correspondingly.","- If you request stock from other sources besides your warehouses, the total Qty. in your system will be increased correspondingly."
+"Select criteria to calculate sales rate","Select criteria to calculate sales rate"
+From:,From:
+To:,To:
+All,All
+Calculate,Calculate
+"Please enter QTY for 1 product at least!","Please enter QTY for 1 product at least!"
+"Stock Sending Information","Stock Sending Information"
+"Reason(s) for sending stock","Reason(s) for sending stock"
+"Import Products to Send Stock","Import Products to Send Stock"
+"Please choose a CSV file to import","Please choose a CSV file to import"
+"If you want to send stock from a warehouse by importing loads of products, the structure of CSV file is as follows: <h1><b>SKU,QTY</b></h1>","If you want to send stock from a warehouse by importing loads of products, the structure of CSV file is as follows: <h1><b>SKU,QTY</b></h1>"
+"Source Warehouse","Source Warehouse"
+"Destination Warehouse","Destination Warehouse"
+Completed,Completed
+"You can send stock from one of your warehouses to any other destinations.","You can send stock from one of your warehouses to any other destinations."
+"- If you send stock from a warehouse to another one, the stock transfer will be auto-completed. The Qty transferred is updated instantly in both warehouses while the total Qty. in your system remains unchanged.","- If you send stock from a warehouse to another one, the stock transfer will be auto-completed. The Qty transferred is updated instantly in both warehouses while the total Qty. in your system remains unchanged."
+"- If you send stock to other destination besides your warehouse, the total Qty. in your system will be subtracted correspondingly.","- If you send stock to other destination besides your warehouse, the total Qty. in your system will be subtracted correspondingly."
+"Import Products to Warehouse","Import Products to Warehouse"
+"If you want to add more products for warehouse by importing loads of products, the structure of CSV file is as follows: <h1><b>SKU</b></h1>","If you want to add more products for warehouse by importing loads of products, the structure of CSV file is as follows: <h1><b>SKU</b></h1>"

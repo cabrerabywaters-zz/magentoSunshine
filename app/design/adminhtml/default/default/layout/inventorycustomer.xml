@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magestore
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    Magestore
+ * @package     Magestore_Inventorysupplyneeds
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<layout version="0.1.0">
+    <inventorycustomeradmin_adminhtml_customer_default>
+        <update handle="inventoryplusadmin_adminhtml_inventory_menu"/>
+    </inventorycustomeradmin_adminhtml_customer_default>
+
+    <inventorycustomeradmin_adminhtml_allcustomers_index>
+        <update handle="inventorycustomeradmin_adminhtml_customer_default"/>
+        <reference name="head">
+            <action method="addJs">
+                <name>magestore/scriptaculous/scriptaculous.js</name>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="inventorycustomer/adminhtml_container" as="container" name="container" template="inventorycustomer/container.phtml">
+                <block type="inventorycustomer/adminhtml_allcustomers_header" as="inventorycustomer_allcustomers_header" name="inventorycustomer_allcustomers_header" template="inventorycustomer/allcustomers/header.phtml"/>
+                <block type="inventorycustomer/adminhtml_allcustomers_grid" as="inventorycustomer_allcustomers_grid" name="inventorycustomer_allcustomers_grid"/>
+            </block> 
+        </reference>
+    </inventorycustomeradmin_adminhtml_allcustomers_index>
+    
+    <inventorycustomeradmin_adminhtml_allcustomers_edit>
+        <update handle="inventorycustomeradmin_adminhtml_customer_default" />
+        <reference name="head">
+            <action method="addJs">
+                <name>prototype/window.js</name>
+            </action>
+            <action method="addItem">
+                <type>js_css</type>
+                <name>prototype/windows/themes/default.css</name>
+            </action>
+            <action method="addCss">
+                <name>lib/prototype/windows/themes/magento.css</name>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/magestore/inventory.css</stylesheet>
+            </action>
+            <action method="addJs">
+                <name>magestore/scriptaculous/scriptaculous.js</name>
+            </action>
+        </reference>
+    </inventorycustomeradmin_adminhtml_allcustomers_edit>
+    
+    <inventorycustomeradmin_adminhtml_allcustomers_newinteraction>
+        <reference name="root">
+            <remove name="header" />
+            <remove name="menu" />
+            <remove name="notifications" />
+            <remove name="footer" />
+        </reference>
+        <reference name="content">
+            <block type="inventorycustomer/adminhtml_allcustomers_edit_tab_customerdetails_newinteraction" as="inventorycustomer_allcustomers_edit_tab_customerdetails_newinteraction" name="inventorycustomer_allcustomers_edit_tab_customerdetails_newinteraction" template="inventorycustomer/allcustomers/edit/tab/customerdetails/newinteraction.phtml"></block>
+        </reference>
+    </inventorycustomeradmin_adminhtml_allcustomers_newinteraction>
+    
+    <inventorycustomeradmin_adminhtml_customertypes_index>
+        <update handle="inventorycustomeradmin_adminhtml_customer_default"/>
+        <reference name="head">
+            <action method="addJs">
+                <name>prototype/window.js</name>
+            </action>
+            <action method="addItem">
+                <type>js_css</type>
+                <name>prototype/windows/themes/default.css</name>
+            </action>
+            <action method="addCss">
+                <name>lib/prototype/windows/themes/magento.css</name>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="inventorycustomer/adminhtml_container" as="container" name="container" template="inventorycustomer/container.phtml">
+                <block type="inventorycustomer/adminhtml_customertypes_header" as="inventorycustomer_customertypes_header" name="inventorycustomer_customertypes_header" template="inventorycustomer/customertypes/header.phtml"/>
+                <block type="inventorycustomer/adminhtml_customertypes_customergrid" as="inventorycustomer_customertypes_customergrid" name="inventorycustomer_customertypes_customergrid" template="inventorycustomer/customertypes/customergrid.phtml">
+                    <block type="inventorycustomer/adminhtml_customertypes_customergrid_countcustomers" as="inventorycustomer_customertypes_customergrid_countcustomers" name="inventorycustomer_customertypes_customergrid_countcustomers"/>
+                    <block type="inventorycustomer/adminhtml_customertypes_customergrid_notsatisfied" as="inventorycustomer_customertypes_customergrid_notsatisfied" name="inventorycustomer_customertypes_customergrid_notsatisfied"/>
+                    <block type="inventorycustomer/adminhtml_customertypes_customergrid_normal" as="inventorycustomer_customertypes_customergrid_normal" name="inventorycustomer_customertypes_customergrid_normal"/>
+                    <block type="inventorycustomer/adminhtml_customertypes_customergrid_vip" as="inventorycustomer_customertypes_customergrid_vip" name="inventorycustomer_customertypes_customergrid_vip"/>
+                </block>
+            </block>
+        </reference>
+    </inventorycustomeradmin_adminhtml_customertypes_index>
+    
+    <inventorycustomeradmin_adminhtml_customertypes_notes>
+        <reference name="root">
+            <remove name="header" />
+            <remove name="menu" />
+            <remove name="notifications" />
+            <remove name="footer" />
+        </reference>
+        <reference name="content">
+            <block type="inventorycustomer/adminhtml_customertypes_customergrid_notes" name="inventorycustomer_customertypes_customergrid_notes" template="inventorycustomer/customertypes/customergrid/notes.phtml"/>
+        </reference>
+    </inventorycustomeradmin_adminhtml_customertypes_notes>       
+    
+    <inventorycustomeradmin_adminhtml_returningcustomers_index>
+        <update handle="inventorycustomeradmin_adminhtml_customer_default"/>
+        <reference name="head">
+            <action method="addJs">
+                <name>prototype/window.js</name>
+            </action>
+            <action method="addItem">
+                <type>js_css</type>
+                <name>prototype/windows/themes/default.css</name>
+            </action>
+            <action method="addCss">
+                <name>lib/prototype/windows/themes/magento.css</name>
+            </action>
+            <action method="addJs">
+                <name>magestore/scriptaculous/scriptaculous.js</name>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="inventorycustomer/adminhtml_container" as="container" name="container" template="inventorycustomer/container.phtml">
+                <block type="inventorycustomer/adminhtml_returningcustomers_header" as="inventorycustomer_returningcustomers_header" name="inventorycustomer_returningcustomers_header" template="inventorycustomer/returningcustomers/header.phtml">
+                    <block type="inventorycustomer/adminhtml_returningcustomers_header_timerange" as="inventorycustomer_returningcustomers_header_timerange" name="inventorycustomer_returningcustomers_header_timerange" template="inventorycustomer/returningcustomers/header/timerange.phtml" />                    
+                </block>
+                <block type="inventorycustomer/adminhtml_returningcustomers_averageratio" as="inventorycustomer_returningcustomers_averageratio" name="inventorycustomer_returningcustomers_averageratio"/>
+                <block type="inventorycustomer/adminhtml_returningcustomers_grid" as="inventorycustomer_returningcustomers_grid" name="inventorycustomer_returningcustomers_grid"/>
+            </block>
+        </reference>
+    </inventorycustomeradmin_adminhtml_returningcustomers_index>
+    
+    <inventorycustomeradmin_adminhtml_todolist_index>
+        <update handle="inventorycustomeradmin_adminhtml_customer_default"/>
+        <reference name="head">
+            <action method="addJs">
+                <name>prototype/window.js</name>
+            </action>
+            <action method="addItem">
+                <type>js_css</type>
+                <name>prototype/windows/themes/default.css</name>
+            </action>
+            <action method="addCss">
+                <name>lib/prototype/windows/themes/magento.css</name>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="inventorycustomer/adminhtml_container" as="container" name="container" template="inventorycustomer/container.phtml">
+                <block type="inventorycustomer/adminhtml_todolist_header" as="inventorycustomer_todolist_header" name="inventorycustomer_todolist_header" template="inventorycustomer/todolist/header.phtml"/>
+                <block type="inventorycustomer/adminhtml_todolist_grid" as="inventorycustomer_todolist_grid" name="inventorycustomer_todolist_grid"/>
+            </block>
+        </reference>
+    </inventorycustomeradmin_adminhtml_todolist_index>
+    
+    <inventorycustomeradmin_adminhtml_manageinteractions_index>
+        <update handle="inventorycustomeradmin_adminhtml_customer_default"/>
+        <reference name="head">
+            <action method="addJs">
+                <name>prototype/window.js</name>
+            </action>
+            <action method="addItem">
+                <type>js_css</type>
+                <name>prototype/windows/themes/default.css</name>
+            </action>
+            <action method="addCss">
+                <name>lib/prototype/windows/themes/magento.css</name>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="inventorycustomer/adminhtml_container" as="container" name="container" template="inventorycustomer/container.phtml">
+                <block type="inventorycustomer/adminhtml_manageinteractions_header" as="inventorycustomer_manageinteractions_header" name="inventorycustomer_manageinteractions_header" template="inventorycustomer/manageinteractions/header.phtml"/>
+                <block type="inventorycustomer/adminhtml_manageinteractions_grid" as="inventorycustomer_manageinteractions_grid" name="inventorycustomer_manageinteractions_grid"/>
+            </block>
+        </reference>
+    </inventorycustomeradmin_adminhtml_manageinteractions_index>
+    
+</layout>

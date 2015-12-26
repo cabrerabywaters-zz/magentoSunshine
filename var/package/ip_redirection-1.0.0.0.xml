@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+    <name>ip_redirection</name>
+    <version>1.0.0.0</version>
+    <stability>stable</stability>
+    <license>GNU General Public Licence (GPL)</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Custom Redirection after Login, Logged Out and signup into the website.</summary>
+    <description>Custom Redirection after Login, Logged Out and signup into the website.</description>
+    <notes>Custom Redirection after Login, Logged Out and signup into the website.</notes>
+    <authors><author><name>iPragmatech</name><user>iPragmatech</user><email>info@ipragmatech.com</email></author></authors>
+    <date>2014-11-16</date>
+    <time>12:54:18</time>
+    <contents><target name="magelocal"><dir name="Ip"><dir name="Redirection"><dir name="Controller"><file name="Observer.php" hash="6e7b3415242233316fd355eab6df5b0c"/></dir><dir name="Helper"><file name="Data.php" hash="c5d3bc6c7c0cf0b585aa1c51de622d64"/></dir><dir name="Model"><dir name="Observer"><file name="Customer.php" hash="cf58b706dd6b06dbfffa9c42a5affab9"/></dir></dir><dir name="etc"><file name="adminhtml.xml" hash="4424bcfa0900076ebebdbcd2da71def2"/><file name="config.xml" hash="71aa30bf9e51c9c8febad768444adc0e"/><file name="system.xml" hash="84d02bc1a940c9819b361de2f8143470"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Ip_Redirection.xml" hash="24b4c0043c79fb9b10818fcec9bfb5fd"/></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.3.0</min><max>6.0.0</max></php></required></dependencies>
+</package>

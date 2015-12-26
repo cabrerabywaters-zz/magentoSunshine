@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * MageWorx
+ * Multi Fees Extension
+ *
+ * @category   MageWorx
+ * @package    MageWorx_MultiFees
+ * @copyright  Copyright (c) 2015 MageWorx (http://www.mageworx.com/)
+ */
+-->
+<config>
+    <modules>
+        <MageWorx_MultiFees>
+            <active>true</active>
+            <codePool>community</codePool>
+            <extension_name>Multi Fees</extension_name>
+            <depends>
+                <MageWorx_All/>
+            </depends>
+        </MageWorx_MultiFees>
+    </modules>
+</config>

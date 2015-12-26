@@ -1,0 +1,15 @@
+<?php
+/**
+ * MageWorx
+ * Multi Fees Extension
+ *
+ * @category   MageWorx
+ * @package    MageWorx_MultiFees
+ * @copyright  Copyright (c) 2015 MageWorx (http://www.mageworx.com/)
+ */
+?>
+<script type="text/javascript">
+//<![CDATA[
+    MultiFees.updateBlock($$('div.cart', 'div.layout-1column'),<?php echo Zend_Json::encode(preg_replace('/document\.write\(.+?\);/is', '', $this->getBlockHtml('checkout.cart'))); ?>);
+//]]>
+</script>

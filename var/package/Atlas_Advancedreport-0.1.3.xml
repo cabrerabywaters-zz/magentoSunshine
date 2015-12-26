@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+    <name>Atlas_Advancedreport</name>
+    <version>0.1.3</version>
+    <stability>stable</stability>
+    <license>Open Software License</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Atlas Advancedreports extension used for get Sales Revenue report and Product unique sales report.</summary>
+    <description>Atlas Advancedreports extension generate Sales Revenue And Unique product sales report for particular date range.</description>
+    <notes>In 0.1.3 added one more column - Product SKU into unique product report. And fix ACL resource permission issue.</notes>
+    <authors><author><name>Atlas softweb pvt ltd</name><user>atlas</user><email>helpdesk@atlassoftweb.com</email></author></authors>
+    <date>2015-08-05</date>
+    <time>12:28:54</time>
+    <contents><target name="magecommunity"><dir name="Atlas"><dir name="Advancedreports"><dir name="Block"><dir name="Adminhtml"><dir name="System"><dir name="Config"><dir name="Fieldset"><file name="Contactus.php" hash="5ef64b6a37fd6c13d8be4c9a6ebfa88a"/></dir></dir></dir></dir><dir name="Report"><dir name="Revenue"><dir name="Orders"><file name="Grid.php" hash="875228ac5851cc895d6cc573e5e5f53e"/></dir><file name="Orders.php" hash="9f74ba78bf5f8010309cf7a017c4326d"/><dir name="Product"><file name="Grid.php" hash="1819b0b35c2078d13e4af97d9e3255e2"/></dir><file name="Product.php" hash="76b7a51cd80a0ac26181a41349e2234c"/></dir></dir></dir><dir name="Helper"><file name="Data.php" hash="fd25eb3b62d1b2e2186b6e42bb424ccc"/></dir><dir name="Model"><dir name="Mysql4"><dir name="Order"><file name="Collection.php" hash="ac5cf3ab31dea003d533c8e418b9f511"/></dir><dir name="Product"><file name="Collection.php" hash="44cc47065403b43cb73393aa1888e65a"/></dir><dir name="Report"><file name="Collection.php" hash="b9005c9d8661d1046b3f152df5820b16"/><dir name="Revenue"><file name="Collection.php" hash="922196dbfa38928d8b3f67667e23b7d0"/></dir></dir></dir><dir name="Resource"><dir name="Product"><file name="Collection.php" hash="bddf1399e569f5fa35571acf34a980d5"/></dir></dir></dir><dir name="controllers"><dir name="Report"><file name="RevenueController.php" hash="0e0366abc71d203897b5b1753d1f6110"/></dir></dir><dir name="etc"><file name="adminhtml.xml" hash="febb571b78720eb3a5af1ed4cff5a3bf"/><file name="config.xml" hash="df35121afd90a32b22937330b9d4c6d3"/><file name="system.xml" hash="bf889c98e491589bd0f725975f90ffec"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Atlas_Advancedreports.xml" hash="cc35ef555950f7162137f45982b78cd0"/></dir></target><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="template"><dir name="atlas"><dir name="advancedreports"><file name="gChart.php" hash="f500df196eba43a2b8210f19cf4c6bd4"/><file name="grid.phtml" hash="d4ef14f236316bebfb8fdcea88c9ba88"/><file name="gridproduct.phtml" hash="b94e33af739a07131bc681639687618b"/><dir name="system"><dir name="config"><dir name="fieldset"><file name="contactus.phtml" hash="2ddcd50b5cc148f058f9566480c77c9f"/></dir></dir></dir></dir></dir></dir><dir name="layout"><dir name="atlas"><dir name="advancedreports"><file name="advancedreports.xml" hash="0368ca062d320e7dbdc9fe5d49693754"/></dir></dir></dir></dir></dir></dir></target><target name="mageskin"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="atlas"><file name="atlas.png" hash="a4eff43f624f864a61002c176b0080ba"/><file name="atlassoftweb.png" hash="4f5cefbf92c7d4fca934c8acef93b854"/></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.1.0</min><max>5.7.0</max></php></required></dependencies>
+</package>

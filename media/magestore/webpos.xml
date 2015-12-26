@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<wpos>
+  <webpos_admin_adminlogout>http://cl.sunshineandina.com/index.php/sunshin4_admin/index/logout/key/27e9a664d78422c3d20c48c9b74afd4a/</webpos_admin_adminlogout>
+  <webpos_admin_adminlogin>http://cl.sunshineandina.com/index.php/webposadmin/adminhtml_webpos/index/key/87d05085c17d785aa5635c45ab853ef7/</webpos_admin_adminlogin>
+  <firstname>Jennifer</firstname>
+  <lastname>Maureira</lastname>
+  <username>Jennifer Maureira</username>
+  <webpos_admin_settingslink>http://cl.sunshineandina.com/index.php/webposadmin/adminhtml_config/edit/section/webpos/frompos/1/key/4867019b72c75a1dc8baa0e34572b424/</webpos_admin_settingslink>
+</wpos>

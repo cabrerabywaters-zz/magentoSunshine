@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Magik_Quickview>
+            <version>0.0.1</version>
+        </Magik_Quickview>
+    </modules>
+
+    <global>
+        <blocks>
+            <quickview>
+                <class>Magik_Quickview_Block</class>
+            </quickview>
+        </blocks>
+        <helpers>
+            <quickview>
+                <class>Magik_Quickview_Helper</class>
+            </quickview>
+        </helpers>
+
+        <models>
+            <quickview>
+                <class>Magik_Quickview_Model</class>
+            </quickview>
+        </models>
+    </global>
+    
+    <frontend>
+        <routers>
+            <quickview>
+                <use>standard</use>
+                <args>
+                    <module>Magik_Quickview</module>
+                    <frontName>quickview</frontName>
+                </args>
+            </quickview>
+        </routers>
+        <layout>
+            <updates>
+                <quickview>
+                    <file>magik_quickview.xml</file>
+                </quickview>
+            </updates>
+        </layout>
+    </frontend>
+   </config>

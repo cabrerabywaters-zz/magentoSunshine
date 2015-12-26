@@ -1,0 +1,57 @@
+<table>
+    <tr id="count_customers_block">
+        <?php echo $this->getChildHtml('inventorycustomer_customertypes_customergrid_countcustomers'); ?>
+    </tr>
+    <tr>
+        <td><?php echo $this->getChildHtml('inventorycustomer_customertypes_customergrid_notsatisfied'); ?><div id="div3" ondrop="handleDrop(event)" ondragover="allowDrop(event)" class="customer-types-grid-last-row"></div></td>
+        <td><?php echo $this->getChildHtml('inventorycustomer_customertypes_customergrid_normal'); ?><div id="div2" ondrop="handleDrop(event)" ondragover="allowDrop(event)" class="customer-types-grid-last-row"></div></td>
+        <td><?php echo $this->getChildHtml('inventorycustomer_customertypes_customergrid_vip'); ?><div id="div1" ondrop="handleDrop(event)" ondragover="allowDrop(event)" class="customer-types-grid-last-row"></div></td>
+    </tr>
+</table>
+
+<!--Open pop up window-->
+<script type="text/javascript">
+
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function handleDrag(ev) {
+        ev.dataTransfer.setData("id", ev.target.id);
+    }
+
+    function handleDrop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("id");
+        var customerId = data.substring(8);
+        var customerType = ev.target.id.substring(3);
+        changeCustomerType(customerId, customerType);
+    }
+
+    function changeCustomerType(customerId, customerType) {
+        Element.show('loading-mask');
+        var parameters = {customerId: customerId, customerType: customerType};
+        var url = '<?php echo Mage::helper('adminhtml')->getUrl('inventorycustomeradmin/adminhtml_customertypes/changetype') ?>';
+        var request = new Ajax.Request(url, {
+            method: 'post',
+            parameters: parameters,
+            onFailure: '',
+            onComplete: function (response) {
+                if (response.status == 200) {
+                    var result = response.responseText.evalJSON();
+                    if (result.success == 1) {
+                        $('count_customers_block').update(result.countCustomersBlockHtml);
+                        normalcustomersGridJsObject.reload();
+                        notsatisfiedcustomersGridJsObject.reload();
+                        vipcustomersGridJsObject.reload();
+                    } else {
+                        Element.hide('loading-mask');
+                        alert("Failed!");
+                        location.reload();
+                    }
+                }
+            }
+        });
+    }
+
+</script>

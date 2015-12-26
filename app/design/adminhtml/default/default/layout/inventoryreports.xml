@@ -1,0 +1,293 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magestore
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    Magestore
+ * @package     Magestore_Inventorysupplyneeds
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<layout version="0.1.0">
+    <inventoryreportsadmin_adminhtml_report_default>
+        <update handle="inventoryplusadmin_adminhtml_inventory_menu" />
+        <reference name="content">
+            <block type="adminhtml/template" name="dashboard_inventory_js" template="inventoryreports/charts/js.phtml" />
+            <block type="inventoryreports/adminhtml_reportcontent" as="report" name="report" template="inventoryreports/report.phtml">                                            
+                <block type="inventoryreports/adminhtml_header" as="report_header" name="report_header" template="inventoryreports/header.phtml">              
+                    <block type="inventoryreports/adminhtml_header_timeselect" as="header_timeselect" name="header_timeselect" />
+                    <block type="inventoryreports/adminhtml_header_reportselect" as="header_reportselect" name="header_reportselect" />
+                    <block type="inventoryreports/adminhtml_header_others" as="header_others" name="header_others" />
+                </block>
+                <block type="inventoryreports/adminhtml_template" as="report_content" name="report_content" template="inventoryreports/report_content.phtml" />                                                                                                                                 
+            </block> 
+        </reference>        
+    </inventoryreportsadmin_adminhtml_report_default>    
+
+    <inventoryreportsadmin_adminhtml_report_dashboard>
+        <update handle="inventoryplusadmin_adminhtml_inventory_menu" />
+        <reference name="content">
+            <block type="inventoryreports/adminhtml_dashboard" as="report_dashboard" name="report_dashboard" template="inventoryreports/report_dashboard.phtml" />
+        </reference>
+    </inventoryreportsadmin_adminhtml_report_dashboard>
+    
+    <inventoryreportsadmin_adminhtml_report_sales>
+        <update handle="inventoryreportsadmin_adminhtml_report_default" />
+        <reference name="report_content">
+            <!-- Order Reports -->
+            <block type="inventoryreports/adminhtml_reportcontent_reportbyorder_chart" as="report_order_chart" name="inventory_report_reportcontent_reportbyorder_chart" template="inventoryreports/content/chart/chart-content/order/chart.phtml" />
+            <block type="inventoryreports/adminhtml_reportcontent_reportbyorder_grid" as="report_order_grid" name="inventory_report_reportcontent_reportbyorder" />        
+        </reference>        
+    </inventoryreportsadmin_adminhtml_report_sales>
+    
+    
+    <inventoryreportsadmin_adminhtml_report_stockonhand>
+        <update handle="inventoryreportsadmin_adminhtml_report_default" />
+        <reference name="report_content">
+            <!-- Product Reports -->
+            <block type="inventoryreports/adminhtml_reportcontent_reportbystockonhand_chart" as="report_stockonhand_chart" name="inventory_report_stockonhand_inventorybystockonhand_chart"/>
+            <block type="inventoryreports/adminhtml_reportcontent_reportbystockonhand_grid_moststockremain" as="report_stockonhand_stockonhandgrid_moststockremain" name="inventory_report_reportcontent_reportbystockonhand_moststockremain"/>    
+        </reference>        
+    </inventoryreportsadmin_adminhtml_report_stockonhand>
+    
+    <inventoryreportsadmin_adminhtml_report_warehouse>
+        <update handle="inventoryreportsadmin_adminhtml_report_default" />
+        <reference name="report_content">
+            <!-- Warehouse Reports -->
+            <block type="inventoryreports/adminhtml_reportcontent_reportbywarehouse_chart" as="report_warehouse_chart" name="inventory_report_warehouse_inventorybywarehouse_chart"/>  <!--template="inventoryreports/content/chart/chart-content/warehouse/chart.phtml" -->
+            <block type="inventoryreports/adminhtml_reportcontent_reportbywarehouse_warehousegrid" as="report_warehouse_warehousegrid" name="inventory_report_reportcontent_reportbywarehouse" template="inventoryreports/content/grid/warehouse/grid/grid.phtml" >
+                <block type="inventoryreports/adminhtml_reportcontent_reportbywarehouse_grid_numberofproductadjuststock" as="report_warehouse_warehousegrid_numberofproductadjuststock" name="inventory_report_reportcontent_reportbywarehouse_numberofproductadjuststock"/>
+                <block type="inventoryreports/adminhtml_reportcontent_reportbywarehouse_grid_salesbywarehouseitemshipped" as="report_warehouse_warehousegrid_salesbywarehouseitemshipped" name="inventory_report_reportcontent_reportbywarehouse_salesbywarehouseitemshipped"/>
+                <block type="inventoryreports/adminhtml_reportcontent_reportbywarehouse_grid_salesbywarehouserevenue" as="report_warehouse_warehousegrid_salesbywarehouserevenue" name="inventory_report_reportcontent_reportbywarehouse_salesbywarehouserevenue"/>
+                <block type="inventoryreports/adminhtml_reportcontent_reportbywarehouse_grid_supplyneedsbywarehouseproducts" as="report_warehouse_warehousegrid_supplyneedsbywarehouseproducts" name="inventory_report_reportcontent_reportbywarehouse_supplyneedsbywarehouseproducts"/>
+                <block type="inventoryreports/adminhtml_reportcontent_reportbywarehouse_grid_totalorderbywarehouse" as="report_warehouse_warehousegrid_totalorderbywarehouse" name="inventory_report_reportcontent_reportbywarehouse_totalorderbywarehouse"/>
+                <block type="inventoryreports/adminhtml_reportcontent_reportbywarehouse_grid_totalqtyadjuststock" as="report_warehouse_warehousegrid_totalqtyadjuststock" name="inventory_report_reportcontent_reportbywarehouse_totalqtyadjuststock"/>
+                <block type="inventoryreports/adminhtml_reportcontent_reportbywarehouse_grid_stocktakingvariance" as="inventory_reportbywarehouse_stocktakingvariance" name="inventory_reportbywarehouse_stocktakingvariance"/>
+                <block type="inventoryreports/adminhtml_reportcontent_reportbywarehouse_grid_totalstocktransferrequeststock" as="report_warehouse_warehousegrid_totalstocktransferrequeststock" name="inventory_report_reportcontent_reportbywarehouse_totalstocktransferrequeststock"/>
+                <block type="inventoryreports/adminhtml_reportcontent_reportbywarehouse_grid_totalstocktransfersendstock" as="report_warehouse_warehousegrid_totalstocktransfersendstock" name="inventory_report_reportcontent_reportbywarehouse_totalstocktransfersendstock"/>
+            </block>        
+        </reference>        
+    </inventoryreportsadmin_adminhtml_report_warehouse>
+    
+    <inventoryreportsadmin_adminhtml_report_purchaseorder>
+        <update handle="inventoryreportsadmin_adminhtml_report_default" />
+        <reference name="report_content">                    
+            <block type="inventoryreports/adminhtml_reportcontent_purchaseorder_chart" as="report_supplier_chart" name="reportcontent_purchaseorder_chart" template="inventoryreports/content/chart/chart-content/purchaseorder/chart.phtml" />
+            <block type="inventoryreports/adminhtml_reportcontent_purchaseorder_grid" as="reportcontent_purchaseorder_grid" name="reportcontent_purchaseorder_grid" />           
+        </reference>        
+    </inventoryreportsadmin_adminhtml_report_purchaseorder>    
+    
+    <inventoryreportsadmin_adminhtml_report_stockmovement>
+        <update handle="inventoryreportsadmin_adminhtml_report_default" />
+        <reference name="report_content">
+            <!-- Stock movements Reports-->
+            <block type="inventoryreports/adminhtml_reportcontent_reportbymovement_chart" as="report_stockmovement_chart" name="inventory_report_reportcontent_reportbymovement_chart" template="inventoryreports/content/chart/chart-content/stockmovement/chart.phtml" />
+            <block type="inventoryreports/adminhtml_reportcontent_reportbymovement_grid" as="report_stockmovement_grid" name="inventory_report_reportcontent_reportbymovement_grid" />        
+        </reference>        
+    </inventoryreportsadmin_adminhtml_report_stockmovement>
+    
+    <inventoryreportsadmin_adminhtml_report_customer>
+        <update handle="inventoryreportsadmin_adminhtml_report_default" />
+        <reference name="report_content">
+            <!-- Customer -->
+            <block type="inventoryreports/adminhtml_reportcontent_reportbycustomer_chart" as="report_customer_chart" name="inventory_report_reportcontent_reportbycustomer_chart" template="inventoryreports/content/chart/chart-content/customer/chart.phtml" />
+            <block type="inventoryreports/adminhtml_reportcontent_reportbycustomer_grid" as="report_customer_grid" name="inventory_report_reportcontent_reportbycustomer_grid" />        
+        </reference>        
+    </inventoryreportsadmin_adminhtml_report_customer>
+    
+    <inventoryreportsadmin_adminhtml_report_reportmovementgrid>
+        <block type="core/text_list" name="root">
+            <block type="inventoryreports/adminhtml_reportcontent_reportbymovement_grid" as="report_stockmovement_grid" name="inventory_report_reportcontent_reportbymovement_grid" />
+        </block>
+    </inventoryreportsadmin_adminhtml_report_reportmovementgrid>
+    <inventoryreportsadmin_adminhtml_report_reportcustomergrid>
+        <block type="core/text_list" name="root">
+            <block type="inventoryreports/adminhtml_reportcontent_reportbycustomer_grid" as="report_customer_grid" name="inventory_report_reportcontent_reportbycustomer_grid" />
+        </block>
+    </inventoryreportsadmin_adminhtml_report_reportcustomergrid>
+    <inventoryreportsadmin_adminhtml_report_reportordergrid>
+        <block type="core/text_list" name="root">
+            <block type="inventoryreports/adminhtml_reportcontent_reportbyorder_grid" as="report_order_grid" name="inventory_report_reportcontent_reportbyorder" />
+        </block>
+    </inventoryreportsadmin_adminhtml_report_reportordergrid>
+    <inventoryreportsadmin_adminhtml_report_reportinvoicegrid>
+        <block type="core/text_list" name="root">
+            <block type="inventoryreports/adminhtml_reportcontent_reportbyorder_grid_invoice" as="report_order_grid_invoice" name="inventory_report_reportcontent_reportbyorder_invoice" />
+        </block>
+    </inventoryreportsadmin_adminhtml_report_reportinvoicegrid>
+    <inventoryreportsadmin_adminhtml_report_reportcreditmemogrid>
+        <block type="core/text_list" name="root">
+            <block type="inventoryreports/adminhtml_reportcontent_reportbyorder_grid_creditmemo" as="report_order_grid_creditmemo" name="inventory_report_reportcontent_reportbyorder_creditmemo" />
+        </block>
+    </inventoryreportsadmin_adminhtml_report_reportcreditmemogrid>
+    
+    <inventoryreportsadmin_adminhtml_report_inventorybysuppliergrid>
+        <block type="core/text_list" name="root">
+            <block type="inventoryreports/adminhtml_reportcontent_reportbysupplier_grid_supplier" as="report_supplier_suppliergrid_supplier" name="inventory_report_reportcontent_reportbysupplier_grid_supplier" />
+        </block>
+    </inventoryreportsadmin_adminhtml_report_inventorybysuppliergrid>
+    
+    <inventoryreportsadmin_adminhtml_report_totalqtyadjuststockgrid>
+        <block type="core/text_list" name="root">
+            <block type="inventoryreports/adminhtml_reportcontent_reportbywarehouse_grid_totalqtyadjuststock" as="report_warehouse_warehousegrid_totalqtyadjuststock" name="inventory_report_reportcontent_reportbywarehouse_totalqtyadjuststock"/>           
+        </block>
+    </inventoryreportsadmin_adminhtml_report_totalqtyadjuststockgrid>
+    
+    <inventoryreportsadmin_adminhtml_report_numberofproductadjuststockgrid>
+        <block type="core/text_list" name="root">
+            <block type="inventoryreports/adminhtml_reportcontent_reportbywarehouse_grid_numberofproductadjuststock" as="report_warehouse_warehousegrid_numberofproductadjuststock" name="inventory_report_reportcontent_reportbywarehouse_numberofproductadjuststock"/>
+        </block>
+    </inventoryreportsadmin_adminhtml_report_numberofproductadjuststockgrid>
+    
+    <inventoryreportsadmin_adminhtml_report_totalorderbywarehousegrid>
+        <block type="core/text_list" name="root">
+            <block type="inventoryreports/adminhtml_reportcontent_reportbywarehouse_grid_totalorderbywarehouse" as="report_warehouse_warehousegrid_totalorderbywarehouse" name="inventory_report_reportcontent_reportbywarehouse_totalorderbywarehouse"/>
+        </block>
+    </inventoryreportsadmin_adminhtml_report_totalorderbywarehousegrid>
+    
+    <inventoryreportsadmin_adminhtml_report_salesbywarehouserevenuegrid>
+        <block type="core/text_list" name="root">
+            <block type="inventoryreports/adminhtml_reportcontent_reportbywarehouse_grid_salesbywarehouserevenue" as="report_warehouse_warehousegrid_salesbywarehouserevenue" name="inventory_report_reportcontent_reportbywarehouse_salesbywarehouserevenue"/>
+        </block>
+    </inventoryreportsadmin_adminhtml_report_salesbywarehouserevenuegrid>
+    
+    <inventoryreportsadmin_adminhtml_report_salesbywarehouseitemshippedgrid>
+        <block type="core/text_list" name="root">
+            <block type="inventoryreports/adminhtml_reportcontent_reportbywarehouse_grid_salesbywarehouseitemshipped" as="report_warehouse_warehousegrid_salesbywarehouseitemshipped" name="inventory_report_reportcontent_reportbywarehouse_salesbywarehouseitemshipped"/>
+        </block>
+    </inventoryreportsadmin_adminhtml_report_salesbywarehouseitemshippedgrid>
+    
+    
+    <inventoryreportsadmin_adminhtml_report_totalstocktransfersendstockgrid>
+        <block type="core/text_list" name="root">
+            <block type="inventoryreports/adminhtml_reportcontent_reportbywarehouse_grid_totalstocktransfersendstock" as="report_warehouse_warehousegrid_totalstocktransfersendstock" name="inventory_report_reportcontent_reportbywarehouse_totalstocktransfersendstock"/>
+        </block>
+    </inventoryreportsadmin_adminhtml_report_totalstocktransfersendstockgrid>
+    
+    <inventoryreportsadmin_adminhtml_report_totalstocktransferrequeststockgrid>
+        <block type="core/text_list" name="root">
+            <block type="inventoryreports/adminhtml_reportcontent_reportbywarehouse_grid_totalstocktransferrequeststock" as="report_warehouse_warehousegrid_totalstocktransferrequeststock" name="inventory_report_reportcontent_reportbywarehouse_totalstocktransferrequeststock"/>
+        </block>
+    </inventoryreportsadmin_adminhtml_report_totalstocktransferrequeststockgrid>
+    
+    <inventoryreportsadmin_adminhtml_report_supplyneedsbywarehouseproductsgrid>
+        <block type="core/text_list" name="root">
+            <block type="inventoryreports/adminhtml_reportcontent_reportbywarehouse_grid_supplyneedsbywarehouseproducts" as="report_warehouse_warehousegrid_supplyneedsbywarehouseproducts" name="inventory_report_reportcontent_reportbywarehouse_supplyneedsbywarehouseproducts"/>
+        </block>
+    </inventoryreportsadmin_adminhtml_report_supplyneedsbywarehouseproductsgrid>
+    
+    <inventoryreportsadmin_adminhtml_report_totalstockdifferentwhenphysicalstocktakingbywarehousegrid>
+        <block type="core/text_list" name="root">
+            <block type="inventoryreports/adminhtml_reportcontent_reportbywarehouse_grid_totalstockdifferentwhenphysicalstocktakingbywarehouse" as="report_warehouse_warehousegrid_totalstockdifferentwhenphysicalstocktakingbywarehouse" name="inventory_report_reportcontent_reportbywarehouse_totalstockdifferentwhenphysicalstocktakingbywarehouse"/>
+        </block>
+    </inventoryreportsadmin_adminhtml_report_totalstockdifferentwhenphysicalstocktakingbywarehousegrid>
+    
+    <inventoryreportsadmin_adminhtml_report_bestsellergrid>
+        <block type="core/text_list" name="root">
+            <block type="inventoryreports/adminhtml_reportcontent_reportbyproduct_grid_bestseller" as="report_product_productgrid_bestseller" name="inventory_report_reportcontent_reportbyproduct_bestseller"/>
+        </block>
+    </inventoryreportsadmin_adminhtml_report_bestsellergrid>
+
+    <inventoryreportsadmin_adminhtml_report_moststockremaingrid>
+        <block type="core/text_list" name="root">
+            <block type="inventoryreports/adminhtml_reportcontent_reportbyproduct_grid_moststockremain" as="report_product_productgrid_moststockremain" name="inventory_report_reportcontent_reportbyproduct_moststockremain"/>
+        </block>
+    </inventoryreportsadmin_adminhtml_report_moststockremaingrid>
+    
+    <inventoryreportsadmin_adminhtml_report_stockonhandmoststockremaingrid>
+        <block type="core/text_list" name="root">
+            <block type="inventoryreports/adminhtml_reportcontent_reportbystockonhand_grid_moststockremain" as="report_stockonhand_stockonhandgrid_moststockremain" name="inventory_report_reportcontent_reportbystockonhand_moststockremain"/>
+        </block>
+    </inventoryreportsadmin_adminhtml_report_stockonhandmoststockremaingrid>
+    
+    <inventoryreportsadmin_adminhtml_report_warehousingtimelongestgrid>
+        <block type="core/text_list" name="root">
+            <block type="inventoryreports/adminhtml_reportcontent_reportbyproduct_grid_warehousingtimelongest" as="report_product_productgrid_warehousingtimelongest" name="inventory_report_reportcontent_reportbyproduct_warehousingtimelongest"/>
+        </block>
+    </inventoryreportsadmin_adminhtml_report_warehousingtimelongestgrid>
+    
+    <inventoryreportsadmin_adminhtml_report_purchaseordergrid>
+        <block type="core/text_list" name="root">
+            <block type="inventoryreports/adminhtml_reportcontent_purchaseorder_grid" as="adminhtml_reportcontent_purchaseorder_grid" name="adminhtml_reportcontent_purchaseorder_grid" />
+        </block>
+    </inventoryreportsadmin_adminhtml_report_purchaseordergrid>
+        
+    <inventoryreportsadmin_adminhtml_sales_orders>
+        <reference name="root">
+            <remove name="header" />
+            <remove name="menu" />
+            <remove name="notifications" />
+        </reference>
+        <reference name="content">                                            
+            <block type="inventoryreports/adminhtml_list_order" name="inventoryreport_list_order" /> 
+        </reference>        
+    </inventoryreportsadmin_adminhtml_sales_orders>
+    <inventoryreportsadmin_adminhtml_sales_ordersgrid>
+        <reference name="root">
+            <remove name="header" />
+            <remove name="menu" />
+            <remove name="notifications" />
+        </reference>
+        <block type="core/text_list" name="root">
+            <block type="inventoryreports/adminhtml_list_order_grid" name="inventoryreport_list_order_grid" /> 
+        </block>
+    </inventoryreportsadmin_adminhtml_sales_ordersgrid>
+    <inventoryreportsadmin_adminhtml_product_details>
+        <reference name="root">
+            <remove name="header" />
+            <remove name="menu" />
+            <remove name="notifications" />
+        </reference>
+        <reference name="content">                                            
+            <block type="inventoryreports/adminhtml_list_product" name="inventoryreport_list_product" /> 
+        </reference>        
+    </inventoryreportsadmin_adminhtml_product_details>
+    <inventoryreportsadmin_adminhtml_product_detailsgrid>
+        <reference name="root">
+            <remove name="header" />
+            <remove name="menu" />
+            <remove name="notifications" />
+        </reference>
+        <block type="core/text_list" name="root">
+            <block type="inventoryreports/adminhtml_list_product_grid" name="inventoryreport_list_product_grid" /> 
+        </block>
+    </inventoryreportsadmin_adminhtml_product_detailsgrid>
+    <inventoryreportsadmin_adminhtml_inventoryreports_purchaseordergrid>
+        <reference name="root">
+            <remove name="header" />
+            <remove name="menu" />
+            <remove name="notifications" />
+        </reference>
+        <block type="core/text_list" name="root">
+            <block type="inventoryreports/adminhtml_list_purchaseorder_grid" name="inventoryreport_list_purchaseorder_grid" /> 
+        </block>
+    </inventoryreportsadmin_adminhtml_inventoryreports_purchaseordergrid>
+    <inventoryreportsadmin_adminhtml_inventoryreports_purchaseorder>
+        <reference name="root">
+            <remove name="header" />
+            <remove name="menu" />
+            <remove name="notifications" />
+        </reference>
+        <reference name="content">   
+            <block type="inventoryreports/adminhtml_list_purchaseorder" name="inventoryreport_list_purchaseorder" /> 
+        </reference>
+    </inventoryreportsadmin_adminhtml_inventoryreports_purchaseorder> 
+    <inventoryreportsadmin_adminhtml_product_chart>
+        <block type="core/text_list" name="root">
+            <block type="adminhtml/template" name="dashboard_inventory_js" template="inventoryreports/charts/js.phtml" />
+            <block type="inventoryreports/adminhtml_reportcontent_product_chart" name="adminhtml_reportcontent_product_chart" template="inventoryreports/charts/product.phtml"/>
+        </block>
+    </inventoryreportsadmin_adminhtml_product_chart>       
+</layout>

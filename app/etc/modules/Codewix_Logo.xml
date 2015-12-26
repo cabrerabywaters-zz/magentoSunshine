@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Codewix_Logo>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                Mage_Page
+            </depends>
+        </Codewix_Logo>
+    </modules>
+</config>

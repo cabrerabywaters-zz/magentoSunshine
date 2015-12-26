@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<config>
+ <global>
+  <cms>
+   <layouts>
+    <custom_static_page_one>
+     <label>CMS layout</label>
+     <template>page/cms-layout.phtml</template>
+    </custom_static_page_one>     
+    <custom_static_page_two>
+     <label>CMS layout two</label>
+     <template>page/cms-layout-one.phtml</template>
+    </custom_static_page_two>  
+    <custom_static_page_three>
+     <label>CMS layout three</label>
+     <template>page/cms-layout-three.phtml</template>
+    </custom_static_page_three>
+    <custom_static_page_four>
+     <label>CMS layout four</label>
+     <template>page/cms-layout-four.phtml</template>
+    </custom_static_page_four>
+    <custom_static_page_five>
+     <label>CMS layout five</label>
+     <template>page/cms-layout-five.phtml</template>
+    </custom_static_page_five>
+    <custom_static_page_six>
+     <label>CMS layout six</label>
+     <template>page/cms-layout-six.phtml</template>
+    </custom_static_page_six>
+     <custom_static_page_six_peru>
+     <label>CMS layout six peru</label>
+     <template>page/cms-layout-six-peru.phtml</template>
+    </custom_static_page_six_peru>
+    <custom_static_page_six_brasil>
+     <label>CMS layout six brasil</label>
+     <template>page/cms-layout-six-brasil.phtml</template>
+    </custom_static_page_six_brasil>
+    <custom_static_page_six_espana>
+     <label>CMS layout six espana</label>
+     <template>page/cms-layout-six-espana.phtml</template>
+    </custom_static_page_six_espana>
+    <custom_static_page_seven>
+     <label>CMS layout seven</label>
+     <template>page/cms-layout-seven.phtml</template>
+    </custom_static_page_seven>
+    <custom_static_page_eight>
+     <label>CMS layout eight</label>
+     <template>page/cms-layout-eight.phtml</template>
+    </custom_static_page_eight>
+   </layouts>
+  </cms>
+ </global>
+</config>

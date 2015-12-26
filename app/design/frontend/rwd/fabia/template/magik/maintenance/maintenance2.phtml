@@ -1,0 +1,87 @@
+<?php ?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><?php echo $this->__('Fabia - Responsive HTML5 Coming Soon Template') ?></title>
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl(); ?>css/bootstrap9.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl(); ?>css/style9.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl(); ?>css/responsive9.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl(); ?>css/TimeCircles9.css" type="text/css" />
+<!-- Font Awesome -->
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<!-- Added google font -->
+<link href='http://fonts.googleapis.com/css?family=Lato:400,700|Lobster|Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="bg">
+<div class="bg-color">
+<div class="container content">
+<div class="row">
+<div class="sun clearfix">
+    <div class="col-sm-12">
+	<div class="logo"><img class="img-responsive" src="<?php echo $this->getSkinUrl('images/maintenancelogo2.png');?>" alt="tab"/></div>
+	<h3>we are almost ready to</h3>
+	<h2>Launch our website</h2>        
+    </div>
+						
+						<div class="col-sm-12">
+							<div class="row">
+							   <div class="col-sm-offset-1 col-sm-10">
+									<div class="timing">
+									<?php $storeId = Mage::app()->getStore()->getStoreId();
+									      $commingsoonTimer = Mage::getStoreConfig('mainmodesec/general/commingsoon', $storeId);
+									      if($commingsoonTimer == ''){ $commingsoonTimer='2016-01-15 10:00:00';
+									      }
+									?>
+										<div id="count-down" data-date="<?php echo $commingsoonTimer;?>">
+											
+										</div>
+									</div>
+									<!-- /.timing -->
+							   </div>
+							</div>                    
+							<p class="followus"></p>
+							<ul class="social-icon">
+								<li><a href="<?php echo Mage::getStoreConfig('fabiasettings/fabiasettings_social/facebook_social_link_path') ?>"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="<?php echo Mage::getStoreConfig('fabiasettings/fabiasettings_social/twitter_social_link_path') ?>"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="<?php echo Mage::getStoreConfig('fabiasettings/fabiasettings_social/googleplus_social_link_path') ?>"><i class="fa fa-google-plus"></i></a></li>
+								<li><a href="<?php echo Mage::getStoreConfig('fabiasettings/fabiasettings_social/pinterest_social_link_path') ?>"><i class="fa fa-pinterest "></i></a></li>
+								<li><a href="<?php echo Mage::getStoreConfig('fabiasettings/fabiasettings_social/linkedin_social_link_path') ?>"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="<?php echo Mage::getStoreConfig('fabiasettings/fabiasettings_social/youtube_social_link_path') ?>"><i class="fa fa-youtube"></i></a></li>
+								
+							</ul>              
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- .container end here -->
+	 </div>
+ </div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+
+
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/bootstrap.min.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/TimeCircles.js') ?>"></script>
+<script>
+jQuery.noConflict();
+      jQuery("#count-down").TimeCircles(
+       {   
+           circle_bg_color: "#fec721",
+           use_background: true,
+           bg_width: 1.0,
+           fg_width: 0.02,
+           time: {
+                Days: { color: "#fefeee" },
+                Hours: { color: "#fefeee" },
+                Minutes: { color: "#fefeee" },
+                Seconds: { color: "#fefeee" }
+            }
+       }
+    );
+
+    </script>
+</body>
+</html>

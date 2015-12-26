@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Aitoc_Aitemails>
+            <active>true</active>
+            <codePool>local</codePool>
+            <self_name>E-mail Templates Manager</self_name>
+            <priority>1600</priority>
+        </Aitoc_Aitemails>
+    </modules>
+</config>
+
+<!--
+/**
+ * Email Template Manager
+ *
+ * @category:    Aitoc
+ * @package:     Aitoc_Aitemails
+ * @version      2.0.15
+ * @license:     GJkOrjFJ3FDd0bwCKiZv6ZcnFSqCjq1hKOLxXNQDVB
+ * @copyright:   Copyright (c) 2015 AITOC, Inc. (http://www.aitoc.com)
+ */
+-->
